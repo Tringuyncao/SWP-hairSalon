@@ -1,0 +1,102 @@
+/* Container chính của header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 15px 30px;
+  border-bottom: 1px solid #e1e1e1;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 999; /* Giữ header luôn ở trên cùng */
+}
+
+/* Logo */
+.header .logo img {
+  height: 300px; /* Tăng chiều cao logo */
+  max-width: 200px;
+  object-fit: contain;
+}
+
+/* Menu điều hướng */
+.header .nav-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin-left: 30px;
+}
+
+/* Link điều hướng */
+.header .nav-menu a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 20px;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+/* Hiệu ứng hover cho menu */
+.header .nav-menu a:hover {
+  color: #007bff;
+}
+
+.header .nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #007bff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.header .nav-menu a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Nút đăng nhập */
+.header .login-button a {
+  text-decoration: none;
+  color: #004A8E;
+  border: 1px solid #004A8E;
+  padding: 5px 12px; /* Thu nhỏ khung đăng nhập */
+  border-radius: 20px; /* Giảm kích thước bo tròn */
+  font-size: 12px; /* Giảm kích thước chữ */
+  font-weight: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+
+/* Hiệu ứng hover cho nút đăng nhập */
+.header .login-button a:hover {
+  background-color: #004A8E;
+  color: white;
+}
+
+/* Đảm bảo responsive cho header */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 10px 15px;
+  }
+
+  .header .nav-menu {
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .header .nav-menu a {
+    margin: 10px 0;
+  }
+
+  .header .login-button {
+    margin-top: 15px;
+  }
+}
