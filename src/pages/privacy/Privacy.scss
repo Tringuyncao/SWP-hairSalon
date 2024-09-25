@@ -1,0 +1,116 @@
+.privacy-container {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    background-color: #f9fafc;  // Màu nền nhạt, nhẹ nhàng
+  }
+  
+  .privacy-card {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #ffffff;
+    padding: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);  // Giảm bóng để tạo cảm giác tinh tế
+    border-radius: 12px;
+    border: 1px solid #ebebeb;  // Màu viền nhạt
+  }
+  
+  .ant-typography {
+    color: #333333;  // Màu chữ chủ đạo là xám đậm, tạo sự thanh lịch
+    font-family: 'Roboto', sans-serif;  // Font chữ hiện đại và dễ đọc
+  }
+  
+  .ant-typography h2 {
+    color: #1890ff;  // Màu xanh chủ đạo, nhẹ nhàng và chuyên nghiệp
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+    font-size: 28px;
+  }
+  
+  .ant-typography h3 {
+    color: #1c1c1c;  // Màu đen nhạt, nổi bật hơn
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  
+  .ant-typography p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    color: #5a5a5a;  // Màu chữ nội dung nhạt hơn để dễ đọc
+  }
+  
+  ul {
+    padding-left: 20px;
+    margin: 10px 0;
+    list-style-type: disc;
+  }
+  
+  ul li {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .privacy-card .ant-card-body {
+    padding: 0;
+  }
+  
+  .privacy-card {
+    animation: fadeIn 0.5s ease;  // Hiệu ứng mượt mà hơn
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .privacy-card {
+      padding: 20px;
+    }
+  
+    .ant-typography h2 {
+      font-size: 24px;
+    }
+  
+    .ant-typography h3 {
+      font-size: 20px;
+    }
+  
+    .ant-typography p {
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .privacy-container {
+      padding: 30px 10px;
+    }
+  
+    .privacy-card {
+      padding: 15px;
+    }
+  
+    .ant-typography h2 {
+      font-size: 20px;
+    }
+  
+    .ant-typography h3 {
+      font-size: 18px;
+    }
+  
+    .ant-typography p {
+      font-size: 14px;
+    }
+  }
+  

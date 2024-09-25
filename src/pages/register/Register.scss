@@ -1,0 +1,86 @@
+/* Overlay mờ phía sau với hình nền */
+.register-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Lớp mờ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-image: url('https://i.pinimg.com/564x/0f/39/05/0f390579b1dd22219ef9eca72499cd6e.jpg'); /* Đường dẫn đến hình nền */
+  background-size: cover; /* Giúp hình nền bao phủ toàn bộ màn hình */
+  background-position: center; /* Đặt hình nền ở giữa */
+  background-repeat: no-repeat; /* Không lặp lại hình nền */
+}
+
+/* Khung đăng ký */
+.register-container {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  z-index: 1001; /* Đảm bảo khung đăng ký nằm trên nền */
+}
+
+
+.register-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #000;
+}
+
+/* Ô nhập thông tin */
+.register-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.register-container input:focus {
+  border-color: #007bff;
+}
+
+/* Nút đăng ký */
+.register-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #004A8E;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center; /* Căn giữa chữ theo chiều ngang */
+  display: flex;
+  justify-content: center; /* Căn giữa chữ theo chiều ngang */
+  align-items: center; /* Căn giữa chữ theo chiều dọc */
+  transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: #003366;
+}
+
+
+.register-button:hover {
+  background-color: #003366;
+}
+
+/* Hiệu chỉnh label */
+.register-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #555;
+}
