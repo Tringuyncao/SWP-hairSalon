@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel, Input, Button, Row, Col, Form, message } from 'antd';
 import './HomePage.scss';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     const [form] = Form.useForm();
@@ -20,7 +21,7 @@ const HomePage = () => {
     ];
 
     const services = [
-        { name: "Cắt tóc", price: "Giá từ 100.000đ", image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-1.jpg" },
+        { name: "Cắt tóc", price: "Giá từ 100.000đ", image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-1.jpg", link:"/haircutservice"},
         { name: "Uốn tóc", price: "Giá từ 300.000đ", image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-2.jpg" },
         { name: "Nhuộm tóc", price: "Giá từ 400.000đ", image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-3.jpg" }
     ];
@@ -81,9 +82,11 @@ const HomePage = () => {
                     {services.map((service, index) => (
                         <Col xs={24} sm={12} md={6} key={index}> {/* Adjust column size */}
                             <div className="service-item">
+                                <Link to={service.link}>
                                 <img src={service.image} alt={service.name} className="service-image" />
                                 <h3>{service.name}</h3>
                                 <p>{service.price}</p>
+                                </Link>
                             </div>
                         </Col>
                     ))}
