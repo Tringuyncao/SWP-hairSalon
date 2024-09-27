@@ -23,7 +23,7 @@ const HomePage = () => {
     const services = [
         { name: "Cắt tóc", price: "Giá từ 100.000đ", image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-1.jpg", link:"/haircutservice"},
         { name: "Uốn tóc", price: "Giá từ 300.000đ", image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-2.jpg" },
-        { name: "Nhuộm tóc", price: "Giá từ 400.000đ", image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-3.jpg" }
+        { name: "Nhuộm tóc", price: "Giá từ 400.000đ", image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-3.jpg",link:"/hairdyeservice" }
     ];
 
     return (
