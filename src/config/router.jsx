@@ -12,6 +12,8 @@ import Layout from "../outlet";
 import HomePage from "../pages/homepage/Homepage";
 import Privacy from "../pages/privacy/Privacy";
 import Dashboard from "../pages/dashboard/dashboard";
+import HaircutService from "../pages/haircutservice/haircutservice";
+import HairDyeService from "../pages/hairdyeservice/hairdyeservice";
 export const router = createBrowserRouter([
   {
     path: "",
@@ -32,6 +34,14 @@ export const router = createBrowserRouter([
       {
         path: "/privacy",
         element: <Privacy />,
+      },
+      {
+        path: "/haircutservice",
+        element: <HaircutService />,
+      },
+      {
+        path: "/hairdyeservice",
+        element: <HairDyeService />,
       },
     ],
   },
