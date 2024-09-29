@@ -14,8 +14,8 @@ const Footer = () => {
             <div className="footer-bottom">
                 <p>© 2015 Công Ty Cổ Phần TMDV Barbershop / Địa chỉ: 186 Đinh Tiên Hoàng, Q1 / GPDKKD số 010.7467.693 do Sở KHĐT TP.HN cấp ngày 08/06/2016.</p>
                 <div className="footer-logos">
-                    <img src="path/to/verified-logo.png" alt="Verified logo" />
-                    <img src="path/to/dmca-logo.png" alt="DMCA logo" />
+                    <img src="https://30shine.com/static/media/footer_congthuongicon.f3d3b02c.png" alt="Verified logo" />
+                    <img src="https://30shine.com/footer_dmca.png" alt="DMCA logo" />
                 </div>
             </div>
         </footer>

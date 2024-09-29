@@ -105,8 +105,5 @@ export const router = createBrowserRouter([
     path: "/booking",
     element: <BookingForm />,
   },
-  {
-    path: "/",
-    element: <Test />,
-  },
+
 ]);

@@ -25,6 +25,29 @@ const HomePage = () => {
         { name: "Nhuộm tóc", price: "Giá từ 400.000đ", image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-3.jpg" }
     ];
 
+    const qualityPartners = [
+        {
+            name: "Dr.FORHAIR",
+            description: "Top 1 dầu gội ngăn rụng tóc được tin dùng bởi hàng ngàn khách hàng.",
+            image: "https://storage.30shine.com/web/v4/images/chat-luong-n-uy-tin/7.jpeg"
+        },
+        {
+            name: "Blairsom",
+            description: "Phát triển bởi các chuyên gia hàng đầu về tóc, cung cấp dưỡng chất tuyệt vời.",
+            image: "https://storage.30shine.com/web/v4/images/chat-luong-n-uy-tin/9.jpeg"
+        },
+        {
+            name: "LoveWarmth",
+            description: "Thương hiệu xuất sắc về chăm sóc tóc nam giới.",
+            image: "https://storage.30shine.com/web/v4/images/chat-luong-n-uy-tin/8.jpeg"
+        },
+        {
+            name: "ATS for man",
+            description: "Thương hiệu mỹ phẩm dành cho nam giới, chuyên biệt cho tóc và da đầu.",
+            image: "https://storage.30shine.com/web/v4/images/chat-luong-n-uy-tin/6.jpeg"
+        }
+    ];
+
     return (
         <div className="homepage">
             {/* Banner Section */}
@@ -79,7 +102,7 @@ const HomePage = () => {
                 <h2>Dịch vụ nổi bật</h2>
                 <Row gutter={[16, 16]} className="services-list">
                     {services.map((service, index) => (
-                        <Col xs={24} sm={12} md={6} key={index}> {/* Adjust column size */}
+                        <Col xs={24} sm={12} md={6} key={index}>
                             <div className="service-item">
                                 <img src={service.image} alt={service.name} className="service-image" />
                                 <h3>{service.name}</h3>
@@ -87,6 +110,41 @@ const HomePage = () => {
                             </div>
                         </Col>
                     ))}
+                </Row>
+            </div>
+
+            {/* Quality & Reputation Section */}
+            <div className="quality-section">
+                <h2>CHẤT LƯỢNG & UY TÍN</h2>
+                <Row gutter={[16, 16]} justify="center" className="partners-grid">
+                    {qualityPartners.map((partner, index) => (
+                        <Col xs={24} sm={12} md={6} key={index}>
+                            <div className="partner-item">
+                                <img src={partner.image} alt={partner.name} className="partner-logo" />
+                                <h3>{partner.name}</h3>
+                                <p>{partner.description}</p>
+                            </div>
+                        </Col>
+                    ))}
+                </Row>
+            </div>
+
+            {/* Space & Technology Section */}
+            <div className="space-tech-section">
+                <h2>KHÔNG GIAN & CÔNG NGHỆ</h2>
+                <Row gutter={[16, 16]}>
+                    <Col xs={24} sm={12} md={8}>
+                        <img src="https://storage.30shine.com/web/v4/images/pc/pc_kgcn_banner.png" alt="Không gian thoáng, mát, sạch" className="tech-image" />
+                        <p>Không gian thoáng, mát, sạch</p>
+                    </Col>
+                    <Col xs={24} sm={12} md={8}>
+                        <img src="https://storage.30shine.com/web/v4/images/pc/pc_kgcc_2.png" alt="Trang thiết bị hiện đại" className="tech-image" />
+                        <p>Trang thiết bị hiện đại</p>
+                    </Col>
+                    <Col xs={24} sm={12} md={8}>
+                        <img src="https://storage.30shine.com/web/v4/images/pc/pc_kgcc_1.jpg" alt="Không gian sạch, thoáng, mát" className="tech-image" />
+                        <p>Không gian sạch, thoáng, mát</p>
+                    </Col>
                 </Row>
             </div>
         </div>
