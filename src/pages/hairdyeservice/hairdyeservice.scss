@@ -1,0 +1,101 @@
+.hair-dye-service {
+    padding: 30px; // Increased padding for better spacing
+    background-color: #f8f9fa;
+  
+    .category-section {
+      margin-bottom: 50px; // More space between categories
+      text-align: center; // Center the title and the service section
+  
+      h2 {
+        font-size: 24px; // Slightly larger title for better hierarchy
+        font-weight: 600;
+        color: #003366;
+        margin-bottom: 20px; // More spacing below the title for clarity
+      }
+  
+      .services {
+        display: flex;
+        justify-content: center; // Center all service cards
+        flex-wrap: wrap; // Allow wrapping for smaller screens
+        gap: 20px; // Balanced spacing between service cards
+  
+        @media (max-width: 768px) {
+          flex-direction: column; // Stack cards on mobile
+          align-items: center;
+        }
+  
+        .service-card {
+          width: 260px; // Increased width for better visibility
+          background-color: #fff;
+          border: 1px solid #ddd;
+          border-radius: 12px;
+          padding: 20px; // Increased padding for a more open layout
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Slightly larger shadow for a polished effect
+          text-align: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+          &:hover {
+            transform: translateY(-5px); // Slightly higher hover effect
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); // Deeper shadow on hover
+          }
+  
+          h3 {
+            font-size: 20px; // Slightly larger for clear headings
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #333;
+          }
+  
+          .service-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px; // Add margin to separate description from other elements
+          }
+  
+          .service-images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; // Allow image wrapping if needed
+            gap: 10px; // More space between images
+            margin-bottom: 12px;
+  
+            img {
+              width: 48%; // Keep the images well-sized within the card
+              border-radius: 8px; // Slightly rounded corners
+            }
+          }
+  
+          .service-price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background-color: #007bff; // Bright button background
+            padding: 10px 15px; // More padding for better button appearance
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 12px;
+          }
+        }
+      }
+    }
+  
+    .booking-button {
+        display: block;
+        width: max-content;
+        margin: 30px auto 0 auto; // Adjusted for better centering
+        padding: 12px 30px; // Slightly larger for visual impact
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px; // Slightly larger text for better readability
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none; // Remove underline from button text
+      
+        &:hover {
+          background-color: #0056b3;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+      }
+}

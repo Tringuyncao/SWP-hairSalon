@@ -3,6 +3,7 @@ import { Button, Form, Input } from 'antd'; // Import Ant Design components
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { provider } from '../../config/firebase';
 import './Login.scss'; // Import file SCSS
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [form] = Form.useForm(); // Ant Design form instance
@@ -59,7 +60,7 @@ const Login = () => {
                     >
                         <Input placeholder="Ví dụ: 0912.xxx.xxx" />
                     </Form.Item>
-
+                        <Link to="/register">Don't have account? Register new account</Link>
                     {/* Submit button */}
                     <Form.Item>
                         <Button type="primary" htmlType="submit" className="login-button" block>

@@ -1,5 +1,6 @@
 import { Button, Form, Input } from 'antd';
 import './Register.scss';
+import { Link } from 'react-router-dom';
 
 function RegisterPage() {
     const handleFinish = (value) => {
@@ -54,7 +55,7 @@ function RegisterPage() {
                     >
                         <Input placeholder="Nhập số điện thoại" />
                     </Form.Item>
-
+                    <Link to="/login">You aldready have account? Go to login page </Link>
                     <Form.Item>
                         <Button type="primary" htmlType="submit" className="register-button">Đăng ký</Button>
                     </Form.Item>

@@ -1,7 +1,6 @@
 import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
 // import Test from "../component/Test";
-import Zustand from "../Zustand";
-import UseReactQuerry from "../pages/UseReactQuerry";
+
 import Test from "../Test";
 import Footer from "../pages/footer/Footer";
 import RegisterPage from "../pages/register/RegisterPage";
@@ -12,73 +11,39 @@ import BookingForm from "../pages/booking/BookingForm";
 import Layout from "../outlet";
 import HomePage from "../pages/homepage/Homepage";
 import Privacy from "../pages/privacy/Privacy";
-
-
-// const ProtectedRouteAuth = ({ children }) => {
-//   const user = useSelector(selectUser);
-//   if (!user) {
-//     alertFail("You need to login first!!");
-//     return <Navigate to="/login" replace />;
-//   }
-//   return children;
-// };
-
-// const ProtectedRouteCreator = ({ children }) => {
-//   const user = useSelector(selectUser);
-//   console.log(user);
-//   if (user?.role === "AUDIENCE") {
-//     alertFail("You do not have permissions to access");
-//     return <Navigate to="/go-pro" replace />;
-//   }
-//   return children;
-// };
-
-// const ProtectedADMIN = ({ children }) => {
-//   const user = useSelector(selectUser);
-//   console.log(user);
-//   if (user?.role !== "ADMIN") {
-//     if (user?.role !== "MOD") {
-//       alertFail("You do not have permissions to access");
-//       return <Navigate to="/" replace />;
-//     }
-//   }
-//   return children;
-// };
-
+import Dashboard from "../pages/dashboard/dashboard";
+import HaircutService from "../pages/haircutservice/haircutservice";
+import HairDyeService from "../pages/hairdyeservice/hairdyeservice";
 export const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <Test />,
-  // },
-  // {
-  //   path: "/zustand",
-  //   element: <Zustand />,
-  // },
-  // {
-  //   path: "/a",
-  //   element: <UseReactQuerry />,
-  // }, 
   {
     path: "",
     element: <Layout />,
-    children: [{
-      path: "/booking",
-      element: <BookingForm />,
-    },
-    {
-      path: "/about",
-      element: <About />,
-    },
-    {
-      path: "/homepage",
-      element: <HomePage />,
-    },
-    {
-      path: "/privacy",
-      element: <Privacy />,
-    },
-
-    ]
+    children: [
+      {
+        path: "/booking",
+        element: <BookingForm />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/homepage",
+        element: <HomePage />,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />,
+      },
+      {
+        path: "/haircutservice",
+        element: <HaircutService />,
+      },
+      {
+        path: "/hairdyeservice",
+        element: <HairDyeService />,
+      },
+    ],
   },
   {
     path: "/register",
@@ -105,5 +70,12 @@ export const router = createBrowserRouter([
     path: "/booking",
     element: <BookingForm />,
   },
-
+  {
+    path: "/",
+    element: <Test />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+  },
 ]);
