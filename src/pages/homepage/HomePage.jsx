@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Carousel, Input, Button, Row, Col, Form, message } from "antd";
 import "./HomePage.scss";
 import { Link } from "react-router-dom";
