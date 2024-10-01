@@ -1,4 +1,3 @@
-
 import { Carousel, Input, Button, Row, Col, Form, message } from "antd";
 import "./HomePage.scss";
 import { Link } from "react-router-dom";
@@ -101,7 +100,7 @@ const HomePage = () => {
       </div>
 
       {/* Services Section */}
-      <div className="services-section">
+      <div id="services-section" className="services-section">
         <h2>Dịch vụ nổi bật</h2>
         <Row gutter={[16, 16]} className="services-list">
           {services.map((service, index) => (

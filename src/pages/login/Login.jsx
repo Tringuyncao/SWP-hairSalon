@@ -3,17 +3,32 @@ import { Button, Form, Input } from 'antd'; // Import Ant Design components
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { provider } from '../../config/firebase';
 import './Login.scss'; // Import file SCSS
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import api from '../../config/axios';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const [form] = Form.useForm(); // Ant Design form instance
 
     // Function to handle form submission
-    const handleSubmit = (values) => {
-        console.log('Số điện thoại:', values.phone);
-        // Xử lý logic sau khi nhập số điện thoại ở đây
-    };
-
+    // const handleSubmit = (values) => {
+    //     console.log('Số điện thoại:', values.phone);
+    //     // Xử lý logic sau khi nhập số điện thoại ở đây
+    // };
+    const navigate =useNavigate();
+    const handleLogin = async (values) => {
+        try {
+            const response = await api.post("login",values);
+            const{ role,token } =response.data;
+            localStorage.setItem("token",token);
+            if( role == 'ADMIN'){
+                navigate("/dashboard");
+            }
+            console.log(response);
+        } catch (error) {
+            toast.error(error.response.data);
+        }
+    }
     // Function to handle Google login
     const handleLoginGoogle = () => {
         const auth = getAuth();
@@ -41,7 +56,7 @@ const Login = () => {
                 <Form
                     form={form}
                     layout="vertical" // Optional: Makes labels appear above inputs
-                    onFinish={handleSubmit} // Form submission handler
+                    onFinish={handleLogin} // Form submission handler
                 >
                     {/* Phone number field */}
                     <Form.Item
@@ -59,6 +74,16 @@ const Login = () => {
                         ]}
                     >
                         <Input placeholder="Ví dụ: 0912.xxx.xxx" />
+                    </Form.Item>
+                    <Form.Item
+                        label="Mật khẩu"
+                        name="password"
+                        rules={[
+                            { required: true, message: 'Vui lòng nhập mật khẩu!' },
+                            { min: 6, message: 'Mật khẩu phải có ít nhất 6 ký tự!' }
+                        ]}
+                    >
+                        <Input.Password placeholder="Nhập mật khẩu" />
                     </Form.Item>
                         <Link to="/register">Don't have account? Register new account</Link>
                     {/* Submit button */}

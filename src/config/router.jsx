@@ -14,6 +14,7 @@ import Privacy from "../pages/privacy/Privacy";
 import Dashboard from "../pages/dashboard/dashboard";
 import HaircutService from "../pages/haircutservice/haircutservice";
 import HairDyeService from "../pages/hairdyeservice/hairdyeservice";
+import ManageService from "../pages/admin/manage-service/manage-service";
 export const router = createBrowserRouter([
   {
     path: "",
@@ -77,5 +78,11 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+    children:[
+      {
+        path:"service",
+        element:<ManageService/>
+      },
+    ],
   },
 ]);
