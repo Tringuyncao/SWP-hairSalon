@@ -1,68 +1,70 @@
 .booking-container {
-  background-color: #f8fafc; /* Light background similar to login/register */
-  color: #1e3a8a; /* Dark blue text color */
-  padding: 40px; /* Ample padding for form container */
-  border-radius: 8px; /* Border radius consistent with form design */
-  width: 100%;
-  max-width: 400px; /* Fixed max width for the form */
-  margin: 0 auto; /* Center the form horizontally */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-  text-align: center;
+  background-color: #f0f4f8; /* Soft background color */
+  color: #1e3a8a; /* Dark blue for contrast */
+  padding: 40px; /* Ample padding for the form */
+  border-radius: 10px; /* Rounded edges */
+  max-width: 420px; /* Set a max width for form responsiveness */
+  margin: 0 auto; /* Center the form */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  text-align: center; /* Center-align the text */
+  transition: all 0.3s ease; /* Smooth transitions for interactions */
 }
 
 .booking-container h2 {
-  font-size: 24px; /* Larger font size similar to login/register headings */
-  color: #1e3a8a; /* Matching color with other forms */
-  margin-bottom: 20px;
-  font-weight: 600;
+  font-size: 26px; /* Larger heading for better visibility */
+  color: #1e3a8a; /* Main heading color */
+  margin-bottom: 15px; /* Margin below the heading */
+  font-weight: 700;
 }
 
 .booking-container p {
-  font-size: 14px; /* Match paragraph font size */
-  color: #6b7280; /* Light gray text for secondary content */
-  margin-bottom: 25px;
+  font-size: 15px; /* Slightly larger text for better readability */
+  color: #6b7280; /* Light gray for secondary text */
+  margin-bottom: 30px; /* Spacing below the paragraph */
 }
 
 .booking-form {
   display: flex;
-  flex-direction: column; /* Stack inputs vertically */
+  flex-direction: column; /* Stack inputs and buttons vertically */
+  gap: 20px; /* Uniform gap between inputs and buttons */
 }
 
 .booking-form .ant-input {
-  border-radius: 8px; /* Consistent border radius */
-  padding: 10px 15px; /* Similar padding as login/register input */
-  border: 1px solid #d1d5db; /* Light gray border */
-  margin-bottom: 20px; /* Space between input and button */
-  font-size: 16px;
-  box-shadow: none; /* Remove shadow for a cleaner look */
+  border-radius: 10px; /* Rounded corners for inputs */
+  padding: 12px 16px; /* Add padding for larger input fields */
+  border: 1px solid #d1d5db; /* Light border color */
+  font-size: 16px; /* Standard font size */
+  transition: border-color 0.3s ease; /* Smooth transition for border focus */
+}
+
+.booking-form .ant-input:focus {
+  border-color: #2563eb; /* Blue border when input is focused */
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.3); /* Subtle shadow on focus */
 }
 
 .booking-form .ant-btn {
-  background-color: #1e3a8a; /* Primary blue background */
-  border-radius: 8px;
-  padding: 20px; /* Full-width padding for the button */
-  color: white;
-  font-weight: bold;
-  border: none;
-  font-size: 16px; /* Larger font for the button */
-  width: 100%; /* Full width button */
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: inline-block;
-  text-align: center; /* Center the button text */
+  background-color: #1e3a8a; /* Primary button color */
+  border-radius: 10px; /* Rounded button corners */
+  padding: 15px; /* Ample padding for the button */
+  color: white; /* Button text color */
+  font-weight: bold; /* Bold text */
+  font-size: 16px; /* Standard font size */
+  width: 100%; /* Full-width button */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and focus effects */
 }
 
 .booking-form .ant-btn:hover {
-  background-color: #2563eb; /* Slightly darker blue on hover */
-  transform: scale(1.02); /* Subtle zoom on hover */
+  background-color: #2563eb; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 .booking-form .ant-btn:focus {
-  background-color: #2563eb;
+  background-color: #1e40af; /* Slightly darker focus state */
 }
 
 @media (max-width: 768px) {
   .booking-container {
-    width: 90%;
-    padding: 20px;
+    width: 90%; /* Make form responsive by reducing width on smaller screens */
+    padding: 20px; /* Reduce padding on smaller screens */
   }
 }

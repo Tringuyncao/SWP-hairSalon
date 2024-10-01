@@ -1,12 +1,19 @@
 import React from 'react';
 import { Form, Input, Button, message } from 'antd';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './BookingForm.scss';
 
 const BookingForm = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleBooking = (values) => {
     message.success(`Lịch hẹn đã được đặt cho số: ${values.phoneNumber}`);
+
+    // Redirect to the booking confirmation page after submission
+    setTimeout(() => {
+      navigate('/book'); // Use navigate to go to '/book'
+    }, 1000); // Optional delay for demonstration
   };
 
   return (
