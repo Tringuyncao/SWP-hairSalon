@@ -1,25 +1,31 @@
-import React from 'react';
-import { Carousel, Input, Button, Row, Col, Form, message, Card } from 'antd';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import React, { useState } from 'react';
+import { Carousel, Input, Button, Row, Col, Form, message, Card, Rate } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 import './HomePage.scss';
 
 const { Meta } = Card;
 
 const HomePage = () => {
   const [form] = Form.useForm();
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
+  const [reviews, setReviews] = useState([]); // Thêm state để lưu trữ đánh giá
 
   const handleBooking = (values) => {
     message.success(`Lịch hẹn đã được đặt cho số: ${values.phoneNumber}`);
-
-    // Redirect to the booking confirmation page after submission
     setTimeout(() => {
-      navigate('/book'); // Use navigate to go to '/book'
-    }, 1000); // Optional delay for demonstration
+      navigate('/book');
+    }, 1000);
   };
 
   const handleFailed = () => {
     message.error('Vui lòng nhập số điện thoại hợp lệ!');
+  };
+
+  // Xử lý gửi đánh giá
+  const handleReviewSubmit = (values) => {
+    setReviews([...reviews, values]);
+    message.success('Cảm ơn bạn đã gửi đánh giá!');
+    form.resetFields(); // Reset form sau khi gửi
   };
 
   const bannerImages = [
@@ -53,7 +59,7 @@ const HomePage = () => {
     {
       title: "Chất lượng uy tín",
       description: "Chúng tôi cam kết mang lại cho bạn chất lượng dịch vụ hàng đầu từ những tay kéo chuyên nghiệp.",
-      image: "https://images.unsplash.com/photo-1521120413304-4c5f48dfd040"
+      image: "https://storage.30shine.com/web/v4/images/pc/pc_goi_co_vai_gay_banner.png"
     },
     {
       title: "Không gian và công nghệ",
@@ -154,6 +160,44 @@ const HomePage = () => {
               </Col>
             ))}
           </Row>
+        </div>
+      </section>
+
+      {/* Review Section */}
+      <section className="review-section">
+        <div className="container">
+          <h2>Đánh giá chất lượng</h2>
+          <Form onFinish={handleReviewSubmit} className="review-form">
+            <Form.Item
+              name="rating"
+              label="Chọn số sao"
+              rules={[{ required: true, message: 'Vui lòng chọn số sao!' }]}
+            >
+              <Rate />
+            </Form.Item>
+            <Form.Item
+              name="review"
+              label="Nhận xét"
+              rules={[{ required: true, message: 'Vui lòng nhập nhận xét!' }]}
+            >
+              <Input.TextArea placeholder="Viết nhận xét của bạn" />
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" htmlType="submit">
+                Gửi đánh giá
+              </Button>
+            </Form.Item>
+          </Form>
+
+          <div className="reviews-list">
+            <h3>Nhận xét từ khách hàng:</h3>
+            {reviews.map((review, index) => (
+              <div key={index} className="review-item">
+                <Rate value={review.rating} disabled />
+                <p>{review.review}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

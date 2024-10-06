@@ -1,0 +1,81 @@
+$primary-color: #007bff; // Màu xanh dương chủ đạo
+$light-color: #e3f2fd; // Màu nền sáng
+
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: $light-color;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    text-align: center;
+    font-size: 36px;
+    color: $primary-color;
+    margin-bottom: 40px;
+  }
+
+  .contact-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+
+    h2, h3 {
+      color: $primary-color;
+    }
+
+    .ant-form-item {
+      margin-bottom: 20px;
+    }
+
+    .half-input {
+      width: 48%;
+      margin-right: 4%;
+    }
+
+    .full-width-input {
+      width: 100%;
+    }
+
+    .submit-button {
+      width: 100%;
+      background-color: $primary-color;
+      border-color: $primary-color;
+      color: #fff;
+      font-weight: bold;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+        border-color: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  .ant-input,
+  .ant-select-selector,
+  .ant-picker-input {
+    border: 1px solid $primary-color;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: darken($primary-color, 10%);
+    }
+  }
+
+  .ant-input:focus,
+  .ant-select-focused .ant-select-selector,
+  .ant-picker-focused .ant-picker-input {
+    border-color: darken($primary-color, 10%);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  }
+
+  .ant-form-item-label > label {
+    color: $primary-color;
+  }
+
+  .ant-select-dropdown {
+    background-color: #fff;
+    color: #000;
+  }
+}

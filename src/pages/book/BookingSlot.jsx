@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-import { Steps, Button, Form, Select, DatePicker, TimePicker, message } from 'antd';
+import { Steps, Button, Form, Select, DatePicker, TimePicker, message, Modal, List } from 'antd';
 import { HomeOutlined, ScissorOutlined, CalendarOutlined } from '@ant-design/icons';
 import './BookingSlot.scss';
 
 const { Step } = Steps;
 const { Option } = Select;
 
+// Danh sách salon giả định
+const salons = [
+    { name: "Barber Thủ Đức 1", address: "123 Đường ABC, Thủ Đức" },
+    { name: "Barber Thủ Đức 2", address: "456 Đường DEF, Thủ Đức" },
+    { name: "Barber Quận 1", address: "789 Đường XYZ, Quận 1" },
+];
+
 const BookingSlot = () => {
     const [currentStep, setCurrentStep] = useState(0);
     const [form] = Form.useForm();
+    const [isModalVisible, setIsModalVisible] = useState(false); // State quản lý modal
+    const [selectedSalon, setSelectedSalon] = useState(null); // Salon đã chọn
 
     const next = () => setCurrentStep(currentStep + 1);
     const prev = () => setCurrentStep(currentStep - 1);
@@ -28,12 +37,11 @@ const BookingSlot = () => {
             title: 'Chọn salon',
             content: (
                 <div>
-                    <Button icon={<HomeOutlined />} block style={{ marginBottom: '10px' }}>
+                    <Button icon={<HomeOutlined />} block style={{ marginBottom: '10px' }} onClick={() => setIsModalVisible(true)}>
                         Xem tất cả salon
                     </Button>
-                    <Button block icon={<img src="https://maps.gstatic.com/tactile/geoprofile/sharing/icon-2x.png" alt="location" style={{ width: '20px', marginRight: '10px' }} />}>
-                        Tìm salon gần bạn
-                    </Button>
+
+                    {selectedSalon && <div>Đã chọn: {selectedSalon.name}</div>} {/* Hiển thị salon đã chọn */}
                 </div>
             ),
         },
@@ -66,6 +74,11 @@ const BookingSlot = () => {
             ),
         },
     ];
+
+    const handleSalonSelect = (salon) => {
+        setSelectedSalon(salon);
+        setIsModalVisible(false); // Đóng modal khi đã chọn
+    };
 
     return (
         <div className="booking-page">
@@ -106,6 +119,19 @@ const BookingSlot = () => {
                     )}
                 </div>
             </Form>
+
+            {/* Modal hiển thị danh sách salon */}
+            <Modal title="Danh sách salon" visible={isModalVisible} onCancel={() => setIsModalVisible(false)} footer={null}>
+                <List
+                    bordered
+                    dataSource={salons}
+                    renderItem={(item) => (
+                        <List.Item onClick={() => handleSalonSelect(item)}>
+                            {item.name} - {item.address}
+                        </List.Item>
+                    )}
+                />
+            </Modal>
         </div>
     );
 };

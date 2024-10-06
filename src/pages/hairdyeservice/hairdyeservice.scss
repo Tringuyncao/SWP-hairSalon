@@ -1,101 +1,115 @@
 .hair-dye-service {
-    padding: 30px; // Increased padding for better spacing
-    background-color: #f8f9fa;
-  
-    .category-section {
-      margin-bottom: 50px; // More space between categories
-      text-align: center; // Center the title and the service section
-  
+  padding: 40px; // Tăng padding cho không gian rộng rãi hơn
+  background-color: #f8f9fa; // Màu nền sáng nhẹ để làm nổi bật nội dung
+
+  .category-section {
+      margin-bottom: 60px; // Khoảng cách lớn hơn giữa các phần
+      text-align: center;
+
       h2 {
-        font-size: 24px; // Slightly larger title for better hierarchy
-        font-weight: 600;
-        color: #003366;
-        margin-bottom: 20px; // More spacing below the title for clarity
+          font-size: 32px; // Tăng cỡ chữ để tạo ấn tượng mạnh mẽ
+          font-weight: 700;
+          color: #003366; // Màu xanh đậm cho tiêu đề
+          margin-bottom: 30px; // Khoảng cách dưới tiêu đề
+          text-transform: uppercase; // Biến đổi chữ thành chữ hoa
+          letter-spacing: 1px; // Khoảng cách giữa các chữ để dễ đọc hơn
       }
-  
+
       .services {
-        display: flex;
-        justify-content: center; // Center all service cards
-        flex-wrap: wrap; // Allow wrapping for smaller screens
-        gap: 20px; // Balanced spacing between service cards
-  
-        @media (max-width: 768px) {
-          flex-direction: column; // Stack cards on mobile
-          align-items: center;
-        }
-  
-        .service-card {
-          width: 260px; // Increased width for better visibility
-          background-color: #fff;
-          border: 1px solid #ddd;
-          border-radius: 12px;
-          padding: 20px; // Increased padding for a more open layout
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Slightly larger shadow for a polished effect
-          text-align: center;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
-          &:hover {
-            transform: translateY(-5px); // Slightly higher hover effect
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); // Deeper shadow on hover
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 30px; // Khoảng cách lớn giữa các card
+
+          @media (max-width: 768px) {
+              flex-direction: column;
+              align-items: center;
           }
-  
-          h3 {
-            font-size: 20px; // Slightly larger for clear headings
-            font-weight: 500;
-            margin-bottom: 12px;
-            color: #333;
+
+          .service-card {
+              width: 300px; // Tăng kích thước cho card
+              background-color: #ffffff; // Nền trắng cho sự sang trọng
+              border: 1px solid #e0e0e0; // Viền nhẹ nhàng để tạo chiều sâu
+              border-radius: 15px;
+              padding: 30px; // Tăng padding để tạo không gian
+              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); // Hiệu ứng shadow rõ hơn
+              text-align: center;
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+              &:hover {
+                  transform: translateY(-5px); // Hiệu ứng hover nhẹ
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); // Shadow đậm hơn khi hover
+              }
+
+              h3 {
+                  font-size: 22px; // Cỡ chữ lớn cho tiêu đề
+                  font-weight: 600;
+                  margin-bottom: 15px;
+                  color: #003366; // Màu tiêu đề
+                  text-transform: capitalize; // Chữ hoa đầu câu
+              }
+
+              .service-description {
+                  font-size: 15px; // Tăng cỡ chữ mô tả
+                  color: #666; // Màu xám cho mô tả
+                  margin-bottom: 20px; // Khoảng cách dưới mô tả
+              }
+
+              .service-images {
+                  display: flex;
+                  justify-content: center;
+                  flex-wrap: wrap;
+                  gap: 10px; // Khoảng cách giữa các hình ảnh
+                  margin-bottom: 15px;
+
+                  img {
+                      width: 45%; // Kích thước ảnh cân đối trong card
+                      border-radius: 10px; // Bo góc hình ảnh
+                      transition: transform 0.3s ease; // Hiệu ứng hover cho ảnh
+
+                      &:hover {
+                          transform: scale(1.05); // Hiệu ứng phóng to ảnh khi hover
+                      }
+                  }
+              }
+
+              .service-price {
+                  font-size: 18px; // Tăng kích thước cho giá
+                  font-weight: 600;
+                  color: #ffffff; // Màu chữ trắng
+                  background-color: #007bff; // Màu xanh nổi bật
+                  padding: 12px 18px; // Padding cho nút giá
+                  border-radius: 5px;
+                  display: inline-block;
+                  margin-top: 20px;
+                  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+                  &:hover {
+                      background-color: #0056b3; // Màu đậm hơn khi hover
+                      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Shadow nhẹ khi hover
+                  }
+              }
           }
-  
-          .service-description {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 30px; // Add margin to separate description from other elements
-          }
-  
-          .service-images {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap; // Allow image wrapping if needed
-            gap: 10px; // More space between images
-            margin-bottom: 12px;
-  
-            img {
-              width: 48%; // Keep the images well-sized within the card
-              border-radius: 8px; // Slightly rounded corners
-            }
-          }
-  
-          .service-price {
-            font-size: 16px;
-            font-weight: 600;
-            color: #fff;
-            background-color: #007bff; // Bright button background
-            padding: 10px 15px; // More padding for better button appearance
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 12px;
-          }
-        }
       }
-    }
-  
-    .booking-button {
-        display: block;
-        width: max-content;
-        margin: 30px auto 0 auto; // Adjusted for better centering
-        padding: 12px 30px; // Slightly larger for visual impact
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        font-size: 18px; // Slightly larger text for better readability
-        cursor: pointer;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        text-decoration: none; // Remove underline from button text
-      
-        &:hover {
-          background-color: #0056b3;
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
+  }
+
+  .booking-button {
+      display: block;
+      width: max-content;
+      margin: 40px auto 0 auto; // Tăng khoảng cách giữa các phần tử
+      padding: 14px 35px; // Padding lớn hơn cho nút
+      background-color: #007bff; // Màu xanh chủ đạo
+      color: #ffffff;
+      border: none;
+      border-radius: 8px; // Bo góc nút
+      font-size: 20px; // Cỡ chữ lớn hơn
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; // Thêm hiệu ứng transform
+
+      &:hover {
+          background-color: #0056b3; // Màu đậm hơn khi hover
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Shadow nhẹ khi hover
+          transform: scale(1.05); // Hiệu ứng phóng to nút khi hover
       }
+  }
 }
