@@ -15,7 +15,10 @@ import Dashboard from "../pages/dashboard/dashboard";
 import HaircutService from "../pages/haircutservice/haircutservice";
 import HairDyeService from "../pages/hairdyeservice/hairdyeservice";
 import BookingSlot from "../pages/book/BookingSlot";
+
 import ManageCategory from "../pages/admin/manage-category/ManageCategory";
+
+
 export const router = createBrowserRouter([
   {
     path: "",
@@ -89,5 +92,9 @@ export const router = createBrowserRouter([
         element:<ManageCategory/>,
       },
     ],
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
   },
 ]);
