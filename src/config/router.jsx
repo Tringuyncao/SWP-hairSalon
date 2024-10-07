@@ -53,6 +53,10 @@ export const router = createBrowserRouter([
         path: "/hairdyeservice",
         element: <HairDyeService />,
       },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
     ],
   },
   {
@@ -94,8 +98,5 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/contact",
-    element: <Contact />,
-  },
+  
 ]);

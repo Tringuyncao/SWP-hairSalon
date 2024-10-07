@@ -1,14 +1,17 @@
 $primary-color: #007bff; // Màu xanh dương chủ đạo
 $light-color: #e3f2fd; // Màu nền sáng
+$border-radius: 12px;
+$box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
 .contact-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px;
   background-color: $light-color;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  margin-top: 30px;
+  margin-bottom: 30px;
   h1 {
     text-align: center;
     font-size: 36px;
@@ -18,32 +21,44 @@ $light-color: #e3f2fd; // Màu nền sáng
 
   .contact-form {
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
     h2, h3 {
       color: $primary-color;
+      margin-bottom: 20px;
     }
 
     .ant-form-item {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .half-input {
       width: 48%;
       margin-right: 4%;
+      float: left;
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
 
     .full-width-input {
       width: 100%;
+      margin-bottom: 24px;
     }
 
     .submit-button {
       width: 100%;
+      padding: 12px;
       background-color: $primary-color;
       border-color: $primary-color;
       color: #fff;
       font-weight: bold;
+      font-size: 16px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
 
       &:hover {
         background-color: darken($primary-color, 10%);
@@ -56,6 +71,8 @@ $light-color: #e3f2fd; // Màu nền sáng
   .ant-select-selector,
   .ant-picker-input {
     border: 1px solid $primary-color;
+    border-radius: 6px;
+    padding: 10px;
     transition: all 0.3s ease;
 
     &:hover {
@@ -72,10 +89,35 @@ $light-color: #e3f2fd; // Màu nền sáng
 
   .ant-form-item-label > label {
     color: $primary-color;
+    font-weight: bold;
   }
 
   .ant-select-dropdown {
     background-color: #fff;
     color: #000;
+    border-radius: 6px;
+  }
+
+  // Responsive Styling
+  @media (max-width: 768px) {
+    .half-input {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    .contact-form {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 28px;
+    }
+
+    .submit-button {
+      font-size: 14px;
+      padding: 10px;
+    }
   }
 }
