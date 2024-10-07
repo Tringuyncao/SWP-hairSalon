@@ -21,6 +21,7 @@ import ManageCategory from "../pages/admin/manage-category/ManageCategory";
 import Contact from "../pages/contact/contact";
 import ManageService from "../pages/admin/manage-service/manageservice";
 import ManageOption from "../pages/admin/manage-option/ManageOption";
+import ManageStore from "../pages/admin/manage-store/ManageStore";
 
 export const router = createBrowserRouter([
   {
@@ -105,6 +106,10 @@ export const router = createBrowserRouter([
       {
         path:"option",
         element:<ManageOption/>,
+      },
+      {
+        path:"store",
+        element:<ManageStore/>,
       },
     ],
   },
