@@ -17,15 +17,13 @@ const Login = () => {
       console.log(response);
       const { role,token } =response.data;
       localStorage.setItem("token",token);
-      if(role === "ADMIN"){
-        navigate("/dashboard")
-      }
-      if(role === "CUSTOMER"){
-        navigate("/homepage")
-      }
-
-      // navigate("/homepage");
-
+      // if(role === "ADMIN"){
+      //   navigate("/dashboard")
+      // }
+      // if(role === "CUSTOMER"){
+      //   navigate("/homepage")
+      // }
+      navigate("/homepage");
     } catch (error) {
       toast.error(error.response.data);
     }
