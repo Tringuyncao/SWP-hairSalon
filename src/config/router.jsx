@@ -19,6 +19,8 @@ import BookingSlot from "../pages/book/BookingSlot";
 import ManageCategory from "../pages/admin/manage-category/ManageCategory";
 
 
+import Contact from "../pages/contact/contact";
+
 export const router = createBrowserRouter([
   {
     path: "",
@@ -51,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "/hairdyeservice",
         element: <HairDyeService />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
     ],
   },
@@ -93,8 +99,5 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/contact",
-    element: <Contact />,
-  },
+  
 ]);
