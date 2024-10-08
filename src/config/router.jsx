@@ -20,6 +20,7 @@ import ManageCategory from "../pages/admin/manage-category/ManageCategory";
 
 
 import Contact from "../pages/contact/contact";
+import ManageService from "../pages/admin/manage-service/manageservice";
 
 export const router = createBrowserRouter([
   {
@@ -96,6 +97,10 @@ export const router = createBrowserRouter([
       {
         path:"category",
         element:<ManageCategory/>,
+      },
+      {
+        path:"service",
+        element:<ManageService/>,
       },
     ],
   },
