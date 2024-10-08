@@ -21,6 +21,7 @@ const items = [
   getItem("Manage Category", "category", <PieChartOutlined />),
   getItem("Manage Service", "service", <PieChartOutlined />),
   getItem("Manage Option", "option", <PieChartOutlined />),
+  getItem("Manage Store", "store", <PieChartOutlined />),
 ];
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
