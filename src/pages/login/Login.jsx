@@ -23,7 +23,9 @@ const Login = () => {
       if(role === "CUSTOMER"){
         navigate("/homepage")
       }
+
       // navigate("/homepage");
+
     } catch (error) {
       toast.error(error.response.data);
     }

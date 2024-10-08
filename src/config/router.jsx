@@ -18,6 +18,7 @@ import BookingSlot from "../pages/book/BookingSlot";
 
 import ManageCategory from "../pages/admin/manage-category/ManageCategory";
 
+
 import Contact from "../pages/contact/contact";
 
 export const router = createBrowserRouter([
