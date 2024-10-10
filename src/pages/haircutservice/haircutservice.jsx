@@ -21,12 +21,15 @@ const HaircutService = () => {
             <h3>{service.name}</h3>
             <p>{service.description}</p>
             <p className="time">{service.time}</p>
-            <button>Tìm hiểu thêm</button>
+            <Link to={`/haircutservice/combo${service.id}`}> {/* Chuyển đến trang combo1 */}
+              <button>Tìm hiểu thêm</button>
+            </Link>
           </div>
         ))}
       </div>
+
       <Link to="/booking">
-      <button className="booking-btn">ĐẶT LỊCH NGAY</button>
+        <button className="booking-btn">ĐẶT LỊCH NGAY</button>
       </Link>
     </div>
   );
