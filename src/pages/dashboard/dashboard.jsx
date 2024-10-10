@@ -76,6 +76,7 @@ const Dashboard = () => {
             }}
           >
             <Outlet/>
+            
           </div>
         </Content>
         <Footer
