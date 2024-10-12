@@ -5,41 +5,41 @@ import { toast } from "react-toastify";
 import { render } from "react-dom";
 import api from "../../config/axios";
 
-function CRUDTemplate({columns,formItems,path}) {
+function CRUDTemplate({ columns, formItems, path }) {
   const [datas, setDatas] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const tableColumn =[
+  const tableColumn = [
     ...columns,
     {
-              title: "Action",
-              dataIndex: "id",
-              key: "id",
-              render: (id, category) => (
-                <>
-                  <Button
-                    type="primary"
-                    onClick={() => {
-                      setShowModal(true);
-                      form.setFieldsValue(category);
-                    }}
-                  >
-                    Edit
-                  </Button>
-                  <Popconfirm
-                    title="Delete"
-                    description="Do you want to delete this category?"
-                    onConfirm={() => handleDelete(id)}
-                  >
-                    <Button type="primary" danger>
-                      Delete
-                    </Button>
-                  </Popconfirm>
-                </>
-              ),
-            },
-]
+      title: "Action",
+      dataIndex: "id",
+      key: "id",
+      render: (id, category) => (
+        <>
+          <Button
+            type="primary"
+            onClick={() => {
+              setShowModal(true);
+              form.setFieldsValue(category);
+            }}
+          >
+            Edit
+          </Button>
+          <Popconfirm
+            title="Delete"
+            description="Do you want to delete this category?"
+            onConfirm={() => handleDelete(id)}
+          >
+            <Button type="primary" danger>
+              Delete
+            </Button>
+          </Popconfirm>
+        </>
+      ),
+    },
+  ];
 
   //Get
   const fetchData = async () => {
@@ -55,13 +55,13 @@ function CRUDTemplate({columns,formItems,path}) {
   const handleSubmit = async (values) => {
     try {
       setLoading(true);
-    //   if (values.id) {
-    //     //update
-    //     const response = await api.put(`${path}/${values.id}`, values);
-    //   } else {
-        //create
-        const response = await api.post(path, values);
-    //   }
+      //   if (values.id) {
+      //     //update
+      //     const response = await api.put(`${path}/${values.id}`, values);
+      //   } else {
+      //create
+      const response = await api.post(path, values);
+      //   }
 
       toast.success("Successfully saved");
       fetchData();
@@ -90,7 +90,10 @@ function CRUDTemplate({columns,formItems,path}) {
   }, []);
   return (
     <div>
-      <Button onClick={() => setShowModal(true)}>Add</Button>
+      <Button onClick={() => setShowModal(true)} style={{ color: "black" }}>
+        Add
+      </Button>
+
       <Table dataSource={datas} columns={tableColumn} />
       <Modal
         open={showModal}

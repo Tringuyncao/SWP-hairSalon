@@ -18,11 +18,17 @@ import BookingSlot from "../pages/book/BookingSlot";
 
 import ManageCategory from "../pages/admin/manage-category/ManageCategory";
 
-
 import Contact from "../pages/contact/contact";
 import ManageService from "../pages/admin/manage-service/manageservice";
 import ManageOption from "../pages/admin/manage-option/ManageOption";
 import ManageStore from "../pages/admin/manage-store/ManageStore";
+import ProfilePage from "../pages/profile/ProfilePage";
+import History from "../pages/profile/history/History";
+import Profile from "../pages/profile/ProfilePage";
+import Combo0 from "../pages/haircutservice/combo0/Combo0";
+import Combo1 from "../pages/haircutservice/combo1/Combo1";
+import Combo2 from "../pages/haircutservice/combo2/Combo2";
+import Combo3 from "../pages/haircutservice/combo3/Combo3";
 
 export const router = createBrowserRouter([
   {
@@ -52,7 +58,29 @@ export const router = createBrowserRouter([
       {
         path: "/haircutservice",
         element: <HaircutService />,
+        // children: [
+        //   {
+        //     path: "combo1",
+        //     element: <Combo0 />,
+        //   },
+        // ],
       },
+      {
+            path: "/haircutservice/combo1",
+            element: <Combo0 />,
+          },
+          {
+            path: "/haircutservice/combo2",
+            element: <Combo1 />,
+          },
+          {
+            path: "/haircutservice/combo3",
+            element: <Combo2 />,
+          },
+          {
+            path: "/haircutservice/combo4",
+            element: <Combo3 />,
+          },
       {
         path: "/hairdyeservice",
         element: <HairDyeService />,
@@ -60,6 +88,14 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/history",
+        element: <History />,
       },
     ],
   },
@@ -95,24 +131,23 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
-    children:[
+    children: [
       {
-        path:"category",
-        element:<ManageCategory/>,
+        path: "category",
+        element: <ManageCategory />,
       },
       {
-        path:"service",
-        element:<ManageService/>,
+        path: "service",
+        element: <ManageService />,
       },
       {
-        path:"option",
-        element:<ManageOption/>,
+        path: "option",
+        element: <ManageOption />,
       },
       {
-        path:"store",
-        element:<ManageStore/>,
+        path: "store",
+        element: <ManageStore />,
       },
     ],
   },
-  
 ]);

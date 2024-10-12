@@ -1,0 +1,109 @@
+.profile-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 300px;
+  background-color: #5DADE2; /* Màu xanh biển dịu hơn */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: white; /* Màu chữ trắng để tương phản */
+}
+
+.profile-email,
+.profile-phone {
+  font-size: 14px;
+  color: white; /* Màu chữ trắng */
+}
+
+.actions {
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 5px 0;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-home {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-logout {
+  background-color: #dc3545;
+  color: white;
+}
+
+.menu {
+  width: 100%;
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li {
+  padding: 10px;
+  background-color: white;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #333; /* Màu chữ đen bình thường */
+  display: block;
+}
+
+.menu li:hover {
+  background-color: #3498DB; /* Màu xanh đậm hơn khi hover */
+  transform: translateY(-2px); /* Hiệu ứng hover nâng khung */
+  color: white;
+}
+
+.menu li:hover a {
+  color: white; /* Chữ sẽ chuyển sang màu trắng khi hover */
+}
+
+.content {
+  flex-grow: 1;
+  padding: 40px;
+  background-color: #fff;
+}
+
+.content h3 {
+  font-size: 24px;
+  color: #333;
+}
