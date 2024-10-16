@@ -29,6 +29,11 @@ import Combo0 from "../pages/haircutservice/combo0/Combo0";
 import Combo1 from "../pages/haircutservice/combo1/Combo1";
 import Combo2 from "../pages/haircutservice/combo2/Combo2";
 import Combo3 from "../pages/haircutservice/combo3/Combo3";
+import BasicCurling from "../pages/hairdyeservice/basiccurling/basiccurling";
+import PremiumPerming from "../pages/hairdyeservice/PremiumPerming/PremiumPerming";
+import BasicDyeing from "../pages/hairdyeservice/basicdyeing/basicdyeing";
+import PremiumDyeing from "../pages/hairdyeservice/premiumdyeing/premiumdyeing";
+import Robonano from "../pages/hairdyeservice/RoboNano/robonano";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +85,26 @@ export const router = createBrowserRouter([
           {
             path: "/haircutservice/combo4",
             element: <Combo3 />,
+          },
+          {
+            path: "/basiccurling",
+            element: <BasicCurling />,
+          },
+          {
+            path: "/premiumperming",
+            element: <PremiumPerming />,
+          },
+          {
+            path: "/basicdyeing",
+            element: <BasicDyeing />,
+          },
+          {
+            path: "/premiumdyeing",
+            element: <PremiumDyeing />,
+          },
+          {
+            path: "/robonano",
+            element: <Robonano />,
           },
       {
         path: "/hairdyeservice",
