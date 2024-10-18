@@ -29,7 +29,6 @@ import Combo0 from "../pages/haircutservice/combo0/Combo0";
 import Combo1 from "../pages/haircutservice/combo1/Combo1";
 import Combo2 from "../pages/haircutservice/combo2/Combo2";
 import Combo3 from "../pages/haircutservice/combo3/Combo3";
-
 export const router = createBrowserRouter([
   {
     path: "",
@@ -66,21 +65,21 @@ export const router = createBrowserRouter([
         // ],
       },
       {
-            path: "/haircutservice/combo1",
-            element: <Combo0 />,
-          },
-          {
-            path: "/haircutservice/combo2",
-            element: <Combo1 />,
-          },
-          {
-            path: "/haircutservice/combo3",
-            element: <Combo2 />,
-          },
-          {
-            path: "/haircutservice/combo4",
-            element: <Combo3 />,
-          },
+        path: "/haircutservice/combo1",
+        element: <Combo0 />,
+      },
+      {
+        path: "/haircutservice/combo2",
+        element: <Combo1 />,
+      },
+      {
+        path: "/haircutservice/combo3",
+        element: <Combo2 />,
+      },
+      {
+        path: "/haircutservice/combo4",
+        element: <Combo3 />,
+      },
       {
         path: "/hairdyeservice",
         element: <HairDyeService />,
@@ -93,10 +92,18 @@ export const router = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
-      {
-        path: "/history",
-        element: <History />,
-      },
+      // {
+      //   path: "/history",
+      //   element: <History />,
+      // }, {
+      //   path: "/detail_thuonggia",
+      //   element: <Detail_TG />,
+      // },
+      // {
+      //   path: "/select",
+      //   element: <ServiceSelection />,
+
+      // },
     ],
   },
   {
@@ -128,6 +135,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Test />,
   },
+
   {
     path: "/dashboard",
     element: <Dashboard />,
@@ -150,4 +158,5 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
 ]);

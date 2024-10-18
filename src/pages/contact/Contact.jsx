@@ -9,7 +9,7 @@ const Contact = () => {
 
     const onFinish = (values) => {
         console.log('Thông tin nhận được từ form: ', values);
-        // Xử lý thông tin liên hệ (gửi email, lưu vào database, v.v.)
+        // Handle form data (e.g., send email, save to database, etc.)
     };
 
     return (
