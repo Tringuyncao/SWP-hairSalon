@@ -1,0 +1,85 @@
+// Variables for color and styling
+$primary-color: #004aad;
+$secondary-color: #ffd700;
+$text-color: #6a6a6a;
+$background-color: #f4f7fa;
+$border-radius: 10px;
+$box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+// Container styles
+.combo-container {
+  background-color: $background-color;
+  padding: 30px;
+  text-align: center;
+
+  .combo-header {
+    margin-bottom: 30px;
+
+    h2 {
+      color: $primary-color;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .main-image {
+      width: 100%;
+      max-width: 800px;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+    }
+  }
+
+  .combo-steps {
+    margin-top: 20px;
+
+    h3 {
+      color: $primary-color;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: $text-color;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .step-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+    }
+
+    .ant-card {
+      border-radius: $border-radius;
+      overflow: hidden;
+
+      .ant-card-meta-title {
+        font-size: 16px;
+        color: $primary-color;
+      }
+    }
+  }
+
+  .combo-footer {
+    margin-top: 40px;
+
+    .booking-button {
+      background-color: $primary-color;
+      border: none;
+      padding: 10px 40px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: $border-radius;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: $secondary-color;
+        color: #000;
+      }
+    }
+  }
+}
