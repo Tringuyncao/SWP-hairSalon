@@ -34,6 +34,7 @@ import PremiumPerming from "../pages/hairdyeservice/PremiumPerming/PremiumPermin
 import BasicDyeing from "../pages/hairdyeservice/basicdyeing/basicdyeing";
 import PremiumDyeing from "../pages/hairdyeservice/premiumdyeing/premiumdyeing";
 import Robonano from "../pages/hairdyeservice/RoboNano/robonano";
+import ManageBooking from "../pages/admin/manage-booking/ManageBooking";
 
 export const router = createBrowserRouter([
   {
@@ -172,6 +173,10 @@ export const router = createBrowserRouter([
       {
         path: "store",
         element: <ManageStore />,
+      },
+      {
+        path: "booking",
+        element: <ManageBooking />,
       },
     ],
   },
