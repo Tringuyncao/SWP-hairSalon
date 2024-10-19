@@ -66,8 +66,10 @@ const Profile = () => {
               textAlign: 'center',
               color: "#fff"
             }}
-          >
+          > 
+          <Link to="/homepage">
             <HomeOutlined /> Trang chủ
+            </Link>
           </Button>
           <Button
             type="default"
@@ -80,7 +82,9 @@ const Profile = () => {
               textAlign: 'center'
             }}
           >
+            <Link to="/login">
             <LogoutOutlined /> Thoát ra
+            </Link>
           </Button>
         </div>
         <Menu

@@ -24,14 +24,14 @@ function ManageCategory() {
   const handleSubmit = async (values) => {
     try {
       setLoading(true);
-      if (values.id) {
-        //update
-        const response = await api.put(`category/${values.id}`, values);
-      } else {
-        //create
-        const response = await api.post("category", values);
-      }
-
+      // if (values.id) {
+      //   //update
+      //   const response = await api.put(`category/${values.id}`, values);
+      // } else {
+      //   //create
+      //   const response = await api.post("category", values);
+      // }
+      const response = await api.post("category", values);
       toast.success("Successfully saved");
       fetchData();
       form.resetFields();
