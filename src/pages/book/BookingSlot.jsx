@@ -7,12 +7,17 @@ import {
   message,
   Modal,
   List,
+  Checkbox,
   Radio,
+  Badge,
+  Drawer,
 } from "antd";
 import {
   HomeOutlined,
   ScissorOutlined,
   CalendarOutlined,
+  ShoppingCartOutlined,
+  CheckCircleOutlined,
 } from "@ant-design/icons";
 import api from "../../config/axios"; // Import axios đã cấu hình
 import { useNavigate } from "react-router-dom";
@@ -26,7 +31,7 @@ const BookingSlot = () => {
   const [isSalonModalVisible, setIsSalonModalVisible] = useState(false);
   const [isServiceModalVisible, setIsServiceModalVisible] = useState(false);
   const [selectedSalon, setSelectedSalon] = useState(null);
-  const [selectedService, setSelectedService] = useState(null);
+  const [selectedServices, setSelectedServices] = useState([]); // Lưu nhiều dịch vụ
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [salons, setSalons] = useState([]);
   const [services, setServices] = useState([]);
@@ -34,6 +39,7 @@ const BookingSlot = () => {
   const [loadingSalons, setLoadingSalons] = useState(false);
   const [loadingServices, setLoadingServices] = useState(false);
   const [loadingSlots, setLoadingSlots] = useState(false);
+  const [cartVisible, setCartVisible] = useState(false); // Hiển thị giỏ hàng
   const navigate = useNavigate();
 
   // Lấy danh sách salon từ API
@@ -96,12 +102,10 @@ const BookingSlot = () => {
 
       const data = {
         storeId: selectedSalon?.id || 0,
-        orderDetailRequests: [
-          {
-            optionId: selectedService?.id || 0,
-            staffId: 20, // Mặc định staffId là 20
-          },
-        ],
+        orderDetailRequests: selectedServices.map((service) => ({
+          optionId: service.id,
+          staffId: 20, // Mặc định staffId là 20
+        })),
         slotId: selectedSlot?.id || 0,
         date: date.format("YYYY-MM-DD"),
       };
@@ -150,6 +154,18 @@ const BookingSlot = () => {
     setSelectedSlot(slot);
   };
 
+  const handleSalonSelect = (salon) => {
+    setSelectedSalon(salon);
+    setIsSalonModalVisible(false);
+  };
+
+  const handleServiceSelect = (selectedServiceIds) => {
+    const selected = services.filter((service) =>
+      selectedServiceIds.includes(service.id)
+    );
+    setSelectedServices(selected);
+  };
+
   const steps = [
     {
       title: "Chọn salon",
@@ -179,7 +195,15 @@ const BookingSlot = () => {
           >
             Xem tất cả dịch vụ
           </Button>
-          {selectedService && <div>Đã chọn: {selectedService.name}</div>}
+          {selectedServices.length > 0 && (
+            <div>
+              {selectedServices.map((service) => (
+                <div key={service.id}>
+                  <CheckCircleOutlined /> {service.name}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       ),
     },
@@ -219,16 +243,6 @@ const BookingSlot = () => {
       ),
     },
   ];
-
-  const handleSalonSelect = (salon) => {
-    setSelectedSalon(salon);
-    setIsSalonModalVisible(false);
-  };
-
-  const handleServiceSelect = (service) => {
-    setSelectedService(service);
-    setIsServiceModalVisible(false);
-  };
 
   return (
     <div className="booking-page">
@@ -286,6 +300,32 @@ const BookingSlot = () => {
         </div>
       </Form>
 
+      {/* Giỏ hàng */}
+      <div className="cart">
+        <Badge count={selectedServices.length}>
+          <ShoppingCartOutlined
+            className="cart-icon"
+            onClick={() => setCartVisible(true)}
+          />
+        </Badge>
+      </div>
+
+      <Drawer
+        title="Giỏ hàng"
+        placement="right"
+        onClose={() => setCartVisible(false)}
+        visible={cartVisible}
+      >
+        <List
+          dataSource={selectedServices}
+          renderItem={(service) => (
+            <List.Item>
+              <CheckCircleOutlined /> {service.name}
+            </List.Item>
+          )}
+        />
+      </Drawer>
+
       {/* Modal chọn salon */}
       <Modal
         title="Danh sách salon"
@@ -312,16 +352,23 @@ const BookingSlot = () => {
         onCancel={() => setIsServiceModalVisible(false)}
         footer={null}
       >
-        <List
-          bordered
-          loading={loadingServices}
-          dataSource={services}
-          renderItem={(item) => (
-            <List.Item onClick={() => handleServiceSelect(item)}>
-              {item.name} - {item.description}
-            </List.Item>
-          )}
-        />
+        <Checkbox.Group
+          style={{ width: "100%" }}
+          onChange={handleServiceSelect}
+        >
+          <List
+            bordered
+            loading={loadingServices}
+            dataSource={services}
+            renderItem={(item) => (
+              <List.Item>
+                <Checkbox value={item.id}>
+                  {item.name} - {item.description}
+                </Checkbox>
+              </List.Item>
+            )}
+          />
+        </Checkbox.Group>
       </Modal>
     </div>
   );

@@ -1,23 +1,61 @@
-import React from "react";
-import { Menu, Dropdown, Button } from "antd";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Menu, Dropdown, Button, message } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 import "./Header.scss";
 
 const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false); // Trạng thái fade-out
+  const navigate = useNavigate();
+
+  // Kiểm tra trạng thái đăng nhập từ localStorage
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // Hiển thị thông báo thành công và kích hoạt hiệu ứng fade-out
+    message.success({
+      content: "Đã đăng xuất thành công!",
+      duration: 2,
+      onClose: () => {
+        setIsFadingOut(true); // Kích hoạt hiệu ứng fade-out
+        setTimeout(() => {
+          localStorage.removeItem("token"); // Xóa token
+          setIsLoggedIn(false); // Cập nhật trạng thái đăng nhập
+          navigate("/homepage"); // Điều hướng về trang homepage sau hiệu ứng
+        }, 1000); // Thời gian trễ cho hiệu ứng fade-out
+      },
+    });
+  };
+
   const userMenu = (
     <Menu>
-      <Menu.Item key="register">
-        <Link to="/register">Đăng kí</Link>
-      </Menu.Item>
-      <Menu.Item key="login">
-        <Link to="/login">Đăng nhập</Link>
-      </Menu.Item>
+      {!isLoggedIn ? (
+        <>
+          <Menu.Item key="register">
+            <Link to="/register">Đăng kí</Link>
+          </Menu.Item>
+          <Menu.Item key="login">
+            <Link to="/login">Đăng nhập</Link>
+          </Menu.Item>
+        </>
+      ) : (
+        <Menu.Item key="logout">
+          <Button type="text" onClick={handleLogout}>
+            Đăng xuất
+          </Button>
+        </Menu.Item>
+      )}
     </Menu>
   );
 
   return (
-    <header className="header">
+    <header className={`header ${isFadingOut ? "fade-out" : ""}`}>
       <div className="header-container">
         {/* Logo */}
         <div className="logo">

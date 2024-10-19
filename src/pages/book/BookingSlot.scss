@@ -1,17 +1,39 @@
+// Variables
+$primary-color: #1890ff;
+$primary-hover-color: lighten($primary-color, 10%);
+$success-color: #52c41a;
+$error-color: #ff4d4f;
+$text-color: #333;
+$secondary-text-color: #595959;
+$box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+$button-height: 50px;
+$border-radius: 8px;
+$light-background: #f7f7f7;
+$max-width: 600px;
+
+// Mixins
+@mixin button-hover($bg-color) {
+  &:hover {
+    background-color: lighten($bg-color, 10%);
+    border-color: lighten($bg-color, 10%);
+  }
+}
+
+@mixin box-shadow($shadow) {
+  box-shadow: $shadow;
+}
+
+// Styles
 .booking-page {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: $max-width;
+  margin: 30px auto;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  @include box-shadow($box-shadow);
 
-  margin-top:30px ;
-  margin-bottom: 30px;
-  transition: box-shadow 0.3s ease;
-
-  &:hover {
-    box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.2); /* Tăng độ đổ bóng khi hover */
+  @media (max-width: 768px) {
+    padding: 10px;
   }
 }
 
@@ -19,8 +41,12 @@ h2 {
   text-align: center;
   font-size: 1.8rem;
   font-weight: bold;
-  color: #333;
+  color: $text-color;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 }
 
 .steps-container {
@@ -29,17 +55,17 @@ h2 {
   .ant-steps-item-title {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #333;
+    color: $text-color;
   }
 
   .ant-steps-item-icon {
-    background-color: #1890ff;
-    border-color: #1890ff;
+    background-color: $primary-color;
+    border-color: $primary-color;
   }
 
   .ant-steps-item-finish .ant-steps-item-icon {
-    background-color: #52c41a;
-    border-color: #52c41a;
+    background-color: $success-color;
+    border-color: $success-color;
   }
 }
 
@@ -49,52 +75,51 @@ h2 {
 
 .step-content {
   padding: 20px;
-  background-color: #f7f7f7; /* Màu nền để tạo độ tương phản tốt hơn */
+  background-color: $light-background;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  @include box-shadow(0px 4px 10px rgba(0, 0, 0, 0.05));
   margin-bottom: 20px;
 }
 
 .steps-action {
   display: flex;
-  flex-direction: column; /* Đặt nút theo chiều dọc */
+  flex-direction: column;
   margin-top: 20px;
 
   .ant-btn {
-    height: 50px;
+    height: $button-height;
     font-size: 1rem;
-    border-radius: 8px;
-    margin-bottom: 10px; /* Đảm bảo khoảng cách giữa các nút */
+    border-radius: $border-radius;
+    margin-bottom: 10px;
     transition: all 0.3s ease;
-    &:hover {
-      transform: scale(1.05); /* Tăng kích thước nút khi hover */
-    }
 
     &.ant-btn-primary {
-      background-color: #1890ff;
-      border-color: #1890ff;
-
-      &:hover {
-        background-color: #40a9ff;
-        border-color: #40a9ff;
-      }
+      background-color: $primary-color;
+      border-color: $primary-color;
+      @include button-hover($primary-color);
     }
 
     &.ant-btn-default {
-      color: #595959;
+      color: $secondary-text-color;
       border-color: #d9d9d9;
 
       &:hover {
-        border-color: #1890ff;
-        color: #1890ff;
+        border-color: $primary-color;
+        color: $primary-color;
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .ant-btn {
+      width: 100%;
     }
   }
 }
 
 .ant-form-item-label > label {
   font-size: 1.1rem;
-  color: #595959;
+  color: $secondary-text-color;
 }
 
 .ant-select, .ant-picker {
@@ -104,33 +129,14 @@ h2 {
 
 .ant-message-notice-content {
   font-size: 1rem;
-  background-color: #52c41a;
+  background-color: $success-color;
   color: white;
 }
 
 .ant-message-error {
-  background-color: #ff4d4f;
+  background-color: $error-color;
 }
 
-.ant-message-success {
-  background-color: #52c41a;
-}
-
-@media (max-width: 768px) {
-  .booking-page {
-    padding: 10px;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  .steps-action .ant-btn {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .steps-action {
-    flex-direction: column;
-  }
+.ant-message-success {c
+  background-color: $success-color;
 }
