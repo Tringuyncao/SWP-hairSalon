@@ -55,6 +55,22 @@ const HomePage = () => {
     }
   ];
 
+  // Thêm dịch vụ SPA & RELAX
+  const spaServices = [
+    {
+      name: "Gội Massage Relax",
+      price: "Giá từ 200.000đ",
+      image: "https://storage.30shine.com/web/v4/images/pc/pc_home_spa_1.png", // Thay đường dẫn hình ảnh
+      link: "/sparelax/massage"
+    },
+    {
+      name: "Lấy ráy tai êm",
+      price: "Giá từ 150.000đ",
+      image: "https://storage.30shine.com/web/v4/images/pc/pc_home_spa_3.png", // Thay đường dẫn hình ảnh
+      link: "/sparelax/earpick"
+    }
+  ];
+
   const highlights = [
     {
       title: "Chất lượng uy tín",
@@ -130,6 +146,26 @@ const HomePage = () => {
           <h2>Dịch vụ nổi bật</h2>
           <Row gutter={[16, 16]} className="services-list">
             {services.map((service, index) => (
+              <Col xs={24} sm={12} md={8} lg={6} key={index}>
+                <Link to={service.link}>
+                  <div className="service-item">
+                    <img src={service.image} alt={service.name} className="service-image" />
+                    <h3>{service.name}</h3>
+                    <p>{service.price}</p>
+                  </div>
+                </Link>
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </section>
+
+      {/* Spa & Relax Section */}
+      <section id="spa-relax-section" className="spa-relax-section">
+        <div className="container">
+          <h2>SPA & RELAX</h2>
+          <Row gutter={[16, 16]} className="services-list">
+            {spaServices.map((service, index) => (
               <Col xs={24} sm={12} md={8} lg={6} key={index}>
                 <Link to={service.link}>
                   <div className="service-item">
