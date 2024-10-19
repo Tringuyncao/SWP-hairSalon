@@ -1,6 +1,4 @@
 import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
-// import Test from "../component/Test";
-
 import Test from "../Test";
 import Footer from "../pages/footer/Footer";
 import RegisterPage from "../pages/register/RegisterPage";
@@ -15,9 +13,7 @@ import Dashboard from "../pages/dashboard/dashboard";
 import HaircutService from "../pages/haircutservice/haircutservice";
 import HairDyeService from "../pages/hairdyeservice/hairdyeservice";
 import BookingSlot from "../pages/book/BookingSlot";
-
 import ManageCategory from "../pages/admin/manage-category/ManageCategory";
-
 import Contact from "../pages/contact/contact";
 import ManageService from "../pages/admin/manage-service/manageservice";
 import ManageOption from "../pages/admin/manage-option/ManageOption";
@@ -29,6 +25,22 @@ import Combo0 from "../pages/haircutservice/combo0/Combo0";
 import Combo1 from "../pages/haircutservice/combo1/Combo1";
 import Combo2 from "../pages/haircutservice/combo2/Combo2";
 import Combo3 from "../pages/haircutservice/combo3/Combo3";
+import BasicCurling from "../pages/hairdyeservice/basiccurling/basiccurling";
+import PremiumPerming from "../pages/hairdyeservice/PremiumPerming/PremiumPerming";
+import BasicDyeing from "../pages/hairdyeservice/basicdyeing/basicdyeing";
+import PremiumDyeing from "../pages/hairdyeservice/premiumdyeing/premiumdyeing";
+import Robonano from "../pages/hairdyeservice/RoboNano/robonano";
+
+import ManageBooking from "../pages/admin/manage-booking/ManageBooking";
+
+import MassageService from "../pages/sparelax/Massage/MassageService"; // Import lại chính xác
+import RelaxCombo2 from "../pages/sparelax/massage/relaxcombo2/RelaxCombo2";
+import RelaxCombo4 from "../pages/sparelax/massage/relaxcombo4/RelaxCombo4";
+import RelaxCombo3 from "../pages/sparelax/massage/relaxcombo3/RelaxCombo3";
+import RelaxCombo5 from "../pages/sparelax/massage/relaxcombo5/RelaxCombo5";
+import EarPick from "../pages/sparelax/earpick/Earpick";
+import RelaxCombo6 from "../pages/sparelax/earpick/relaxcombo6/RelaxCombo6";
+
 
 export const router = createBrowserRouter([
   {
@@ -58,29 +70,43 @@ export const router = createBrowserRouter([
       {
         path: "/haircutservice",
         element: <HaircutService />,
-        // children: [
-        //   {
-        //     path: "combo1",
-        //     element: <Combo0 />,
-        //   },
-        // ],
       },
       {
-            path: "/haircutservice/combo1",
-            element: <Combo0 />,
-          },
-          {
-            path: "/haircutservice/combo2",
-            element: <Combo1 />,
-          },
-          {
-            path: "/haircutservice/combo3",
-            element: <Combo2 />,
-          },
-          {
-            path: "/haircutservice/combo4",
-            element: <Combo3 />,
-          },
+        path: "/haircutservice/combo0",
+        element: <Combo0 />,
+      },
+      {
+        path: "/haircutservice/combo1",
+        element: <Combo1 />,
+      },
+      {
+        path: "/haircutservice/combo2",
+        element: <Combo2 />,
+      },
+      {
+        path: "/haircutservice/combo3",
+        element: <Combo3 />,
+      },
+      {
+        path: "/basiccurling",
+        element: <BasicCurling />,
+      },
+      {
+        path: "/premiumperming",
+        element: <PremiumPerming />,
+      },
+      {
+        path: "/basicdyeing",
+        element: <BasicDyeing />,
+      },
+      {
+        path: "/premiumdyeing",
+        element: <PremiumDyeing />,
+      },
+      {
+        path: "/robonano",
+        element: <Robonano />,
+      },
       {
         path: "/hairdyeservice",
         element: <HairDyeService />,
@@ -94,8 +120,32 @@ export const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "/history",
-        element: <History />,
+        path: "/sparelax/massage",
+        element: <MassageService />,
+      },
+      {
+        path: "/sparelax/massage/relaxcombo2",
+        element: <RelaxCombo2 />,
+      },
+      {
+        path: "/sparelax/massage/relaxcombo3",
+        element: <RelaxCombo3 />,
+      },
+      {
+        path: "/sparelax/massage/relaxcombo4",
+        element: <RelaxCombo4 />,
+      },
+      {
+        path: "/sparelax/massage/relaxcombo5",
+        element: <RelaxCombo5 />,
+      },
+      {
+        path: "/sparelax/earpick",
+        element: <EarPick />,
+      },
+      {
+        path: "/sparelax/earpick/relaxcombo6",
+        element: <RelaxCombo6 />,
       },
     ],
   },
@@ -103,7 +153,6 @@ export const router = createBrowserRouter([
     path: "/register",
     element: <RegisterPage />,
   },
-
   {
     path: "/login",
     element: <Login />,
@@ -115,14 +164,6 @@ export const router = createBrowserRouter([
   {
     path: "/header",
     element: <Header />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/booking",
-    element: <BookingForm />,
   },
   {
     path: "/",
@@ -148,6 +189,14 @@ export const router = createBrowserRouter([
         path: "store",
         element: <ManageStore />,
       },
+      {
+        path: "booking",
+        element: <ManageBooking />,
+      },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="/homepage" />, // Thêm điều hướng về trang chủ nếu không có route phù hợp
   },
 ]);

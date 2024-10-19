@@ -38,6 +38,7 @@ const Login = () => {
         const token = credential.accessToken;
         const user = result.user;
         console.log(user);
+        navigate("/homepage");
       })
       .catch((error) => {
         const errorCode = error.code;

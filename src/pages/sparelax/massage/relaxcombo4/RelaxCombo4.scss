@@ -1,0 +1,57 @@
+.combo4-container {
+    padding: 20px;
+  
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+  
+      h2 {
+        font-size: 24px;
+        color: #003a8c;
+        font-weight: bold;
+      }
+  
+      .header-image {
+        max-width: 100%;
+        border-radius: 10px;
+      }
+    }
+  
+    .service-section {
+      h3 {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #1890ff;
+      }
+  
+      .ant-card {
+        text-align: center;
+  
+        .ant-card-cover img {
+          height: 150px;
+          object-fit: cover;
+        }
+  
+        .ant-card-meta-title {
+          font-size: 16px;
+          font-weight: 500;
+          color: #595959;
+        }
+      }
+    }
+  
+    .button-section {
+      text-align: center;
+      margin-top: 30px;
+  
+      .ant-btn-primary {
+        background-color: #1890ff;
+        border-color: #1890ff;
+        font-size: 16px;
+        padding: 10px 30px;
+        border-radius: 5px;
+      }
+    }
+  }
+  

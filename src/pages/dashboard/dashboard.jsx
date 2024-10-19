@@ -22,6 +22,7 @@ const items = [
   getItem("Manage Service", "service", <PieChartOutlined />),
   getItem("Manage Option", "option", <PieChartOutlined />),
   getItem("Manage Store", "store", <PieChartOutlined />),
+  getItem("Manage Booking", "booking", <PieChartOutlined />),
 ];
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -65,7 +66,7 @@ const Dashboard = () => {
             }}
           >
             <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            <Breadcrumb.Item>ADMIN</Breadcrumb.Item>
           </Breadcrumb>
           <div
             style={{
