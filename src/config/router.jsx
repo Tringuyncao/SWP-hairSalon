@@ -29,6 +29,12 @@ import Combo0 from "../pages/haircutservice/combo0/Combo0";
 import Combo1 from "../pages/haircutservice/combo1/Combo1";
 import Combo2 from "../pages/haircutservice/combo2/Combo2";
 import Combo3 from "../pages/haircutservice/combo3/Combo3";
+import BasicCurling from "../pages/hairdyeservice/basiccurling/basiccurling";
+import PremiumPerming from "../pages/hairdyeservice/PremiumPerming/PremiumPerming";
+import BasicDyeing from "../pages/hairdyeservice/basicdyeing/basicdyeing";
+import PremiumDyeing from "../pages/hairdyeservice/premiumdyeing/premiumdyeing";
+import Robonano from "../pages/hairdyeservice/RoboNano/robonano";
+
 export const router = createBrowserRouter([
   {
     path: "",
@@ -57,12 +63,6 @@ export const router = createBrowserRouter([
       {
         path: "/haircutservice",
         element: <HaircutService />,
-        // children: [
-        //   {
-        //     path: "combo1",
-        //     element: <Combo0 />,
-        //   },
-        // ],
       },
       {
         path: "/haircutservice/combo1",
@@ -81,6 +81,26 @@ export const router = createBrowserRouter([
         element: <Combo3 />,
       },
       {
+        path: "/basiccurling",
+        element: <BasicCurling />,
+      },
+      {
+        path: "/premiumperming",
+        element: <PremiumPerming />,
+      },
+      {
+        path: "/basicdyeing",
+        element: <BasicDyeing />,
+      },
+      {
+        path: "/premiumdyeing",
+        element: <PremiumDyeing />,
+      },
+      {
+        path: "/robonano",
+        element: <Robonano />,
+      },
+      {
         path: "/hairdyeservice",
         element: <HairDyeService />,
       },
@@ -92,25 +112,12 @@ export const router = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
-      // {
-      //   path: "/history",
-      //   element: <History />,
-      // }, {
-      //   path: "/detail_thuonggia",
-      //   element: <Detail_TG />,
-      // },
-      // {
-      //   path: "/select",
-      //   element: <ServiceSelection />,
-
-      // },
     ],
   },
   {
     path: "/register",
     element: <RegisterPage />,
   },
-
   {
     path: "/login",
     element: <Login />,
@@ -135,7 +142,6 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Test />,
   },
-
   {
     path: "/dashboard",
     element: <Dashboard />,
@@ -158,5 +164,4 @@ export const router = createBrowserRouter([
       },
     ],
   },
-
 ]);
