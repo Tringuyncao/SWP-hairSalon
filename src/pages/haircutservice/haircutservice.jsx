@@ -21,7 +21,9 @@ const HaircutService = () => {
             <h3>{service.name}</h3>
             <p>{service.description}</p>
             <p className="time">{service.time}</p>
+
             <Link to={`/haircutservice/combo${service.id}`}> {/* Chuyển đến trang combo1 */}
+
               <button>Tìm hiểu thêm</button>
             </Link>
           </div>
