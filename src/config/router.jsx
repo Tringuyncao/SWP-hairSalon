@@ -30,6 +30,9 @@ import PremiumPerming from "../pages/hairdyeservice/PremiumPerming/PremiumPermin
 import BasicDyeing from "../pages/hairdyeservice/basicdyeing/basicdyeing";
 import PremiumDyeing from "../pages/hairdyeservice/premiumdyeing/premiumdyeing";
 import Robonano from "../pages/hairdyeservice/RoboNano/robonano";
+
+import ManageBooking from "../pages/admin/manage-booking/ManageBooking";
+
 import MassageService from "../pages/sparelax/Massage/MassageService"; // Import lại chính xác
 import RelaxCombo2 from "../pages/sparelax/massage/relaxcombo2/RelaxCombo2";
 import RelaxCombo4 from "../pages/sparelax/massage/relaxcombo4/RelaxCombo4";
@@ -37,6 +40,7 @@ import RelaxCombo3 from "../pages/sparelax/massage/relaxcombo3/RelaxCombo3";
 import RelaxCombo5 from "../pages/sparelax/massage/relaxcombo5/RelaxCombo5";
 import EarPick from "../pages/sparelax/earpick/Earpick";
 import RelaxCombo6 from "../pages/sparelax/earpick/relaxcombo6/RelaxCombo6";
+
 
 export const router = createBrowserRouter([
   {
@@ -184,6 +188,10 @@ export const router = createBrowserRouter([
       {
         path: "store",
         element: <ManageStore />,
+      },
+      {
+        path: "booking",
+        element: <ManageBooking />,
       },
     ],
   },
