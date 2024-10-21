@@ -5,72 +5,72 @@
   justify-content: center; /* Căn giữa theo chiều dọc */
   align-items: center;
   background-color: #f1f5f9; /* Màu nền tinh tế */
-  padding: 20px;
+  padding: 40px 20px; /* Tăng padding để tạo không gian thoải mái hơn */
 }
 
 .booking-container {
   background-color: #ffffff;
   border-radius: 12px;
-  padding: 40px;
-  max-width: 450px;
+  padding: 50px 40px; /* Tăng padding cho cảm giác thoải mái */
+  max-width: 480px; /* Tăng kích thước tối đa để phù hợp trên các màn hình lớn hơn */
   margin: 20px 0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Bóng đổ mềm mại hơn */
   text-align: center;
 }
 
 .booking-container h2 {
-  font-size: 28px;
+  font-size: 30px; /* Tăng kích thước tiêu đề */
   font-weight: bold;
-  color: #1e3a8a; /* Màu xanh đậm */
-  margin-bottom: 20px;
+  color: #1e3a8a; /* Màu xanh đậm nhất quán */
+  margin-bottom: 25px;
   letter-spacing: 1.5px;
 }
 
 .booking-container p {
-  font-size: 16px;
+  font-size: 17px; /* Tăng một chút kích thước chữ để dễ đọc hơn */
   color: #64748b;
-  margin-bottom: 30px;
-  line-height: 1.6;
+  margin-bottom: 35px;
+  line-height: 1.8; /* Tăng line-height cho sự thoải mái khi đọc */
 }
 
 .booking-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 30px;
+  gap: 25px; /* Tăng khoảng cách giữa các phần tử form */
+  margin-bottom: 35px;
 }
 
 .booking-form .ant-input {
-  border-radius: 8px;
-  padding: 14px;
+  border-radius: 10px; /* Tăng độ cong của viền */
+  padding: 16px; /* Tăng padding để cảm giác rộng rãi hơn */
   font-size: 16px;
   border: 1px solid #e2e8f0;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .booking-form .ant-input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
+  border-color: #2563eb; /* Màu xanh đậm hơn khi focus */
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.3); /* Tăng độ mờ của bóng khi focus */
 }
 
 .booking-form .ant-btn {
-  background-color: #1e3a8a;
-  border-radius: 8px;
-  padding: 16px;
+  background-color: #1e3a8a; /* Màu xanh đậm nhất quán */
+  border-radius: 10px; /* Tăng độ cong của viền */
+  padding: 18px; /* Tăng kích thước nút cho cảm giác nổi bật hơn */
   color: white;
   font-weight: bold;
   font-size: 18px;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.2);
+  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.2); /* Bóng đổ mạnh hơn cho nút */
 }
 
 .booking-form .ant-btn:hover {
-  background-color: #3b82f6;
-  transform: translateY(-3px);
+  background-color: #3b82f6; /* Màu xanh nhạt hơn khi hover */
+  transform: translateY(-5px); /* Tạo hiệu ứng nhấc lên khi hover */
 }
 
 footer {
-  background-color: #1e3a8a;
+  background-color: #1e3a8a; /* Màu nền xanh đậm cho footer */
   padding: 20px;
   color: white;
   text-align: center;
@@ -80,7 +80,7 @@ footer {
 }
 
 footer p {
-  font-size: 14px;
+  font-size: 15px; /* Tăng kích thước chữ trong footer */
   margin: 5px 0;
   color: white;
 }

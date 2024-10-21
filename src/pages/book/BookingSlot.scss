@@ -3,12 +3,15 @@ $primary-color: #1890ff;
 $primary-hover-color: lighten($primary-color, 10%);
 $success-color: #52c41a;
 $error-color: #ff4d4f;
+$warning-color: #faad14;
 $text-color: #333;
 $secondary-text-color: #595959;
 $box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 $button-height: 50px;
 $border-radius: 8px;
 $light-background: #f7f7f7;
+$card-background: #ffffff;
+$hover-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
 $max-width: 600px;
 
 // Mixins
@@ -16,6 +19,7 @@ $max-width: 600px;
   &:hover {
     background-color: lighten($bg-color, 10%);
     border-color: lighten($bg-color, 10%);
+    box-shadow: $hover-shadow;
   }
 }
 
@@ -23,39 +27,48 @@ $max-width: 600px;
   box-shadow: $shadow;
 }
 
-// Styles
+// Global Styles
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;  // Light, neutral background to make elements stand out.
+  color: $text-color;
+  line-height: 1.6;
+}
+
+// Booking Page Styling
 .booking-page {
   max-width: $max-width;
   margin: 30px auto;
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 12px;
+  background-color: $card-background;
+  border-radius: $border-radius;
   @include box-shadow($box-shadow);
 
   @media (max-width: 768px) {
-    padding: 10px;
+    padding: 15px;
   }
 }
 
 h2 {
   text-align: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: $text-color;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $primary-color;  // Highlighted color for titles
+  margin-bottom: 24px;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 }
 
+// Steps Styling
 .steps-container {
   margin-bottom: 20px;
 
   .ant-steps-item-title {
     font-size: 1.2rem;
     font-weight: 600;
-    color: $text-color;
+    color: $primary-color;
   }
 
   .ant-steps-item-icon {
@@ -69,18 +82,25 @@ h2 {
   }
 }
 
+// Form Styling
 .booking-form {
   margin-top: 20px;
 }
 
 .step-content {
-  padding: 20px;
+  padding: 24px;
   background-color: $light-background;
-  border-radius: 10px;
+  border-radius: $border-radius;
   @include box-shadow(0px 4px 10px rgba(0, 0, 0, 0.05));
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    @include box-shadow($hover-shadow);
+  }
 }
 
+// Button Styling
 .steps-action {
   display: flex;
   flex-direction: column;
@@ -88,10 +108,12 @@ h2 {
 
   .ant-btn {
     height: $button-height;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
     border-radius: $border-radius;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     transition: all 0.3s ease;
+    padding: 0 20px;
 
     &.ant-btn-primary {
       background-color: $primary-color;
@@ -117,20 +139,32 @@ h2 {
   }
 }
 
+// Form Labels and Inputs
 .ant-form-item-label > label {
   font-size: 1.1rem;
+  font-weight: 500;
   color: $secondary-text-color;
 }
 
 .ant-select, .ant-picker {
   font-size: 1rem;
   height: 45px;
+  border-radius: $border-radius;
+  border-color: $primary-color;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus {
+    border-color: $primary-hover-color;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
 }
 
+// Notification Messages
 .ant-message-notice-content {
   font-size: 1rem;
-  background-color: $success-color;
+  font-weight: 500;
   color: white;
+  padding: 12px;
 }
 
 .ant-message-error {
@@ -139,4 +173,8 @@ h2 {
 
 .ant-message-success {
   background-color: $success-color;
+}
+
+.ant-message-warning {
+  background-color: $warning-color;
 }
