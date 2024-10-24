@@ -40,6 +40,9 @@ import RelaxCombo3 from "../pages/sparelax/massage/relaxcombo3/RelaxCombo3";
 import RelaxCombo5 from "../pages/sparelax/massage/relaxcombo5/RelaxCombo5";
 import EarPick from "../pages/sparelax/earpick/Earpick";
 import RelaxCombo6 from "../pages/sparelax/earpick/relaxcombo6/RelaxCombo6";
+import Appointment from "../pages/profile/appointment/Appointment";
+import Feedback from "../pages/profile/feedback/Feedback";
+import ManageSlot from "../pages/admin/manage-slot/ManageSlot";
 
 
 export const router = createBrowserRouter([
@@ -118,6 +121,20 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+        children: [
+          {
+            path: "appointment",
+            element: <Appointment />,
+          },
+          {
+            path: "history",
+            element: <History />,
+          },
+          {
+            path: "feedback",
+            element: <Feedback />,
+          },
+        ]
       },
       {
         path: "/sparelax/massage",
@@ -192,6 +209,10 @@ export const router = createBrowserRouter([
       {
         path: "booking",
         element: <ManageBooking />,
+      },
+      {
+        path: "slot",
+        element: <ManageSlot />,
       },
     ],
   },
