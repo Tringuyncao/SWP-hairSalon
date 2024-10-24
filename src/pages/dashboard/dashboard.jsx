@@ -23,6 +23,7 @@ const items = [
   getItem("Manage Option", "option", <PieChartOutlined />),
   getItem("Manage Store", "store", <PieChartOutlined />),
   getItem("Manage Booking", "booking", <PieChartOutlined />),
+  getItem("Manage Slot", "slot", <PieChartOutlined />),
 ];
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);

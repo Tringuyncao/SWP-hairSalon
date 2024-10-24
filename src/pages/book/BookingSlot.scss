@@ -122,7 +122,8 @@ h2 {
   color: $secondary-text-color;
 }
 
-.ant-select, .ant-picker {
+.ant-select,
+.ant-picker {
   font-size: 1rem;
   height: 45px;
 }
@@ -137,6 +138,59 @@ h2 {
   background-color: $error-color;
 }
 
-.ant-message-success {c
+.ant-message-success {
   background-color: $success-color;
 }
+
+// Time Slot Styles
+.time-slot-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.time-slot-item {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 10px); /* 3 items per row */
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $primary-hover-color;
+  }
+
+  input {
+    margin-right: 10px;
+  }
+
+  &.selected {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    width: calc(50% - 10px); /* 2 items per row on small screens */
+  }
+}
+
+// Cart Icon
+.cart-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+// Drawer Header
+.drawer-header {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+// Drawer List Item
+.ant-list-item {
+  padding: 10px 0;
+}
+

@@ -1,29 +1,24 @@
 import React, { useState } from "react";
 import { Layout, Button, Avatar, Menu, theme } from "antd";
-import { MailOutlined, PhoneOutlined, HomeOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import { MailOutlined, HomeOutlined, LogoutOutlined, UserOutlined, HistoryOutlined } from "@ant-design/icons";  // Thêm biểu tượng lịch sử
 import { Link, Outlet } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-// Hàm để tạo các mục trong Menu bao gồm label, key, icon, và children
-function getItem(label, key, icon, children) {
+// Hàm để tạo các mục trong Menu bao gồm label, key, icon
+function getItem(label, key, icon) {
   return {
     key,
     icon,
-    children,
-    label: <Link to={`/dashboard/${key}`}>{label}</Link>, // Sử dụng Link cho các đường dẫn tương ứng
+    label: <Link to={`/profile/${key}`}>{label}</Link>, // Sử dụng Link cho các đường dẫn tương ứng
   };
 }
 
-// Các mục trong menu với đường dẫn tương ứng và mục con (children)
+// Các mục trong menu với 3 lựa chọn: Lịch hẹn, Phản hồi, và Lịch sử
 const items = [
-  getItem("Cập nhật thông tin cá nhân", "update-info", <UserOutlined />),
-  getItem("Lịch hẹn của tôi", "my-appointments", <HomeOutlined />, [
-    getItem("Lịch hẹn hôm nay", "today-appointments", <HomeOutlined />),
-    getItem("Lịch hẹn tuần này", "week-appointments", <HomeOutlined />),
-  ]),
-  getItem("Lịch sử của tôi", "my-history", <HomeOutlined />),
-  getItem("Tin nhắn", "messages", <HomeOutlined />),
+  getItem("Lịch hẹn", "appointment", <HomeOutlined />),  // Mục Lịch hẹn
+  getItem("Phản hồi", "feedback", <MailOutlined />),     // Mục Phản hồi
+  getItem("Lịch sử", "history", <HistoryOutlined />),    // Mục Lịch sử
 ];
 
 const Profile = () => {
@@ -34,7 +29,6 @@ const Profile = () => {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      {/* Màu xanh nhạt hơn cho thanh nav để hài hòa với header trắng và footer xanh biển */}
       <Sider
         width={300}
         style={{
@@ -51,10 +45,10 @@ const Profile = () => {
           </Avatar>
           <h2 style={{ color: "#fff", fontWeight: "bold", fontSize: "1.5rem", marginTop: "10px" }}>Nguyễn Văn A</h2>
           <p style={{ color: "#E6F2FF", marginBottom: "5px" }}>
-            <MailOutlined /> nguyenvana@example.com
+            nguyenvana@example.com
           </p>
           <p style={{ color: "#E6F2FF", marginBottom: "20px" }}>
-            <PhoneOutlined /> 0123456789
+            0123456789
           </p>
           <Button
             type="primary"
