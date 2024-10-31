@@ -71,11 +71,6 @@ const HomePage = () => {
       title: "Không gian và công nghệ",
       description: "Không gian thoáng đãng, hiện đại kết hợp với công nghệ cắt tóc tiên tiến.",
       image: "https://storage.30shine.com/web/v4/images/pc/pc_kgcc_2.png"
-    },
-    {
-      title: "Cam kết 30Shine Care",
-      description: "Bảo hành dịch vụ đến khi bạn hài lòng với phong cách tóc của mình.",
-      image: ""
     }
   ];
 
@@ -210,14 +205,16 @@ const HomePage = () => {
       </section>
 
       {/* Highlights Section */}
-      <section id="highlights-section" className="highlights-section">
+      <section id="highlights-section" className="highlight-section">
         <div className="container">
-          <h2>Nổi bật</h2>
+          <h2>Điểm nhấn nổi bật</h2>
           <Row gutter={[16, 16]} className="highlights-list">
             {highlights.map((highlight, index) => (
               <Col xs={24} sm={12} md={8} lg={8} key={index}>
                 <div className="highlight-item">
-                  {highlight.image && <img src={highlight.image} alt={highlight.title} className="highlight-image" />}
+                  <div className="highlight-image-wrapper"> {/* Khung cho hình ảnh */}
+                    <img src={highlight.image} alt={highlight.title} className="highlight-image" />
+                  </div>
                   <h3>{highlight.title}</h3>
                   <p>{highlight.description}</p>
                 </div>
@@ -228,22 +225,19 @@ const HomePage = () => {
       </section>
 
       {/* Quality & Partners Section */}
-      <section id="quality-partners-section" className="quality-partners-section">
+      <section id="quality-partners-section" className="quality-section">
         <div className="container">
           <h2>Chất lượng & Đối tác</h2>
-          <div className="quality-partners-container">
-            <button className="scroll-btn left" onClick={scrollLeft}>◀</button>
-            <div className="quality-scroll" ref={qualityScrollRef}>
-              {qualityPartners.map((partner, index) => (
-                <div className="partner-item" key={index}>
-                  <img src={partner.logo} alt={partner.name} className="partner-logo" />
-                  <h4>{partner.name}</h4>
-                  <p>{partner.description}</p>
-                </div>
-              ))}
-            </div>
-            <button className="scroll-btn right" onClick={scrollRight}>▶</button>
+          <div className="scroll-container" ref={qualityScrollRef}>
+            {qualityPartners.map((partner, index) => (
+              <div className="partner-item" key={index}>
+                <img src={partner.logo} alt={partner.name} className="partner-logo" />
+                <h3>{partner.name}</h3>
+                <p>{partner.description}</p>
+              </div>
+            ))}
           </div>
+
         </div>
       </section>
     </div>
