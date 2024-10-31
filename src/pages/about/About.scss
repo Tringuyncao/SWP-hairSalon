@@ -1,30 +1,30 @@
 .about-us-container {
-  padding: 50px 20px;
-  background-color: #f4f4f9; /* Nền xám nhạt tạo sự sang trọng */
+  padding: 60px 20px;
+  background-color: #f4f4f9; /* Màu nền nhẹ nhàng nhưng vẫn tạo sự sang trọng */
   max-width: 1200px;
   margin: 0 auto;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Bóng mềm xung quanh toàn bộ */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Bóng đổ mềm mại cho toàn bộ container */
 }
 
 .intro-section {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
 .intro-section h2 {
-  font-size: 36px;
-  font-family: 'Playfair Display', serif; /* Font serif sang trọng */
+  font-size: 40px;
+  font-family: 'Playfair Display', serif; /* Sử dụng font serif cho cảm giác sang trọng */
   font-weight: 700;
-  color: #1e3a8a; 
-  margin-bottom: 15px;
+  color: #1e3a8a;
+  margin-bottom: 20px;
 }
 
 .intro-section p {
-  font-size: 18px;
-  color: #4a4a4a; /* Màu tối hơn để tăng độ sang */
+  font-size: 20px;
+  color: #4a4a4a; /* Màu tối để tạo sự sang trọng */
   line-height: 1.8;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .intro-section ul {
@@ -33,10 +33,10 @@
   color: #4a4a4a;
 }
 
-/* Bố trí hình ảnh theo phong cách mosaic */
+/* Mosaic layout for image gallery */
 .image-gallery {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* 1 ảnh lớn, 2 ảnh nhỏ bên cạnh */
+  grid-template-columns: 2fr 1fr; /* One large image, two smaller images */
   grid-gap: 20px;
   margin-bottom: 50px;
 }
@@ -44,22 +44,23 @@
 .image-gallery img {
   border-radius: 15px;
   object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bóng mềm cho hình ảnh */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for images */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .image-gallery img:hover {
-  transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Bóng đổ mạnh hơn khi hover */
+  transform: scale(1.05); /* Zoom effect on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
+/* Vision and Logo Section */
 .logo-vision-section {
   margin-bottom: 60px;
   text-align: center;
 }
 
 .logo-vision-section h3 {
-  font-size: 28px;
+  font-size: 30px;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   color: #1e3a8a;
@@ -67,94 +68,83 @@
 }
 
 .logo-vision-section p {
-  font-size: 18px;
+  font-size: 20px;
   color: #4a4a4a;
   line-height: 1.8;
   max-width: 900px;
   margin: 0 auto;
 }
 
-/* Phần giá trị cốt lõi */
+/* Core Values Section */
 .core-values-section {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .core-values-section h3 {
-  font-size: 28px;
+  font-size: 30px;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   color: #1e3a8a;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .core-values-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr; /* 2 columns for medium screens */
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
 }
 
 .core-value {
-  padding: 25px;
+  padding: 30px;
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Bóng nhẹ cho khối */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for each box */
   text-align: center;
   transition: all 0.3s ease;
 }
 
 .core-value:hover {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Tạo bóng mạnh hơn khi hover */
-  transform: translateY(-8px); /* Hiệu ứng nhấc lên khi hover */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Lift effect on hover */
+  transform: translateY(-10px); /* Slightly lift the card on hover */
 }
 
 .core-value h4 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   color: #1e3a8a;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .core-value p {
-  font-size: 16px;
+  font-size: 18px;
   color: #4b5563;
-  line-height: 1.6;
-  font-family: 'Roboto', sans-serif; /* Font sans-serif hiện đại */
+  line-height: 1.8;
+  font-family: 'Roboto', sans-serif; /* Clean, modern sans-serif font */
 }
 
-/* Responsive adjustments */
-.image-gallery {
-  display: flex;
-  justify-content: center; /* Căn giữa các hình ảnh */
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 50px;
-  flex-wrap: wrap; /* Cho phép hình ảnh xuống hàng trên màn hình nhỏ */
-}
-
-.image-gallery img {
-  width: 30%; /* Đảm bảo hình ảnh chiếm 30% chiều rộng */
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bóng đổ mềm mại */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.image-gallery img:hover {
-  transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Bóng đổ mạnh hơn khi hover */
-}
-
-/* Responsive adjustments */
+/* Responsive image adjustments */
 @media (max-width: 1024px) {
-  .image-gallery img {
-    width: 45%; /* Ảnh chiếm 45% trên màn hình vừa */
+  .image-gallery {
+    grid-template-columns: 1fr 1fr; /* Two equal columns on medium screens */
   }
 }
 
 @media (max-width: 768px) {
+  .image-gallery {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+
   .image-gallery img {
-    width: 100%; /* Hình ảnh chiếm 100% chiều rộng trên màn hình nhỏ */
+    width: 100%; /* Ensure full-width images on small screens */
   }
 }
