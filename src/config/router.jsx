@@ -48,12 +48,14 @@ import BookingStylish from "../pages/stylish/bookingstylish/bookingstylish";
 import ProfileStylish from "../pages/stylish/profile/profile";
 import RegisterSchedule from "../pages/stylish/register-schedule/RegisterSchedule";
 import Info from "../pages/profile/info/info";
+
 import Manager from "../pages/manager/Manager";
 import InfoManager from "../pages/manager/info/Info";
 import BookingManager from "../pages/manager/booking/BookingManager";
 import ManageStylish from "../pages/manager/manage-stylish/ManageStylish";
 import ManageStylishAdmin from "../pages/admin/manage-stylish/ManageStylish";
 import ManageManagerAdmin from "../pages/admin/manage-manager/ManageManagerAdmin";
+
 
 
 
@@ -221,6 +223,7 @@ export const router = createBrowserRouter([
     ]
   },
   {
+
 
     path: "/manager",
     element: <Manager />,
