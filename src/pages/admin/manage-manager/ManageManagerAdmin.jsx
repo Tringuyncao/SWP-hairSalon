@@ -3,33 +3,33 @@ import { Button, Table, Modal, Form, Input, message } from "antd";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
 
-const ManageStylishAdmin = () => {
-  const [stylists, setStylists] = useState([]);
+const ManageManagerAdmin = () => {
+  const [managers, setManagers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [storeId, setStoreId] = useState("");
   const [form] = Form.useForm();
 
-  // Hàm lấy danh sách stylists dựa trên storeId
-  const fetchStylists = async () => {
+  // Hàm lấy danh sách managers dựa trên storeId
+  const fetchManagers = async () => {
     if (!storeId) {
       toast.error("Vui lòng nhập storeId.");
       return;
     }
 
     try {
-      const response = await api.get(`staff/${storeId}`);
-      // Lọc chỉ lấy stylist có role là "STAFF"
-      const staffOnly = response.data.filter(stylist => stylist.role === "STAFF");
-      setStylists(staffOnly);
+      const response = await api.get(`manager/${storeId}`);
+      // Lọc chỉ lấy những người có role là "MANAGER"
+      const managersWithRole = response.data.filter(manager => manager.role === "MANAGER");
+      setManagers(managersWithRole);
     } catch (error) {
-      toast.error("Không thể lấy danh sách stylist.");
+      toast.error("Không thể lấy danh sách manager.");
       console.error(error);
     }
   };
 
-  // Hàm thêm stylist mới dựa trên storeId
-  const handleAddStylist = async (values) => {
+  // Hàm thêm manager mới dựa trên storeId
+  const handleAddManager = async (values) => {
     if (!storeId) {
       toast.error("Vui lòng nhập storeId.");
       return;
@@ -37,20 +37,20 @@ const ManageStylishAdmin = () => {
 
     setLoading(true);
     try {
-      // Đặt mặc định role là "STAFF" và serviceIds là mảng rỗng
-      const stylistData = {
+      // Đặt mặc định role là "MANAGER" và serviceIds là mảng rỗng
+      const managerData = {
         ...values,
-        role: "STAFF", // Mặc định role là "STAFF"
+        role: "MANAGER", // Mặc định role là "MANAGER"
         serviceIds: [], // Mảng rỗng cho serviceIds
       };
 
-      await api.post(`staff/${storeId}`, stylistData);
-      message.success("Đã thêm stylist thành công!");
+      await api.post(`manager/${storeId}`, managerData);
+      message.success("Đã thêm manager thành công!");
       form.resetFields();
       setIsModalOpen(false);
-      fetchStylists(); // Refresh danh sách sau khi thêm stylist
+      fetchManagers(); // Refresh danh sách sau khi thêm manager
     } catch (error) {
-      message.error("Thêm stylist thất bại!");
+      message.error("Thêm manager thất bại!");
       console.error(error);
     } finally {
       setLoading(false);
@@ -95,37 +95,37 @@ const ManageStylishAdmin = () => {
           onChange={(e) => setStoreId(e.target.value)}
           style={{ width: 200, marginRight: 8 }}
         />
-        <Button type="primary" onClick={fetchStylists}>
-          Lấy danh sách Stylist
+        <Button type="primary" onClick={fetchManagers}>
+          Lấy danh sách Manager
         </Button>
       </div>
 
-      {/* Bảng hiển thị danh sách stylist */}
+      {/* Bảng hiển thị danh sách manager */}
       <Table
-        dataSource={stylists}
+        dataSource={managers}
         columns={columns}
         rowKey="id"
         locale={{ emptyText: "Không có dữ liệu" }}
       />
 
-      {/* Nút để mở Modal thêm stylist */}
+      {/* Nút để mở Modal thêm manager */}
       <Button
         type="primary"
         style={{ marginTop: 16 }}
         onClick={() => setIsModalOpen(true)}
         disabled={!storeId}
       >
-        Thêm Stylist
+        Thêm Manager
       </Button>
 
-      {/* Modal để thêm stylist */}
+      {/* Modal để thêm manager */}
       <Modal
-        title="Thêm Stylist"
+        title="Thêm Manager"
         visible={isModalOpen}
         onCancel={() => setIsModalOpen(false)}
         footer={null}
       >
-        <Form form={form} onFinish={handleAddStylist} layout="vertical">
+        <Form form={form} onFinish={handleAddManager} layout="vertical">
           <Form.Item
             label="Email"
             name="email"
@@ -156,7 +156,7 @@ const ManageStylishAdmin = () => {
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" loading={loading}>
-              Thêm Stylist
+              Thêm Manager
             </Button>
           </Form.Item>
         </Form>
@@ -165,4 +165,4 @@ const ManageStylishAdmin = () => {
   );
 };
 
-export default ManageStylishAdmin;
+export default ManageManagerAdmin;
