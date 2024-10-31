@@ -45,6 +45,7 @@ const Dashboard = () => {
     getItem("Manage Store", "store", <PieChartOutlined />),
     getItem("Manage Booking", "booking", <PieChartOutlined />),
     getItem("Manage Slot", "slot", <PieChartOutlined />),
+    getItem("Manage Stylish", "stylish", <TeamOutlined />), // Thêm mục Manage Stylish
     getItem("Logout", "logout", <LogoutOutlined />, handleLogout),
   ];
 
