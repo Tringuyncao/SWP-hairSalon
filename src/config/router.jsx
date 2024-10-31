@@ -45,6 +45,7 @@ import Feedback from "../pages/profile/feedback/Feedback";
 import ManageSlot from "../pages/admin/manage-slot/ManageSlot";
 import Stylish from "../pages/stylish/Stylish";
 import BookingStylish from "../pages/stylish/bookingstylish/bookingstylish";
+import ProfileStylish from "../pages/stylish/profile/profile";
 
 
 export const router = createBrowserRouter([
@@ -196,6 +197,10 @@ export const router = createBrowserRouter([
       {
         path: "booking",
         element: <BookingStylish />,
+      },
+      {
+        path: "profile",
+        element: <ProfileStylish />,
       },
     ]
   },
