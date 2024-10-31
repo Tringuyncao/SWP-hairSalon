@@ -13,6 +13,17 @@ $light-background: #f7f7f7;
 $card-background: #ffffff;
 $hover-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
 $max-width: 600px;
+$slot-bg: #ffffff;
+$slot-bg-selected: $primary-color;
+$slot-bg-disabled: #d9d9d9;
+$slot-color: $text-color;
+$slot-color-selected: #ffffff;
+$slot-color-disabled: #999;
+$slot-border: 1px solid #e8e8e8;
+$slot-border-selected: 1px solid darken($primary-color, 10%);
+$slot-border-radius: 4px;
+$padding-slot: 10px;
+$disabled-color: #cccccc;
 
 // Mixins
 @mixin button-hover($bg-color) {
@@ -30,7 +41,7 @@ $max-width: 600px;
 // Global Styles
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f0f2f5; // Light, neutral background to make elements stand out.
+  background-color: #f0f2f5;
   color: $text-color;
   line-height: 1.6;
 }
@@ -53,7 +64,7 @@ h2 {
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
-  color: $primary-color; // Highlighted color for titles
+  color: $primary-color;
   margin-bottom: 24px;
 
   @media (max-width: 768px) {
@@ -97,6 +108,50 @@ h2 {
 
   &:hover {
     @include box-shadow($hover-shadow);
+  }
+}
+
+// Slot Styling
+.time-slot-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // Chia thành 3 cột
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.time-slot-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $padding-slot;
+  background-color: $slot-bg;
+  color: $slot-color;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: $slot-border-radius;
+  border: $slot-border;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: lighten($primary-color, 40%);
+    border-color: lighten($primary-color, 20%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &.selected {
+    background-color: $slot-bg-selected;
+    color: $slot-color-selected;
+    border: $slot-border-selected;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  &.disabled {
+    background-color: $slot-bg-disabled;
+    color: $slot-color-disabled;
+    border-color: $disabled-color;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
@@ -173,7 +228,7 @@ h2 {
 }
 
 .ant-message-success {
-  background-color: $success-color; // Fixed typo
+  background-color: $success-color;
 }
 
 .ant-message-warning {

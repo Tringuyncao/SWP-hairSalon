@@ -26,7 +26,7 @@ import "./BookingSlot.scss";
 
 const { Step } = Steps;
 
-// Utility function to format time (removes seconds)
+// Utility function to format time
 const formatTime = (time) => time.slice(0, 5);
 
 const BookingSlot = () => {
@@ -48,9 +48,10 @@ const BookingSlot = () => {
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [loadingStylists, setLoadingStylists] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0); // New state for total price
+  const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
 
+  // Fetch salons
   useEffect(() => {
     const fetchSalons = async () => {
       setLoadingSalons(true);
@@ -66,6 +67,7 @@ const BookingSlot = () => {
     fetchSalons();
   }, []);
 
+  // Fetch services
   useEffect(() => {
     const fetchServices = async () => {
       setLoadingServices(true);
@@ -81,6 +83,7 @@ const BookingSlot = () => {
     fetchServices();
   }, []);
 
+  // Fetch slots by selected date
   const fetchSlots = async (date) => {
     setLoadingSlots(true);
     try {
@@ -93,6 +96,7 @@ const BookingSlot = () => {
     }
   };
 
+  // Fetch stylists by selected salon
   const fetchStylists = async (storeId) => {
     setLoadingStylists(true);
     try {
@@ -176,9 +180,8 @@ const BookingSlot = () => {
     );
     setSelectedServices(selected);
 
-    // Calculate total price of selected services
     const total = selected.reduce((sum, service) => sum + service.price, 0);
-    setTotalPrice(total); // Update total price
+    setTotalPrice(total);
   };
 
   const handleStylistSelect = (stylist) => {
@@ -219,8 +222,7 @@ const BookingSlot = () => {
             <div>
               {selectedServices.map((service) => (
                 <div key={service.id}>
-                  <CheckCircleOutlined /> {service.name} - {service.price}K{" "}
-                  {/* Show price */}
+                  <CheckCircleOutlined /> {service.name} - {service.price}K
                 </div>
               ))}
             </div>
@@ -270,12 +272,13 @@ const BookingSlot = () => {
             ) : (
               <div className="time-slot-group">
                 {slots.map((slot) => (
-                  <label key={slot.id} className="time-slot-item">
-                    <Radio
-                      value={slot}
-                      checked={selectedSlot && selectedSlot.id === slot.id}
-                      onChange={() => handleSlotSelect(slot)}
-                    />
+                  <label
+                    key={slot.id}
+                    className={`time-slot-card ${
+                      selectedSlot?.id === slot.id ? "selected" : ""
+                    } ${slot.disabled ? "disabled" : ""}`}
+                    onClick={() => handleSlotSelect(slot)}
+                  >
                     {formatTime(slot.startTime)} - {formatTime(slot.endTime)}
                   </label>
                 ))}
@@ -290,11 +293,7 @@ const BookingSlot = () => {
   return (
     <div className="booking-page">
       <h2>Đặt lịch giữ chỗ</h2>
-      <Steps
-        current={currentStep}
-        direction="vertical"
-        className="steps-container"
-      >
+      <Steps current={currentStep} direction="vertical" className="steps-container">
         {steps.map((item, index) => (
           <Step
             key={index}
@@ -345,7 +344,6 @@ const BookingSlot = () => {
         </div>
       </Form>
 
-      {/* Cart Section */}
       <div className="cart">
         <Badge count={selectedServices.length}>
           <ShoppingCartOutlined
@@ -365,14 +363,13 @@ const BookingSlot = () => {
           dataSource={selectedServices}
           renderItem={(service) => (
             <List.Item>
-              <CheckCircleOutlined /> {service.name} - {service.price}K{" "}
-              {/* Display price */}
+              <CheckCircleOutlined /> {service.name} - {service.price}K
             </List.Item>
           )}
         />
         <div className="total-price">
           <h3>Tổng thanh toán:</h3>
-          <p>{totalPrice}K</p> {/* Display total price */}
+          <p>{totalPrice}K</p>
         </div>
       </Drawer>
 
@@ -425,8 +422,7 @@ const BookingSlot = () => {
             renderItem={(item) => (
               <List.Item>
                 <Checkbox value={item.id}>
-                  {item.name} - {item.description} - {item.price}K{" "}
-                  {/* Show price */}
+                  {item.name} - {item.description} - {item.price}K
                 </Checkbox>
               </List.Item>
             )}
