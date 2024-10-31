@@ -6,7 +6,6 @@ import "./Header.scss";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isFadingOut, setIsFadingOut] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,18 +16,13 @@ const Header = () => {
   }, []);
 
   const handleLogout = () => {
-    message.success({
-      content: "Đã đăng xuất thành công!",
-      duration: 2,
-      onClose: () => {
-        setIsFadingOut(true);
-        setTimeout(() => {
-          localStorage.removeItem("token");
-          setIsLoggedIn(false);
-          navigate("/homepage");
-        }, 1000);
-      },
-    });
+    // Xóa token khỏi localStorage và cập nhật trạng thái đăng nhập
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+
+    // Hiển thị thông báo đăng xuất thành công và chuyển hướng về trang đăng nhập
+    message.success("Đã đăng xuất thành công!", 2);
+    navigate("/login");
   };
 
   const handleScrollToServices = () => {
@@ -50,17 +44,22 @@ const Header = () => {
           </Menu.Item>
         </>
       ) : (
-        <Menu.Item key="logout">
-          <Button type="text" onClick={handleLogout}>
-            Đăng xuất
-          </Button>
-        </Menu.Item>
+        <>
+          <Menu.Item key="profile">
+            <Link to="/profile">Xem hồ sơ</Link>
+          </Menu.Item>
+          <Menu.Item key="logout">
+            <Button type="text" onClick={handleLogout}>
+              Đăng xuất
+            </Button>
+          </Menu.Item>
+        </>
       )}
     </Menu>
   );
 
   return (
-    <header className={`header ${isFadingOut ? "fade-out" : ""}`}>
+    <header className="header">
       <div className="header-container">
         <div className="logo">
           <Link to="/homepage">
@@ -82,9 +81,8 @@ const Header = () => {
           <Menu.Item key="service">
             <Link to="#services-section" onClick={handleScrollToServices}>
               Dịch vụ
-            </Link> {/* Reverted back to Link */}
+            </Link>
           </Menu.Item>
-
           <Menu.Item key="about">
             <Link to="/about">Về Barbershop</Link>
           </Menu.Item>
@@ -92,7 +90,9 @@ const Header = () => {
 
         <div className="auth-buttons">
           <Dropdown overlay={userMenu} trigger={["click"]}>
-            <Button type="text" icon={<UserOutlined />} />
+            <Button type="text" icon={<UserOutlined />} className="user-icon-btn">
+              {isLoggedIn && <span className="user-name">Xin chào!</span>}
+            </Button>
           </Dropdown>
         </div>
       </div>

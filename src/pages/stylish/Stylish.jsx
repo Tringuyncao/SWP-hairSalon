@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Menu } from "antd";
-import { UserOutlined, CalendarOutlined, LogoutOutlined } from "@ant-design/icons";
+import { UserOutlined, CalendarOutlined, LogoutOutlined, ScheduleOutlined } from "@ant-design/icons";
 import { useNavigate, Outlet } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -27,6 +27,12 @@ const Stylish = () => {
       icon: <CalendarOutlined />,
       label: "Lịch cắt tóc",
       onClick: () => navigate("/stylish/booking"), // Chuyển đến trang lịch cắt tóc
+    },
+    {
+      key: "register-schedule",
+      icon: <ScheduleOutlined />,
+      label: "Đăng ký lịch làm việc",
+      onClick: () => navigate("/stylish/register-schedule"), // Chuyển đến trang đăng ký lịch làm việc
     },
     {
       key: "logout",

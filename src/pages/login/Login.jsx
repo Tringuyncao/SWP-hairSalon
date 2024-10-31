@@ -16,23 +16,32 @@ const Login = () => {
     try {
       const response = await api.post("login", values);
       console.log(response);
-      const { id, role, token, fullName, email, phone } = response.data;
+      const { id, role, token, fullName, email, phone, store } = response.data;
 
       // Lưu token và thông tin người dùng vào localStorage
       localStorage.setItem("token", token);
       localStorage.setItem("userInfo", JSON.stringify({ id, role, fullName, email, phone }));
 
-      // Điều hướng sau khi đăng nhập thành công
-      // if (role === "ADMIN") {
-      //   navigate("/dashboard");
-      // } else if (role === "STYLIST") {
-      //   navigate("/booking-stylish");
-      // } else {
-      //   navigate("/homepage");
-      // }
-      navigate("/homepage");
+      // Nếu store tồn tại, lưu id, name và address của store vào localStorage
+      if (store && store.id) {
+        localStorage.setItem("storeId", store.id);
+        localStorage.setItem("storeName", store.name);
+        localStorage.setItem("storeAddress", store.address);
+      }
+
+      // Điều hướng dựa trên vai trò người dùng
+      if (role === "ADMIN") {
+        navigate("/dashboard");
+      } else if (role === "STAFF") {
+        navigate("/stylish");
+      } else if (role === "MANAGER") {
+        navigate("/manager");
+      } else {
+        // Mặc định chuyển đến homepage cho vai trò CUSTOMER hoặc khi role là null
+        navigate("/homepage");
+      }
     } catch (error) {
-      toast.error(error.response.data);
+      toast.error(error.response?.data || "Đăng nhập thất bại!");
     }
   };
 
@@ -48,10 +57,7 @@ const Login = () => {
         navigate("/homepage");
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        const email = error.customData.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
         console.error("Google login error:", errorMessage);
       });
   };

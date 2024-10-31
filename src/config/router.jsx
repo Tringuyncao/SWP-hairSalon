@@ -40,6 +40,19 @@ import RelaxCombo5 from "../pages/sparelax/massage/relaxcombo5/RelaxCombo5";
 import EarPick from "../pages/sparelax/earpick/Earpick";
 import RelaxCombo6 from "../pages/sparelax/earpick/relaxcombo6/RelaxCombo6";
 
+import Appointment from "../pages/profile/appointment/Appointment";
+import Feedback from "../pages/profile/feedback/Feedback";
+import ManageSlot from "../pages/admin/manage-slot/ManageSlot";
+import Stylish from "../pages/stylish/Stylish";
+import BookingStylish from "../pages/stylish/bookingstylish/bookingstylish";
+import ProfileStylish from "../pages/stylish/profile/profile";
+import RegisterSchedule from "../pages/stylish/register-schedule/RegisterSchedule";
+import Info from "../pages/profile/info/info";
+import Manager from "../pages/manager/Manager";
+import InfoManager from "../pages/manager/info/Info";
+import BookingManager from "../pages/manager/booking/BookingManager";
+
+
 
 export const router = createBrowserRouter([
   {
@@ -114,6 +127,26 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+
+        children: [
+          {
+            path: "appointment",
+            element: <Appointment />,
+          },
+          {
+            path: "history",
+            element: <History />,
+          },
+          {
+            path: "feedback",
+            element: <Feedback />,
+          },
+          {
+            path: "info",
+            element: <Info />,
+          },
+        ]
+
       },
       {
         path: "/sparelax/massage",
@@ -166,6 +199,45 @@ export const router = createBrowserRouter([
     element: <Test />,
   },
   {
+
+    path: "/stylish",
+    element: <Stylish />,
+    children: [
+      {
+        path: "booking",
+        element: <BookingStylish />,
+      },
+      {
+        path: "profile",
+        element: <ProfileStylish />,
+      },
+      {
+        path: "register-schedule",
+        element: <RegisterSchedule />,
+      },
+    ]
+  },
+  {
+
+    path: "/manager",
+    element: <Manager />,
+    children: [
+      {
+        path: "info",
+        element: <InfoManager />,
+      },
+      {
+        path: "booking",
+        element: <BookingManager />,
+      },
+      {
+        path: "register-schedule",
+        element: <RegisterSchedule />,
+      },
+    ]
+  },
+  {
+
     path: "/dashboard",
     element: <Dashboard />,
     children: [
