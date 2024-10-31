@@ -2,7 +2,7 @@
     font-family: 'Arial', sans-serif;
     text-align: center;
     background-color: #f5f5f5;
-    padding: 20px 40px; /* Reduced side padding to make more use of space */
+    padding: 20px 40px;
 
     .banner {
         position: relative;
@@ -12,63 +12,67 @@
             max-width: 900px;
             height: auto;
             margin: 0 auto;
+            border-radius: 10px; /* Thêm viền bo tròn cho hình ảnh banner */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ tạo sự nổi bật */
         }
 
         h2 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: #002d72;
+            margin-top: 20px; /* Thêm khoảng cách giữa hình ảnh và tiêu đề */
         }
 
         p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #ff6f00;
+            margin-top: 10px;
         }
     }
 
     .service-process {
-        margin-top: 20px;
+        margin-top: 30px;
 
         h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
             color: #002d72;
         }
 
         p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .services {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Keep 4 items per row */
-            gap: 20px; /* Reduced the gap between the items for better spacing */
-            justify-content: center; /* Center the grid */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-content: center;
             margin: 0 auto;
-            max-width: 1200px; /* Adjusted max width for better spacing on the sides */
+            max-width: 1200px;
 
             .service-item {
                 background-color: white;
-                border-radius: 6px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                padding: 10px;
+                border-radius: 8px; /* Tăng độ bo tròn cho khối dịch vụ */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 15px; /* Tăng khoảng cách bên trong khối dịch vụ */
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
 
                 &:hover {
                     transform: translateY(-5px);
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
                 }
 
                 img {
                     width: 100%;
                     height: auto;
-                    border-radius: 4px;
+                    border-radius: 6px; /* Tăng độ bo tròn cho hình ảnh dịch vụ */
                 }
 
                 p {
-                    margin-top: 10px;
-                    font-size: 0.85rem;
+                    margin-top: 12px;
+                    font-size: 0.9rem;
                     color: #555;
                 }
             }
@@ -78,14 +82,34 @@
     .booking-button {
         background-color: #002d72;
         color: white;
-        font-size: 1.1rem;
-        padding: 10px 20px;
+        font-size: 1.2rem;
+        padding: 12px 24px;
         border: none;
-        border-radius: 4px;
+        border-radius: 6px; /* Tăng độ bo tròn cho nút */
         cursor: pointer;
-        margin-top: 30px;
+        margin-top: 40px;
+        transition: background-color 0.3s ease;
+
         &:hover {
             background-color: #004bb5;
+        }
+    }
+
+    // Responsive adjustments
+    @media (max-width: 1024px) {
+        .services {
+            grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 cột khi màn hình vừa */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .services {
+            grid-template-columns: 1fr; /* Hiển thị 1 cột khi màn hình nhỏ */
+        }
+
+        .booking-button {
+            font-size: 1rem;
+            padding: 10px 20px;
         }
     }
 }
