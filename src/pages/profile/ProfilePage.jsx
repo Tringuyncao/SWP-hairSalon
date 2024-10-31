@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Layout, Button, Avatar, Menu, theme } from "antd";
-import { MailOutlined, HomeOutlined, LogoutOutlined, UserOutlined, HistoryOutlined } from "@ant-design/icons";  // Thêm biểu tượng lịch sử
+import { Layout, Menu, theme } from "antd";
+import { MailOutlined, HomeOutlined, HistoryOutlined, UserOutlined } from "@ant-design/icons"; // Sử dụng biểu tượng người dùng cho Thông tin tài khoản
 import { Link, Outlet } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -14,8 +14,9 @@ function getItem(label, key, icon) {
   };
 }
 
-// Các mục trong menu với 3 lựa chọn: Lịch hẹn, Phản hồi, và Lịch sử
+// Các mục trong menu với các lựa chọn: Lịch hẹn, Phản hồi, Lịch sử, và Thông tin tài khoản
 const items = [
+  getItem("Thông tin tài khoản", "info", <UserOutlined />), // Mục Thông tin tài khoản
   getItem("Lịch hẹn", "appointment", <HomeOutlined />),  // Mục Lịch hẹn
   getItem("Phản hồi", "feedback", <MailOutlined />),     // Mục Phản hồi
   getItem("Lịch sử", "history", <HistoryOutlined />),    // Mục Lịch sử
@@ -39,48 +40,6 @@ const Profile = () => {
         trigger={null}  // Ẩn nút thu gọn (trigger)
         collapsible={false}  // Tắt khả năng thu gọn
       >
-        <div style={{ textAlign: "center", marginBottom: "20px" }}>
-          <Avatar size={150} style={{ backgroundColor: "#ccc", marginBottom: "15px", display: 'inline-block' }}>
-            150 x 150
-          </Avatar>
-          <h2 style={{ color: "#fff", fontWeight: "bold", fontSize: "1.5rem", marginTop: "10px" }}>Nguyễn Văn A</h2>
-          <p style={{ color: "#E6F2FF", marginBottom: "5px" }}>
-            nguyenvana@example.com
-          </p>
-          <p style={{ color: "#E6F2FF", marginBottom: "20px" }}>
-            0123456789
-          </p>
-          <Button
-            type="primary"
-            style={{
-              width: "100%",
-              marginBottom: "10px",
-              backgroundColor: "#5A9BD5", // Màu xanh biển trung tính cho nút Trang chủ
-              borderColor: "#5A9BD5",
-              textAlign: 'center',
-              color: "#fff"
-            }}
-          > 
-          <Link to="/homepage">
-            <HomeOutlined /> Trang chủ
-            </Link>
-          </Button>
-          <Button
-            type="default"
-            style={{
-              width: "100%",
-              marginBottom: "20px",
-              backgroundColor: "#84B3E5", // Màu xanh biển nhạt hơn cho nút Thoát ra
-              color: "#fff",
-              borderColor: "#84B3E5",
-              textAlign: 'center'
-            }}
-          >
-            <Link to="/login">
-            <LogoutOutlined /> Thoát ra
-            </Link>
-          </Button>
-        </div>
         <Menu
           theme="dark"
           mode="inline"

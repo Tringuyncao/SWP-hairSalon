@@ -31,7 +31,6 @@ const Appointment = () => {
           },
         });
 
-        // Lọc chỉ các lịch hẹn có status là INIT hoặc null
         const filteredAppointments = response.data.filter(
           (appointment) => appointment.status === "INIT" || appointment.status === null
         );
@@ -61,7 +60,6 @@ const Appointment = () => {
         }
       );
       message.success("Lịch hẹn đã được chuyển trạng thái thành CANCEL.");
-      // Cập nhật lại danh sách lịch hẹn sau khi thay đổi
       setAppointments(appointments.filter((appointment) => appointment.id !== id));
     } catch (error) {
       message.error("Lỗi khi cập nhật trạng thái lịch hẹn.");
@@ -70,10 +68,21 @@ const Appointment = () => {
 
   const columns = [
     {
-      title: "Tên Người Đặt Lịch",
-      dataIndex: ["account", "fullName"],
+      title: "Tên Stylist",
+      dataIndex: "orderDetails",
       key: "stylist",
-      render: (text, record) => (record.account ? record.account.fullName : "Không có tên"),
+      render: (orderDetails) => {
+        // Lấy danh sách stylist name, loại bỏ "Không có tên stylist"
+        const stylistNames = orderDetails
+          .map((detail) =>
+            detail.stylistSlots && detail.stylistSlots.length > 0
+              ? detail.stylistSlots[0].account.fullName
+              : null
+          )
+          .filter((name) => name) // Loại bỏ null hoặc undefined
+          .join(", ");
+        return stylistNames || "Không có tên stylist";
+      },
     },
     {
       title: "Tên Dịch Vụ",
@@ -88,6 +97,23 @@ const Appointment = () => {
       title: "Ngày Đặt Lịch",
       dataIndex: "date",
       key: "date",
+    },
+    {
+      title: "Thời Gian",
+      dataIndex: "orderDetails",
+      key: "timeSlot",
+      render: (orderDetails) => {
+        // Lấy danh sách thời gian, loại bỏ "Không có thời gian"
+        const timeSlots = orderDetails
+          .map((detail) =>
+            detail.stylistSlots && detail.stylistSlots.length > 0
+              ? detail.stylistSlots[0].slot.label
+              : null
+          )
+          .filter((time) => time) // Loại bỏ null hoặc undefined
+          .join(", ");
+        return timeSlots || "Không có thời gian";
+      },
     },
     {
       title: "Tên Cửa Hàng",

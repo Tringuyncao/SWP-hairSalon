@@ -14,11 +14,13 @@ function ManageBooking() {
   // Fetch the bookings list from the API
   const fetchBookings = async () => {
     try {
-      const response = await api.get("booking");
+      const response = await api.get("booking/all");
       const modifiedBookings = response.data.map((booking) => ({
         id: booking.id,
         date: booking.date,
         services: booking.orderDetails.map((detail) => detail.serviceOption.name).join(", "),
+        stylistName: booking.orderDetails[0]?.stylistSlots[0]?.account.fullName || "N/A",
+        time: booking.orderDetails[0]?.stylistSlots[0]?.slot.label || "N/A",
         accountFullName: booking.account.fullName,
         accountPhone: booking.account.phone,
         storeName: booking.store.name,
@@ -95,6 +97,16 @@ function ManageBooking() {
       title: "Services",
       dataIndex: "services",
       key: "services",
+    },
+    {
+      title: "Stylist Name",
+      dataIndex: "stylistName",
+      key: "stylistName",
+    },
+    {
+      title: "Time",
+      dataIndex: "time",
+      key: "time",
     },
     {
       title: "Customer Name",

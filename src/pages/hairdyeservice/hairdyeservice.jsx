@@ -70,7 +70,7 @@ const services = [
         title: "Dưỡng Phục Hồi Robo Nano",
         description: "Công nghệ phục hồi tóc tiên tiến, cho tóc mềm mượt và chắc khỏe từ gốc.",
         price: "199K",
-        label: "/duong-phuc-hoi-nano", // Thêm label
+        label: "/robonano", // Thêm label
         images: [
           "https://storage.30shine.com/web/v4/images/dich-vu-uon-nhuom-duong/duong-nano-5.jpg",
           "https://storage.30shine.com/web/v4/images/dich-vu-uon-nhuom-duong/duong-nano-6.jpg",
