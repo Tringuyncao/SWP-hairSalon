@@ -1,0 +1,70 @@
+.relax-combo5 {
+    padding: 20px;
+    text-align: center;
+  
+    .combo5-header {
+      margin-bottom: 20px;
+  
+      h2 {
+        font-size: 24px;
+        color: #1d3b6c;
+      }
+    }
+  
+    .combo5-main-image {
+      img {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+    }
+  
+    .combo5-service-steps {
+      h3 {
+        font-size: 20px;
+        color: #1d3b6c;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+  
+      .service-steps-row {
+        display: flex;
+        justify-content: center;
+      }
+  
+      .service-step-card {
+        img {
+          border-radius: 8px;
+        }
+  
+        .ant-card-meta-title {
+          font-size: 14px;
+          color: #333;
+        }
+      }
+    }
+  
+    .combo5-booking {
+      margin-top: 30px;
+  
+      .booking-button {
+        background-color: #1d3b6c;
+        border-color: #1d3b6c;
+        color: #fff;
+        padding: 10px 30px;
+        font-size: 16px;
+        font-weight: bold;
+  
+        &:hover {
+          background-color: #14335a;
+          border-color: #14335a;
+        }
+      }
+    }
+  }
+  

@@ -40,7 +40,7 @@ const Header = () => {
 
   const userMenu = (
     <Menu>
-      {!isLoggedIn ? (
+      {!isLoggedIn && (
         <>
           <Menu.Item key="register">
             <Link to="/register">Đăng kí</Link>
@@ -49,15 +49,22 @@ const Header = () => {
             <Link to="/login">Đăng nhập</Link>
           </Menu.Item>
         </>
-      ) : (
-        <Menu.Item key="logout">
-          <Button type="text" onClick={handleLogout}>
-            Đăng xuất
-          </Button>
-        </Menu.Item>
+      )}
+      {isLoggedIn && (
+        <>
+          <Menu.Item key="profile">
+            <Link to="/profile">Xem hồ sơ</Link>
+          </Menu.Item>
+          <Menu.Item key="logout">
+            <Link to="/login" onClick={handleLogout}>
+              Đăng xuất
+            </Link>
+          </Menu.Item>
+        </>
       )}
     </Menu>
   );
+  
 
   return (
     <header className={`header ${isFadingOut ? "fade-out" : ""}`}>
