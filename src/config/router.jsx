@@ -48,6 +48,9 @@ import BookingStylish from "../pages/stylish/bookingstylish/bookingstylish";
 import ProfileStylish from "../pages/stylish/profile/profile";
 import RegisterSchedule from "../pages/stylish/register-schedule/RegisterSchedule";
 import Info from "../pages/profile/info/info";
+import Manager from "../pages/manager/Manager";
+import InfoManager from "../pages/manager/info/Info";
+import BookingManager from "../pages/manager/booking/BookingManager";
 
 
 
@@ -207,6 +210,25 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <ProfileStylish />,
+      },
+      {
+        path: "register-schedule",
+        element: <RegisterSchedule />,
+      },
+    ]
+  },
+  {
+
+    path: "/manager",
+    element: <Manager />,
+    children: [
+      {
+        path: "info",
+        element: <InfoManager />,
+      },
+      {
+        path: "booking",
+        element: <BookingManager />,
       },
       {
         path: "register-schedule",
