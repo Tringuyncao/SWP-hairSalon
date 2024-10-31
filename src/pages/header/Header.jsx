@@ -6,10 +6,9 @@ import "./Header.scss";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isFadingOut, setIsFadingOut] = useState(false); // Trạng thái fade-out
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const navigate = useNavigate();
 
-  // Kiểm tra trạng thái đăng nhập từ localStorage
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -18,19 +17,25 @@ const Header = () => {
   }, []);
 
   const handleLogout = () => {
-    // Hiển thị thông báo thành công và kích hoạt hiệu ứng fade-out
     message.success({
       content: "Đã đăng xuất thành công!",
       duration: 2,
       onClose: () => {
-        setIsFadingOut(true); // Kích hoạt hiệu ứng fade-out
+        setIsFadingOut(true);
         setTimeout(() => {
-          localStorage.removeItem("token"); // Xóa token
-          setIsLoggedIn(false); // Cập nhật trạng thái đăng nhập
-          navigate("/homepage"); // Điều hướng về trang homepage sau hiệu ứng
-        }, 1000); // Thời gian trễ cho hiệu ứng fade-out
+          localStorage.removeItem("token");
+          setIsLoggedIn(false);
+          navigate("/homepage");
+        }, 1000);
       },
     });
+  };
+
+  const handleScrollToServices = () => {
+    const servicesSection = document.getElementById("services-section");
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const userMenu = (
@@ -64,7 +69,6 @@ const Header = () => {
   return (
     <header className={`header ${isFadingOut ? "fade-out" : ""}`}>
       <div className="header-container">
-        {/* Logo */}
         <div className="logo">
           <Link to="/homepage">
             <img
@@ -75,12 +79,7 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Menu chính */}
-        <Menu
-          mode="horizontal"
-          defaultSelectedKeys={["home"]}
-          className="nav-menu"
-        >
+        <Menu mode="horizontal" defaultSelectedKeys={["home"]} className="nav-menu">
           <Menu.Item key="home">
             <Link to="/homepage">Trang chủ</Link>
           </Menu.Item>
@@ -88,9 +87,9 @@ const Header = () => {
             <Link to="/booking">Đặt lịch</Link>
           </Menu.Item>
           <Menu.Item key="service">
-            <Link to="services-section" smooth={true} duration={500}>
+            <Link to="#services-section" onClick={handleScrollToServices}>
               Dịch vụ
-            </Link>
+            </Link> {/* Reverted back to Link */}
           </Menu.Item>
           <Menu.Item key="contact">
             <Link to="/contact">Liên hệ</Link>
@@ -100,7 +99,6 @@ const Header = () => {
           </Menu.Item>
         </Menu>
 
-        {/* Nút người dùng */}
         <div className="auth-buttons">
           <Dropdown overlay={userMenu} trigger={["click"]}>
             <Button type="text" icon={<UserOutlined />} />
