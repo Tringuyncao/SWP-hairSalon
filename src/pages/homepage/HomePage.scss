@@ -1,110 +1,74 @@
-@import './variables';
+@import './variables'; // Make sure this file has your color variables
+
+$primary-color: #0c7b93;
+$secondary-color: #ff7f50;
+$background-color: #f9f9f9;
+$text-color: #333;
+$card-background: #ffffff;
+$hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
 .homepage {
-  font-family: 'Arial', sans-serif;
-  color: #333;
+  font-family: 'Poppins', sans-serif;
+  color: $text-color;
   line-height: 1.6;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 
   section {
-    padding: 30px 20px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-
-    h2 {
-      font-size: 26px;
-      font-weight: 700;
-      color: #0c7b93;
-      margin-bottom: 20px;
-      text-align: center;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #0c7b93;
-    }
-  }
-
-  .scroll-container {
-    overflow-x: auto;
-    white-space: nowrap;
-    display: flex;
-    gap: 20px;
-    padding: 10px 0;
-
-    &::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #0c7b93;
-      border-radius: 4px;
-    }
-  }
-
-  .scroll-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background-color: #0c7b93;
-    border: none;
-    color: white;
-    border-radius: 50%;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
+    padding: 50px 25px;
+    background-color: $background-color;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 
     &:hover {
-      background-color: darken(#0c7b93, 10%);
+      box-shadow: $hover-shadow;
+      transform: translateY(-6px);
     }
 
-    &.prev-btn {
-      left: -20px;
-    }
-
-    &.next-btn {
-      right: -20px;
+    h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: $primary-color;
+      margin-bottom: 25px;
+      text-align: center;
+      padding-bottom: 12px;
+      border-bottom: 2px solid $primary-color;
     }
   }
 
   .banner-section {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 
     .banner-carousel {
       .banner-wrapper {
         position: relative;
         overflow: hidden;
-        border-radius: 15px;
+        border-radius: 18px;
 
         img {
           width: 100%;
-          height: auto;
-          max-height: 400px;
+          max-height: 500px;
           object-fit: cover;
-          transition: transform 0.3s ease;
+          transition: transform 0.4s ease-in-out;
         }
 
         .banner-text {
           position: absolute;
-          bottom: 20px;
-          left: 30px;
+          bottom: 40px;
+          left: 40px;
           color: #fff;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 
           h2 {
-            font-size: 34px;
+            font-size: 40px;
             font-weight: bold;
           }
 
           p {
-            font-size: 16px;
+            font-size: 20px;
           }
         }
 
@@ -116,58 +80,57 @@
   }
 
   .booking-section {
-    background-color: #ffffff;
-    padding: 40px;
+    background-color: $card-background;
+    padding: 50px;
 
     .booking-container {
       max-width: 600px;
       margin: 0 auto;
-      padding: 20px;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 25px;
+      background-color: #fdfdfd;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 
       &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        box-shadow: $hover-shadow;
+        transform: translateY(-6px);
       }
 
       h2 {
-        font-size: 24px;
+        font-size: 28px;
         text-align: center;
-        font-weight: 600;
-        margin-bottom: 20px;
+        font-weight: 700;
+        margin-bottom: 25px;
       }
 
       .booking-form {
         display: flex;
-        gap: 10px;
+        gap: 15px;
 
-        .booking-input {
+        .phone-input {
           flex: 1;
-          padding: 12px;
-          border-radius: 8px;
-          border: 1px solid #ccc;
-          transition: border-color 0.3s ease;
+          padding: 15px;
+          border-radius: 10px;
+          border: 1px solid #ddd;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
           &:focus {
-            border-color: #0c7b93;
-            outline: none;
-            box-shadow: 0 0 5px rgba(12, 123, 147, 0.4);
+            border-color: $primary-color;
+            box-shadow: 0 0 10px rgba(12, 123, 147, 0.5);
           }
         }
 
-        .booking-button {
-          background-color: #0c7b93;
-          border: none;
+        .booking-btn {
+          background-color: $primary-color;
           color: #fff;
-          border-radius: 8px;
-          padding: 12px 20px;
-          transition: background-color 0.3s ease;
+          border-radius: 10px;
+          padding: 15px 30px;
+          font-weight: bold;
+          transition: background-color 0.3s ease, transform 0.3s ease;
 
           &:hover {
-            background-color: darken(#0c7b93, 10%);
+            background-color: darken($primary-color, 10%);
+            transform: scale(1.05);
           }
         }
       }
@@ -175,88 +138,170 @@
   }
 
   .services-section {
-    background-color: #ffffff;
+    background-color: $card-background;
 
-    .scroll-container {
-      .services-list {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
+    .services-list {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
 
-        .service-item {
-          text-align: center;
-          padding: 20px;
-          background-color: #f9f9f9;
+      .service-item {
+        text-align: center;
+        padding: 30px;
+        background-color: #f9f9f9;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+          transform: translateY(-6px);
+          box-shadow: $hover-shadow;
+        }
+
+        img {
+          width: 80%;
           border-radius: 10px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-          &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-          }
+        h3 {
+          margin-top: 18px;
+          font-size: 24px;
+          color: $primary-color;
+        }
 
-          img {
-            width: 100%;
-            border-radius: 10px;
-          }
-
-          h3 {
-            margin-top: 15px;
-            font-size: 20px;
-            color: #0c7b93;
-          }
-
-          p {
-            font-size: 14px;
-            color: #666;
-          }
+        p {
+          font-size: 16px;
+          color: #666;
         }
       }
     }
   }
 
-  .quality-partners-section {
-    position: relative;
+  .highlights-section {
+    .highlight-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 
-    .scroll-container {
-      padding: 10px 20px;
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: $hover-shadow;
+      }
 
-      .quality-list {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
+      .highlight-image-container {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        border-radius: 10px;
 
-        .partner-item {
-          text-align: center;
-          padding: 20px;
-          background-color: #f9f9f9;
-          border-radius: 10px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-          &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-          }
-
-          img {
-            width: 100%;
-            max-width: 150px; // Thay đổi chiều rộng tối đa cho logo
-            border-radius: 10px;
-          }
-
-          h3 {
-            margin-top: 15px;
-            font-size: 20px;
-            color: #0c7b93;
-          }
-
-          p {
-            font-size: 14px;
-            color: #666;
-          }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
+      }
+
+      h3 {
+        font-size: 22px;
+        color: $primary-color;
+        margin-top: 20px;
+      }
+
+      p {
+        font-size: 15px;
+        color: #666;
+        text-align: center;
+      }
+    }
+  }
+
+  .quality-section {
+    .scroll-container {
+      display: flex;
+      gap: 25px;
+      overflow-x: auto;
+      padding: 15px 0;
+
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $primary-color;
+        border-radius: 4px;
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+      }
+
+      .partner-item {
+        flex: 0 0 160px;
+        text-align: center;
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: $hover-shadow;
+        }
+
+        .partner-logo {
+          width: 100%;
+          height: 100px;
+          object-fit: contain;
+          border-radius: 10px;
+          background-color: #fff;
+        }
+
+        h3 {
+          margin-top: 12px;
+          font-size: 18px;
+          color: #333;
+        }
+
+        p {
+          font-size: 13px;
+          color: #666;
+        }
+      }
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background-color: $primary-color;
+      border: none;
+      color: white;
+      border-radius: 50%;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+        transform: scale(1.1);
+      }
+
+      &.left {
+        left: -25px;
+      }
+
+      &.right {
+        right: -25px;
       }
     }
   }
