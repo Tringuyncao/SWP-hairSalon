@@ -14,7 +14,6 @@ import HaircutService from "../pages/haircutservice/haircutservice";
 import HairDyeService from "../pages/hairdyeservice/hairdyeservice";
 import BookingSlot from "../pages/book/BookingSlot";
 import ManageCategory from "../pages/admin/manage-category/ManageCategory";
-import Contact from "../pages/contact/contact";
 import ManageService from "../pages/admin/manage-service/manageservice";
 import ManageOption from "../pages/admin/manage-option/ManageOption";
 import ManageStore from "../pages/admin/manage-store/ManageStore";
@@ -40,11 +39,6 @@ import RelaxCombo3 from "../pages/sparelax/massage/relaxcombo3/RelaxCombo3";
 import RelaxCombo5 from "../pages/sparelax/massage/relaxcombo5/RelaxCombo5";
 import EarPick from "../pages/sparelax/earpick/Earpick";
 import RelaxCombo6 from "../pages/sparelax/earpick/relaxcombo6/RelaxCombo6";
-import Appointment from "../pages/profile/appointment/Appointment";
-import Feedback from "../pages/profile/feedback/Feedback";
-import ManageSlot from "../pages/admin/manage-slot/ManageSlot";
-import Stylish from "../pages/stylish/Stylish";
-import BookingStylish from "../pages/stylish/bookingstylish/bookingstylish";
 
 
 export const router = createBrowserRouter([
@@ -116,28 +110,10 @@ export const router = createBrowserRouter([
         path: "/hairdyeservice",
         element: <HairDyeService />,
       },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      
+
       {
         path: "/profile",
         element: <Profile />,
-        children: [
-          {
-            path: "appointment",
-            element: <Appointment />,
-          },
-          {
-            path: "history",
-            element: <History />,
-          },
-          {
-            path: "feedback",
-            element: <Feedback />,
-          },
-        ]
       },
       {
         path: "/sparelax/massage",
@@ -190,16 +166,6 @@ export const router = createBrowserRouter([
     element: <Test />,
   },
   {
-    path: "/stylish",
-    element: <Stylish />,
-    children: [
-      {
-        path: "booking",
-        element: <BookingStylish />,
-      },
-    ]
-  },
-  {
     path: "/dashboard",
     element: <Dashboard />,
     children: [
@@ -222,10 +188,6 @@ export const router = createBrowserRouter([
       {
         path: "booking",
         element: <ManageBooking />,
-      },
-      {
-        path: "slot",
-        element: <ManageSlot />,
       },
     ],
   },
