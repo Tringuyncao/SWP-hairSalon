@@ -51,6 +51,7 @@ import Info from "../pages/profile/info/info";
 import Manager from "../pages/manager/Manager";
 import InfoManager from "../pages/manager/info/Info";
 import BookingManager from "../pages/manager/booking/BookingManager";
+import ManageStylish from "../pages/manager/manage-stylish/ManageStylish";
 
 
 
@@ -231,8 +232,8 @@ export const router = createBrowserRouter([
         element: <BookingManager />,
       },
       {
-        path: "register-schedule",
-        element: <RegisterSchedule />,
+        path: "managestylish",
+        element: <ManageStylish />,
       },
     ]
   },
