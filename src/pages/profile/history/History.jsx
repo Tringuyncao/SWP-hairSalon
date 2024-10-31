@@ -18,15 +18,6 @@ const History = () => {
       return;
     }
 
-    let accountId;
-    try {
-      accountId = JSON.parse(atob(token.split('.')[1])).id;
-      console.log("Account ID từ token:", accountId);
-    } catch (e) {
-      message.error("Token không hợp lệ, vui lòng đăng nhập lại.");
-      return;
-    }
-
     const fetchAppointments = async () => {
       try {
         const response = await axios.get("http://103.90.227.48:8080/api/booking", {
@@ -66,10 +57,9 @@ const History = () => {
       );
       message.success("Phản hồi thành công!");
 
-      // Update the selected appointment to indicate that feedback was given
       const updatedAppointments = appointments.map((appointment) =>
         appointment.id === selectedAppointment.id
-          ? { ...appointment, feedbackGiven: true } // Add a flag for feedback submission
+          ? { ...appointment, feedbackGiven: true }
           : appointment
       );
       setAppointments(updatedAppointments);
@@ -84,23 +74,50 @@ const History = () => {
 
   const columns = [
     {
-      title: "Tên Người Đặt Lịch",
-      dataIndex: ["account", "fullName"],
+      title: "Tên Stylist",
+      dataIndex: "orderDetails",
       key: "stylist",
-      render: (text, record) => record.account ? record.account.fullName : "Không có tên",
+      render: (orderDetails) => {
+        const stylistNames = orderDetails
+          .map((detail) =>
+            detail.stylistSlots && detail.stylistSlots.length > 0
+              ? detail.stylistSlots[0].account.fullName
+              : null
+          )
+          .filter((name) => name) // Loại bỏ null hoặc undefined
+          .join(", ");
+        return stylistNames || "Không có tên stylist";
+      },
     },
     {
       title: "Tên Dịch Vụ",
       dataIndex: "orderDetails",
       key: "services",
-      render: (orderDetails) => orderDetails.length > 0 
-        ? orderDetails.map((detail) => detail.serviceOption.name).join(", ") 
-        : "Không có dịch vụ",
+      render: (orderDetails) =>
+        orderDetails.length > 0
+          ? orderDetails.map((detail) => detail.serviceOption.name).join(", ")
+          : "Không có dịch vụ",
     },
     {
       title: "Ngày Đặt Lịch",
       dataIndex: "date",
       key: "date",
+    },
+    {
+      title: "Thời Gian",
+      dataIndex: "orderDetails",
+      key: "timeSlot",
+      render: (orderDetails) => {
+        const timeSlots = orderDetails
+          .map((detail) =>
+            detail.stylistSlots && detail.stylistSlots.length > 0
+              ? detail.stylistSlots[0].slot.label
+              : null
+          )
+          .filter((time) => time) // Loại bỏ null hoặc undefined
+          .join(", ");
+        return timeSlots || "Không có thời gian";
+      },
     },
     {
       title: "Tên Cửa Hàng",
@@ -124,9 +141,9 @@ const History = () => {
             setSelectedAppointment(record);
             setIsModalVisible(true);
           }}
-          disabled={record.feedbackGiven} // Disable the button if feedback was given
+          disabled={record.feedbackGiven}
         >
-          {record.feedbackGiven ? "Đã Phản Hồi" : "Phản Hồi"} {/* Change button label */}
+          {record.feedbackGiven ? "Đã Phản Hồi" : "Phản Hồi"}
         </Button>
       ),
     },

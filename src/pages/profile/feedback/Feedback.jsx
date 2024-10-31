@@ -14,15 +14,6 @@ const Feedback = () => {
       return;
     }
 
-    let accountId;
-    try {
-      accountId = JSON.parse(atob(token.split('.')[1])).id;
-      console.log("Account ID từ token:", accountId);
-    } catch (e) {
-      message.error("Token không hợp lệ, vui lòng đăng nhập lại.");
-      return;
-    }
-
     const fetchAppointments = async () => {
       try {
         const response = await axios.get("http://103.90.227.48:8080/api/booking", {
@@ -31,7 +22,7 @@ const Feedback = () => {
           },
         });
 
-        // Lọc chỉ những lịch hẹn có status là "PAID" và có rate > 0 và feedback không null
+        // Lọc chỉ những lịch hẹn có status là "PAID", rate > 0 và feedback không null
         const filteredAppointments = response.data.filter(
           (appointment) => appointment.status === "PAID" && appointment.rate > 0 && appointment.feedback !== null
         );
@@ -49,10 +40,20 @@ const Feedback = () => {
 
   const columns = [
     {
-      title: "Tên Người Đặt Lịch",
-      dataIndex: ["account", "fullName"],
+      title: "Tên Stylist",
+      dataIndex: "orderDetails",
       key: "stylist",
-      render: (text, record) => (record.account ? record.account.fullName : "Không có tên"),
+      render: (orderDetails) => {
+        const stylistNames = orderDetails
+          .map((detail) =>
+            detail.stylistSlots && detail.stylistSlots.length > 0
+              ? detail.stylistSlots[0].account.fullName
+              : null
+          )
+          .filter((name) => name) // Loại bỏ null hoặc undefined
+          .join(", ");
+        return stylistNames || "Không có tên stylist";
+      },
     },
     {
       title: "Tên Dịch Vụ",
@@ -67,6 +68,22 @@ const Feedback = () => {
       title: "Ngày Đặt Lịch",
       dataIndex: "date",
       key: "date",
+    },
+    {
+      title: "Thời Gian",
+      dataIndex: "orderDetails",
+      key: "timeSlot",
+      render: (orderDetails) => {
+        const timeSlots = orderDetails
+          .map((detail) =>
+            detail.stylistSlots && detail.stylistSlots.length > 0
+              ? detail.stylistSlots[0].slot.label
+              : null
+          )
+          .filter((time) => time) // Loại bỏ null hoặc undefined
+          .join(", ");
+        return timeSlots || "Không có thời gian";
+      },
     },
     {
       title: "Tên Cửa Hàng",

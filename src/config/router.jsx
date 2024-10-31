@@ -43,6 +43,8 @@ import RelaxCombo6 from "../pages/sparelax/earpick/relaxcombo6/RelaxCombo6";
 import Appointment from "../pages/profile/appointment/Appointment";
 import Feedback from "../pages/profile/feedback/Feedback";
 import ManageSlot from "../pages/admin/manage-slot/ManageSlot";
+import Stylish from "../pages/stylish/Stylish";
+import BookingStylish from "../pages/stylish/bookingstylish/bookingstylish";
 
 
 export const router = createBrowserRouter([
@@ -118,6 +120,7 @@ export const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+      
       {
         path: "/profile",
         element: <Profile />,
@@ -185,6 +188,16 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Test />,
+  },
+  {
+    path: "/stylish",
+    element: <Stylish />,
+    children: [
+      {
+        path: "booking",
+        element: <BookingStylish />,
+      },
+    ]
   },
   {
     path: "/dashboard",

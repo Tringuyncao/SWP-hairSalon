@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, Input } from "antd"; // Import Ant Design components
+import { Button, Form, Input } from "antd";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { provider } from "../../config/firebase";
 import "./Login.scss"; // Import file SCSS
@@ -9,19 +9,26 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const [form] = Form.useForm(); // Ant Design form instance
-    const navigate =useNavigate();
+  const navigate = useNavigate();
+
   // Function to handle form submission
   const handleLogin = async (values) => {
     try {
       const response = await api.post("login", values);
       console.log(response);
-      const { role,token } =response.data;
-      localStorage.setItem("token",token);
-      // if(role === "ADMIN"){
-      //   navigate("/dashboard")
-      // }
-      // if(role === "CUSTOMER"){
-      //   navigate("/homepage")
+      const { id, role, token, fullName, email, phone } = response.data;
+
+      // Lưu token và thông tin người dùng vào localStorage
+      localStorage.setItem("token", token);
+      localStorage.setItem("userInfo", JSON.stringify({ id, role, fullName, email, phone }));
+
+      // Điều hướng sau khi đăng nhập thành công
+      // if (role === "ADMIN") {
+      //   navigate("/dashboard");
+      // } else if (role === "STYLIST") {
+      //   navigate("/booking-stylish");
+      // } else {
+      //   navigate("/homepage");
       // }
       navigate("/homepage");
     } catch (error) {
@@ -53,13 +60,7 @@ const Login = () => {
     <div className="login-overlay">
       <div className="login-container">
         <h2>ĐĂNG NHẬP</h2>
-        {/* Ant Design Form */}
-        <Form
-          form={form}
-          layout="vertical" // Optional: Makes labels appear above inputs
-          onFinish={handleLogin} // Form submission handler
-        >
-          {/* Phone number field */}
+        <Form form={form} layout="vertical" onFinish={handleLogin}>
           <Form.Item
             label="Số điện thoại của anh là gì ạ?"
             name="phone"
@@ -68,10 +69,6 @@ const Login = () => {
                 required: true,
                 message: "Vui lòng nhập số điện thoại của bạn!",
               },
-              // {
-              //     pattern: /^[0-9]{10,11}$/,
-              //     message: 'Số điện thoại không hợp lệ! Phải là 10-11 số.',
-              // },
             ]}
           >
             <Input placeholder="Ví dụ: 0912.xxx.xxx" />
@@ -84,34 +81,19 @@ const Login = () => {
                 required: true,
                 message: "Vui lòng nhập mật khẩu của bạn!",
               },
-              // {
-              //     pattern: /^[0-9]{10,11}$/,
-              //     message: 'Số điện thoại không hợp lệ! Phải là 10-11 số.',
-              // },
             ]}
           >
             <Input placeholder="Mật khẩu" type="password" />
           </Form.Item>
           <Link to="/register">Don't have account? Register new account</Link>
-          {/* Submit button */}
           <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-button"
-              block
-            >
+            <Button type="primary" htmlType="submit" className="login-button" block>
               TIẾP TỤC
             </Button>
           </Form.Item>
 
-          {/* Google Login button */}
           <Form.Item>
-            <Button
-              className="button__google"
-              onClick={handleLoginGoogle}
-              block
-            >
+            <Button className="button__google" onClick={handleLoginGoogle} block>
               <img
                 src="https://logos-world.net/wp-content/uploads/2020/09/Google-Symbol.png"
                 alt="Google"
