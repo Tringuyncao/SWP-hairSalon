@@ -46,7 +46,7 @@ const Manager = () => {
   const items = [
     getItem("Thông tin tài khoản", "info", <UserOutlined />),
     getItem("Quản lí đặt lịch", "booking", <CalendarOutlined />),
-    getItem("Quản lí Stylish", "stylish", <TeamOutlined />),
+    getItem("Quản lí Stylish", "managestylish", <TeamOutlined />),
     getItem("Đăng xuất", "logout", <LogoutOutlined />, handleLogout),
   ];
 

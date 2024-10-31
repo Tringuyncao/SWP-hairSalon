@@ -5,31 +5,55 @@ import {
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-import { Link, Outlet } from "react-router-dom";
+import { Breadcrumb, Layout, Menu, theme, message } from "antd";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+
 const { Header, Content, Footer, Sider } = Layout;
-function getItem(label, key, icon, children) {
+
+function getItem(label, key, icon, onClick = null) {
   return {
     key,
     icon,
-    children,
-    label:<Link to={`/dashboard/${key}`}>{label}</Link>
+    onClick,
+    label: onClick ? label : <Link to={`/dashboard/${key}`}>{label}</Link>,
   };
 }
-const items = [
-  getItem("Manage Category", "category", <PieChartOutlined />),
-  getItem("Manage Service", "service", <PieChartOutlined />),
-  getItem("Manage Option", "option", <PieChartOutlined />),
-  getItem("Manage Store", "store", <PieChartOutlined />),
-  getItem("Manage Booking", "booking", <PieChartOutlined />),
-  getItem("Manage Slot", "slot", <PieChartOutlined />),
-];
+
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Xóa thông tin trong localStorage
+    localStorage.removeItem("token");
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("storeId");
+    localStorage.removeItem("storeName");
+    localStorage.removeItem("storeAddress");
+    message.success("Đăng xuất thành công!");
+
+    // Điều hướng đến trang đăng nhập
+    navigate("/login");
+  };
+
+  const items = [
+    getItem("Manage Category", "category", <PieChartOutlined />),
+    getItem("Manage Service", "service", <PieChartOutlined />),
+    getItem("Manage Option", "option", <PieChartOutlined />),
+    getItem("Manage Store", "store", <PieChartOutlined />),
+    getItem("Manage Booking", "booking", <PieChartOutlined />),
+    getItem("Manage Slot", "slot", <PieChartOutlined />),
+    getItem("Manage Stylish", "stylish", <TeamOutlined />), // Thêm mục Manage Stylish
+    getItem("Manage Manager", "manager", <UserOutlined />), // Thêm mục Manage Manager
+    getItem("Logout", "logout", <LogoutOutlined />, handleLogout),
+  ];
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
   return (
     <Layout
       style={{
@@ -77,8 +101,7 @@ const Dashboard = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <Outlet/>
-            
+            <Outlet />
           </div>
         </Content>
         <Footer
@@ -92,4 +115,5 @@ const Dashboard = () => {
     </Layout>
   );
 };
+
 export default Dashboard;

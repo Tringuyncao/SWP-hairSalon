@@ -51,6 +51,9 @@ import Info from "../pages/profile/info/info";
 import Manager from "../pages/manager/Manager";
 import InfoManager from "../pages/manager/info/Info";
 import BookingManager from "../pages/manager/booking/BookingManager";
+import ManageStylish from "../pages/manager/manage-stylish/ManageStylish";
+import ManageStylishAdmin from "../pages/admin/manage-stylish/ManageStylish";
+import ManageManagerAdmin from "../pages/admin/manage-manager/ManageManagerAdmin";
 
 
 
@@ -231,8 +234,8 @@ export const router = createBrowserRouter([
         element: <BookingManager />,
       },
       {
-        path: "register-schedule",
-        element: <RegisterSchedule />,
+        path: "managestylish",
+        element: <ManageStylish />,
       },
     ]
   },
@@ -260,6 +263,18 @@ export const router = createBrowserRouter([
       {
         path: "booking",
         element: <ManageBooking />,
+      },
+      {
+        path: "stylish",
+        element: <ManageStylishAdmin />,
+      },
+      {
+        path: "manager",
+        element: <ManageManagerAdmin />,
+      },
+      {
+        path: "slot",
+        element: <ManageSlot />,
       },
     ],
   },
