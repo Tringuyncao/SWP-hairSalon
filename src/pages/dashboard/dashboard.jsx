@@ -47,7 +47,9 @@ const Dashboard = () => {
     getItem("Manage Slot", "slot", <PieChartOutlined />),
     getItem("Manage Stylish", "stylish", <TeamOutlined />), // Thêm mục Manage Stylish
     getItem("Manage Manager", "manager", <UserOutlined />), // Thêm mục Manage Manager
+    getItem("Overview", "overview", <PieChartOutlined />),
     getItem("Logout", "logout", <LogoutOutlined />, handleLogout),
+
   ];
 
   const {
