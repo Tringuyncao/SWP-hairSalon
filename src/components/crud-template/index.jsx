@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { render } from "react-dom";
 import api from "../../config/axios";
+import uploadFile from "../../assets/hook/useUpload";
 
 function CRUDTemplate({ columns, formItems, path }) {
   const [datas, setDatas] = useState([]);
@@ -45,6 +46,7 @@ function CRUDTemplate({ columns, formItems, path }) {
   const fetchData = async () => {
     try {
       const response = await api.get(path);
+      console.log("Fetch Data: ", response.data);
       setDatas(response.data);
     } catch (error) {
       toast.error(error.response.data);
@@ -53,6 +55,10 @@ function CRUDTemplate({ columns, formItems, path }) {
 
   //Create or update
   const handleSubmit = async (values) => {
+    console.log(values)
+    const url = await uploadFile(values.image.file.originFileObj);
+    console.log(url)
+    values.image = url
     try {
       setLoading(true);
       //   if (values.id) {
