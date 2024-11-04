@@ -1,41 +1,43 @@
-import React, { useEffect, useRef, useState } from 'react';
+//import React, { useEffect, useRef, useState } from 'react';
 import { Carousel, Input, Button, Row, Col, Form, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import './HomePage.scss';
-import api from '../../config/axios';
+//import api from '../../config/axios';
+import React, { useRef } from 'react';
+import banner1 from './banner1.png';
 
 const HomePage = () => {
-  const [services, setServices] = useState([]);
-  const [categories, setCategories] = useState([]);
+  // const [services, setServices] = useState([]);
+  // const [categories, setCategories] = useState([]);
 
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const qualityScrollRef = useRef(null);
 
-  const fetchDataServices = async () => {
-    try {
-      const response = await api.get("service")
-      console.log(response.data)
-      setServices(response.data);
-    } catch (error) {
-      console.log(error.response.data)
-    }
-  }
-  const fetchDataCategories = async () => {
-    try {
-      const response = await api.get("category")
-      console.log(response.data)
-      setCategories(response.data);
+  // const fetchDataServices = async () => {
+  //   try {
+  //     const response = await api.get("service")
+  //     console.log(response.data)
+  //     setServices(response.data);
+  //   } catch (error) {
+  //     console.log(error.response.data)
+  //   }
+  // }
+  // const fetchDataCategories = async () => {
+  //   try {
+  //     const response = await api.get("category")
+  //     console.log(response.data)
+  //     setCategories(response.data);
 
-    } catch (error) {
-      console.log(error.response.data)
-    }
+  //   } catch (error) {
+  //     console.log(error.response.data)
+  //   }
 
-  }
-  useEffect(() => {
-    fetchDataServices()
-    fetchDataCategories()
-  }, [])
+  // }
+  // useEffect(() => {
+  //   fetchDataServices()
+  //   fetchDataCategories()
+  // }, [])
 
   const handleBooking = (values) => {
     message.success(`Lịch hẹn đã được đặt cho số: ${values.phoneNumber}`);
@@ -54,41 +56,41 @@ const HomePage = () => {
     'https://as2.ftcdn.net/v2/jpg/06/91/46/55/1000_F_691465582_hXk34FT2ZB474bDKUCYNjJFzjT1YLAWT.jpg'
   ];
 
-  // const services = [
-  //   {
-  //     name: "Cắt tóc",
-  //     price: "Giá từ 100.000đ",
-  //     image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-1.jpg",
-  //     link: "/haircutservice"
-  //   },
-  //   {
-  //     name: "Uốn tóc",
-  //     price: "Giá từ 300.000đ",
-  //     image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-2.jpg",
-  //     link: "/hairdyeservice"
-  //   },
-  //   {
-  //     name: "Nhuộm tóc",
-  //     price: "Giá từ 400.000đ",
-  //     image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-3.jpg",
-  //     link: "/hairdyeservice"
-  //   }
-  // ];
+  const services = [
+    {
+      name: "Cắt tóc",
+      price: "Giá từ 100.000đ",
+      image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-1.jpg",
+      link: "/haircutservice"
+    },
+    {
+      name: "Uốn tóc",
+      price: "Giá từ 300.000đ",
+      image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-2.jpg",
+      link: "/hairdyeservice"
+    },
+    {
+      name: "Nhuộm tóc",
+      price: "Giá từ 400.000đ",
+      image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-3.jpg",
+      link: "/hairdyeservice"
+    }
+  ];
 
-  // const spaServices = [
-  //   {
-  //     name: "Gội Massage Relax",
-  //     price: "Giá từ 200.000đ",
-  //     image: "https://storage.30shine.com/web/v4/images/pc/pc_home_spa_1.png",
-  //     link: "/sparelax/massage"
-  //   },
-  //   {
-  //     name: "Lấy ráy tai êm",
-  //     price: "Giá từ 150.000đ",
-  //     image: "https://storage.30shine.com/web/v4/images/pc/pc_home_spa_3.png",
-  //     link: "/sparelax/earpick"
-  //   }
-  // ];
+  const spaServices = [
+    {
+      name: "Gội Massage Relax",
+      price: "Giá từ 200.000đ",
+      image: "https://storage.30shine.com/web/v4/images/pc/pc_home_spa_1.png",
+      link: "/sparelax/massage"
+    },
+    {
+      name: "Lấy ráy tai êm",
+      price: "Giá từ 150.000đ",
+      image: "https://storage.30shine.com/web/v4/images/pc/pc_home_spa_3.png",
+      link: "/sparelax/earpick"
+    }
+  ];
 
   const highlights = [
     {
@@ -198,13 +200,13 @@ const HomePage = () => {
         <div className="container">
           <h2>Dịch vụ nổi bật</h2>
           <Row gutter={[16, 16]} className="services-list">
-            {categories.map((service, index) => (
+            {services.map((service, index) => (
               <Col xs={24} sm={12} md={8} lg={6} key={index}>
                 <Link to={service.link}>
                   <div className="service-item">
-                    <img src={service?.image} alt={service?.name} className="service-image" />
-                    <h3>{service?.name}</h3>
-                    <p>{service?.price}</p>
+                    <img src={service.image} alt={service.name} className="service-image" />
+                    <h3>{service.name}</h3>
+                    <p>{service.price}</p>
                   </div>
                 </Link>
               </Col>
@@ -218,13 +220,13 @@ const HomePage = () => {
         <div className="container">
           <h2>SPA & RELAX</h2>
           <Row gutter={[16, 16]} className="services-list">
-            {categories.map((service, index) => (
+            {spaServices.map((service, index) => (
               <Col xs={24} sm={12} md={8} lg={6} key={index}>
                 <Link to={service.link}>
                   <div className="service-item">
-                    <img src={service?.image} alt={service?.name} className="service-image" />
-                    <h3>{service?.name}</h3>
-                    <p>{service?.price}</p>
+                    <img src={service.image} alt={service.name} className="service-image" />
+                    <h3>{service.name}</h3>
+                    <p>{service.price}</p>
                   </div>
                 </Link>
               </Col>
