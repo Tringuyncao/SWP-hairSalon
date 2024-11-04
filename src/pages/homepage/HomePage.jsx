@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import './HomePage.scss';
 //import api from '../../config/axios';
 import React, { useRef } from 'react';
-import banner1 from './banner1.png';
 
 const HomePage = () => {
   // const [services, setServices] = useState([]);
@@ -51,9 +50,9 @@ const HomePage = () => {
   };
 
   const bannerImages = [
-    'https://images.pexels.com/photos/1570806/pexels-photo-1570806.jpeg',
+    'https://firebasestorage.googleapis.com/v0/b/swp391-e06bc.appspot.com/o/banner1.png?alt=media&token=a61be145-af00-49ba-a498-189f344c7470',
     'https://img.freepik.com/free-photo/young-man-barbershop-trimming-hair_1303-26254.jpg',
-    'https://as2.ftcdn.net/v2/jpg/06/91/46/55/1000_F_691465582_hXk34FT2ZB474bDKUCYNjJFzjT1YLAWT.jpg'
+    'https://images.pexels.com/photos/1570806/pexels-photo-1570806.jpeg'
   ];
 
   const services = [
