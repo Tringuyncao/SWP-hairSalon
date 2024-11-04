@@ -1,185 +1,194 @@
-/* Overlay mờ phía sau */
+/* Overlay mờ phía sau với hình nền */
 .login-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for better contrast */
+  background: rgba(0, 0, 0, 0.6) url('https://lh5.googleusercontent.com/p/AF1QipORlOJistLvA7neTmG7H6GLpg21UUV_CoCFfr5r=s1024') center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(5px); /* Adds a soft blur effect for a more modern look */
 }
 
-/* Overlay mờ phía sau */
-.login-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Màu mờ phía sau */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  background-image: url('https://lh5.googleusercontent.com/p/AF1QipORlOJistLvA7neTmG7H6GLpg21UUV_CoCFfr5r=s1024'); /* Đường dẫn đến hình nền */
-  background-size: cover; /* Điều chỉnh kích thước của hình nền để bao phủ toàn bộ khung */
-  background-position: center; /* Đặt hình nền ở giữa */
-  background-repeat: no-repeat; /* Tránh lặp lại hình nền */
-}
-
-/* Khung đăng nhập */
+/* Khung đăng nhập ngang */
 .login-container {
-  background-color: white;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  max-width: 90%;
+  background: #fff;
+  padding: 40px 60px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 800px;
   text-align: center;
+  z-index: 1001;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px; /* Khoảng cách giữa các thành phần */
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-
-.login-container:hover {
-  transform: scale(1.02); /* Subtle scaling on hover */
-  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
+/* Tiêu đề */
 .login-container h2 {
-  margin-bottom: 25px;
-  font-size: 26px;
-  color: #333; /* Slightly darker text for better readability */
+  font-size: 24px;
   font-weight: 600;
-  text-transform: uppercase; /* Adds a sense of importance */
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #004A8E, #007bff);
+  -webkit-background-clip: text;
+  color: transparent;
   letter-spacing: 1px;
+  margin: 0;
 }
 
-/* Ô nhập số điện thoại */
-.login-container input {
+/* Ô nhập thông tin */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.input-group .ant-form-item {
   width: 100%;
-  padding: 12px 15px;
-  margin: 12px 0;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
+  background-color: #f5f5f5;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.login-container input:focus {
-  border-color: #007bff; /* Highlight the input with blue when focused */
-  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5); /* Adds subtle blue glow */
-  outline: none;
+.input-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
 }
 
-/* Nút tiếp tục */
+/* Nút đăng nhập */
 .login-button {
   width: 100%;
   padding: 14px;
-  background-color: #0056b3;
-  background-image: linear-gradient(135deg, #004A8E, #0056b3); /* Tạo gradient tinh tế */
-  color: white;
+  background: linear-gradient(135deg, #004A8E, #007bff);
+  color: #fff;
   border: none;
-  border-radius: 8px; /* Bo góc */
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-align: center; /* Căn giữa chữ */
-  display: flex; /* Sử dụng flexbox để căn giữa */
-  justify-content: center; /* Căn giữa theo chiều ngang */
-  align-items: center; /* Căn giữa theo chiều dọc */
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  margin-top: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .login-button:hover {
-  background-color: #004080; /* Khi hover chuyển màu đậm hơn */
-  transform: translateY(-2px); /* Hiệu ứng nổi lên nhẹ khi hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Bóng đổ sâu hơn khi hover */
+  background: linear-gradient(135deg, #003366, #0056b3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-
-.login-button:hover {
-  background-color: #004080; /* Khi hover chuyển màu đậm hơn */
-  transform: translateY(-2px); /* Hiệu ứng nổi lên nhẹ khi hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Bóng đổ sâu hơn khi hover */
-}
-
-
-.login-button:hover {
-  background-color: #003366;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Adds shadow on hover */
-}
-
-/* Label styling */
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 15px;
-  color: #666;
-  font-weight: 500;
-}
-
-/* Container chứa 2 nút */
-.button-group {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px; /* Slightly larger gap for better spacing */
-  margin-top: 20px;
-}
-
-/* Nút Google */
+/* Nút Google đăng nhập */
 .button__google {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  padding: 14px 24px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  font-family: 'Roboto', sans-serif;
+  color: #444;
+  font-size: 16px;
   font-weight: 500;
-  color: #555;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 300px;
+  margin: 10px auto;
+}
+
+.button__google img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
 }
 
 .button__google:hover {
-  background-color: #f5f5f5; /* Softer background on hover */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+  background-color: #f5f5f5;
+  border-color: #bbb;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
 }
 
-/* Kích thước icon Google */
-.button__google img {
-  width: 24px;
-  height: auto;
+.button__google:hover img {
+  transform: scale(1.1);
 }
 
-/* Văn bản trong nút Google */
-.button__google span {
+.button__google:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button__google-text {
   font-size: 16px;
   color: #555;
+  font-weight: 600;
+  margin-left: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .button__google {
+    width: 90%;
+    max-width: none;
+  }
+}
+
+/* Text link for register */
+.register-link {
+  color: #007bff;
+  font-size: 14px;
+  margin-top: 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
 }
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .login-container {
-    padding: 20px 25px; /* Adjust padding for smaller screens */
+    flex-direction: column;
     width: 90%;
+    padding: 30px 20px;
   }
 
-  .login-button,
-  .button__google {
-    font-size: 14px; /* Adjust button text size */
+  .login-container h2 {
+    font-size: 20px;
   }
+
+  .input-group {
+    width: 100%;
+  }
+}
+
+/* Hiệu ứng animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.login-container.animated {
+  animation: fadeIn 0.5s forwards;
 }

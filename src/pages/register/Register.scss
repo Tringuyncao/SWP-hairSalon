@@ -5,82 +5,149 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Lớp mờ */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  background-image: url('https://lh5.googleusercontent.com/p/AF1QipORlOJistLvA7neTmG7H6GLpg21UUV_CoCFfr5r=s1024'); /* Đường dẫn đến hình nền */
-  background-size: cover; /* Giúp hình nền bao phủ toàn bộ màn hình */
-  background-position: center; /* Đặt hình nền ở giữa */
-  background-repeat: no-repeat; /* Không lặp lại hình nền */
+  background-image: url('https://lh5.googleusercontent.com/p/AF1QipORlOJistLvA7neTmG7H6GLpg21UUV_CoCFfr5r=s1024');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Khung đăng ký */
 .register-container {
-  background-color: white;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  background-color: #fff;
+  padding: 40px 60px;
+  border-radius: 20px;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
+  width: 700px;
   max-width: 90%;
   text-align: center;
-  z-index: 1001; /* Đảm bảo khung đăng ký nằm trên nền */
+  z-index: 1001;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #ddd; /* Thêm đường viền */
 }
 
+.register-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.3); /* Tăng bóng đổ */
+}
 
+/* Tiêu đề */
 .register-container h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #000;
+  margin-bottom: 30px;
+  font-size: 30px;
+  color: #333;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #004A8E, #007bff);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 /* Ô nhập thông tin */
+.register-container .ant-form-item {
+  width: 100%;
+  margin: 0 auto 20px;
+}
+
 .register-container input {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 14px 18px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
   outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f8f9fa;
 }
 
 .register-container input:focus {
   border-color: #007bff;
+  box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
+}
+
+/* Thêm biểu tượng cho ô nhập */
+.register-container .ant-input-prefix {
+  margin-right: 10px; /* Khoảng cách giữa biểu tượng và ô nhập */
 }
 
 /* Nút đăng ký */
 .register-button {
   width: 100%;
-  padding: 12px;
-  background-color: #004A8E;
+  padding: 14px;
+  background: linear-gradient(135deg, #004A8E, #007bff);
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
   margin-top: 10px;
-  text-align: center; /* Căn giữa chữ theo chiều ngang */
-  display: flex;
-  justify-content: center; /* Căn giữa chữ theo chiều ngang */
-  align-items: center; /* Căn giữa chữ theo chiều dọc */
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .register-button:hover {
-  background-color: #003366;
+  background: linear-gradient(135deg, #003366, #0056b3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
 }
 
-
-.register-button:hover {
-  background-color: #003366;
+.register-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Hiệu chỉnh label */
 .register-container label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-size: 14px;
   color: #555;
+}
+
+/* Link điều hướng đăng nhập */
+.register-container a {
+  color: #007bff;
+  font-size: 14px;
+  display: block;
+  margin: 20px 0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-container a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .register-container {
+    padding: 20px 30px;
+    width: 90%;
+  }
+
+  .register-container h2 {
+    font-size: 24px;
+  }
+}
+
+/* Hiệu ứng animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.register-container.animated {
+    animation: slideInUp 0.5s forwards; /* Hiệu ứng slide-in cho khung đăng ký */
 }
