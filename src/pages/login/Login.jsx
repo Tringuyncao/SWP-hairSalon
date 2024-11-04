@@ -11,16 +11,6 @@ const Login = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Play background music to match Register page
-    const audio = new Audio("https://firebasestorage.googleapis.com/v0/b/swp391-e06bc.appspot.com/o/Sao%20h%E1%BA%A1ng%20A%20-%20HIEUTHUHAI%2CSong%20Lu%C3%A2n%2C%20D%C6%B0%C6%A1ng%20Domic%2C%20Jsol%20%20%23nhachaymoingay%20%23anhtraisayhi%20%23hieuthuhai.mp3?alt=media&token=aa1a4ce8-dd82-4cb7-aa20-0eb2be1d563c");
-    audio.loop = true; // Loop the music
-    audio.play();
-    return () => {
-      audio.pause(); // Pause music on unmount
-    };
-  }, []);
-
   const handleLogin = async (values) => {
     try {
       const response = await api.post("login", values);
