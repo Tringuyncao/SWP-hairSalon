@@ -23,6 +23,7 @@ import {
 import api from "../../config/axios";
 import { useNavigate } from "react-router-dom";
 import "./BookingSlot.scss";
+import Swal from "sweetalert2";
 
 const { Step } = Steps;
 
@@ -50,7 +51,29 @@ const BookingSlot = () => {
   const [cartVisible, setCartVisible] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
-
+  const showAlert = () => {
+    console.log(selectedStylist)
+    console.log(selectedSlot)
+    Swal.fire({
+      title: "Bạn có muốn đặt lịch cắt không?",
+      html: `
+      <p>Salon: ${selectedSalon?.name}</p>
+      <p>Dịch vụ: ${selectedServices?.map(service => service.name)?.join(",")}</p>
+        <p>Stylist: ${selectedStylist?.fullName}</p>
+        <p>Thời gian: ${selectedSlot?.label}</p>
+      `,
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Đặt lịch",
+      denyButtonText: `Không đặt`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        form.submit();
+      } else if (result.isDenied) {
+        Swal.fire("Lịch không được đặt", "", "info");
+      }
+    });
+  };
   // Fetch salons
   useEffect(() => {
     const fetchSalons = async () => {
@@ -98,6 +121,7 @@ const BookingSlot = () => {
 
   // Fetch stylists by selected salon
   const fetchStylists = async (storeId) => {
+    console.log(storeId)
     setLoadingStylists(true);
     try {
       const response = await api.get(`staff/${storeId}`);
@@ -274,9 +298,8 @@ const BookingSlot = () => {
                 {slots.map((slot) => (
                   <label
                     key={slot.id}
-                    className={`time-slot-card ${
-                      selectedSlot?.id === slot.id ? "selected" : ""
-                    } ${slot.disabled ? "disabled" : ""}`}
+                    className={`time-slot-card ${selectedSlot?.id === slot.id ? "selected" : ""
+                      } ${slot.disabled ? "disabled" : ""}`}
                     onClick={() => handleSlotSelect(slot)}
                   >
                     {formatTime(slot.startTime)} - {formatTime(slot.endTime)}
@@ -331,7 +354,7 @@ const BookingSlot = () => {
           )}
           {currentStep === steps.length - 1 && (
             <Form.Item>
-              <Button type="primary" htmlType="submit" block>
+              <Button type="primary" onClick={showAlert} block>
                 Chốt giờ cắt
               </Button>
             </Form.Item>
