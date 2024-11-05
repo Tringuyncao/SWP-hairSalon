@@ -1,42 +1,40 @@
-//import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Carousel, Input, Button, Row, Col, Form, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import './HomePage.scss';
-//import api from '../../config/axios';
-import React, { useRef } from 'react';
+import api from '../../config/axios';
 
 const HomePage = () => {
-  // const [services, setServices] = useState([]);
-  // const [categories, setCategories] = useState([]);
-
+  const [services, setServices] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const qualityScrollRef = useRef(null);
 
-  // const fetchDataServices = async () => {
-  //   try {
-  //     const response = await api.get("service")
-  //     console.log(response.data)
-  //     setServices(response.data);
-  //   } catch (error) {
-  //     console.log(error.response.data)
-  //   }
-  // }
-  // const fetchDataCategories = async () => {
-  //   try {
-  //     const response = await api.get("category")
-  //     console.log(response.data)
-  //     setCategories(response.data);
+  const fetchDataServices = async () => {
+    try {
+      const response = await api.get("service");
+      console.log(response.data);
+      setServices(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
 
-  //   } catch (error) {
-  //     console.log(error.response.data)
-  //   }
+  const fetchDataCategories = async () => {
+    try {
+      const response = await api.get("category");
+      console.log(response.data);
+      setCategories(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
 
-  // }
-  // useEffect(() => {
-  //   fetchDataServices()
-  //   fetchDataCategories()
-  // }, [])
+  useEffect(() => {
+    fetchDataServices();
+    fetchDataCategories();
+  }, []);
 
   const handleBooking = (values) => {
     message.success(`Lịch hẹn đã được đặt cho số: ${values.phoneNumber}`);
@@ -49,46 +47,13 @@ const HomePage = () => {
     message.error('Vui lòng nhập số điện thoại hợp lệ!');
   };
 
+  console.log(services)
+  console.log(categories)
+
   const bannerImages = [
     'https://firebasestorage.googleapis.com/v0/b/swp391-e06bc.appspot.com/o/banner1.png?alt=media&token=a61be145-af00-49ba-a498-189f344c7470',
     'https://img.freepik.com/free-photo/young-man-barbershop-trimming-hair_1303-26254.jpg',
     'https://images.pexels.com/photos/1570806/pexels-photo-1570806.jpeg'
-  ];
-
-  const services = [
-    {
-      name: "Cắt tóc",
-      price: "Giá từ 100.000đ",
-      image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-1.jpg",
-      link: "/haircutservice"
-    },
-    {
-      name: "Uốn tóc",
-      price: "Giá từ 300.000đ",
-      image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-2.jpg",
-      link: "/hairdyeservice"
-    },
-    {
-      name: "Nhuộm tóc",
-      price: "Giá từ 400.000đ",
-      image: "https://storage.30shine.com/web/v4/images/uon-trang-chu/uon-3.jpg",
-      link: "/hairdyeservice"
-    }
-  ];
-
-  const spaServices = [
-    {
-      name: "Gội Massage Relax",
-      price: "Giá từ 200.000đ",
-      image: "https://storage.30shine.com/web/v4/images/pc/pc_home_spa_1.png",
-      link: "/sparelax/massage"
-    },
-    {
-      name: "Lấy ráy tai êm",
-      price: "Giá từ 150.000đ",
-      image: "https://storage.30shine.com/web/v4/images/pc/pc_home_spa_3.png",
-      link: "/sparelax/earpick"
-    }
   ];
 
   const highlights = [
@@ -139,10 +104,9 @@ const HomePage = () => {
       name: "Dr for skin",
       description: "Thương hiệu mỹ phẩm có 11 năm nghiên cứu từ các chuyên gia hàng đầu",
       logo: "https://storage.30shine.com/web/v4/images/chat-luong-n-uy-tin/4.jpeg"
-    },
+    }
   ];
 
-  // Scroll functions for Quality & Partners
   const scrollLeft = () => {
     qualityScrollRef.current.scrollBy({ left: -200, behavior: 'smooth' });
   };
@@ -153,7 +117,6 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      {/* Banner Section */}
       <section className="banner-section">
         <Carousel autoplay className="banner-carousel">
           {bannerImages.map((image, index) => (
@@ -168,7 +131,6 @@ const HomePage = () => {
         </Carousel>
       </section>
 
-      {/* Booking Section */}
       <section id="booking-section" className="booking-section">
         <div className="container">
           <h2>Đặt lịch ngay</h2>
@@ -194,47 +156,47 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services-section" className="services-section">
-        <div className="container">
-          <h2>Dịch vụ nổi bật</h2>
-          <Row gutter={[16, 16]} className="services-list">
-            {services.map((service, index) => (
-              <Col xs={24} sm={12} md={8} lg={6} key={index}>
-                <Link to={service.link}>
-                  <div className="service-item">
-                    <img src={service.image} alt={service.name} className="service-image" />
-                    <h3>{service.name}</h3>
-                    <p>{service.price}</p>
-                  </div>
-                </Link>
-              </Col>
-            ))}
-          </Row>
-        </div>
-      </section>
+      {categories?.map(category => {
+        return <section key={category.id} id="services-section" className="services-section">
+          <div className="container">
+            <h2>{category?.name}</h2>
+            <Row gutter={[16, 16]} className="services-list">
+              {services?.filter(item => item?.category?.id == category.id && item.deleted == false).map((service, index) => (
+                <Col xs={24} sm={12} md={8} lg={6} key={index}>
+                  <Link to={service.link}>
+                    <div className="service-item">
+                      <img src={service?.image} alt={service?.name} className="service-image" />
+                      <h3>{service?.name}</h3>
+                      <p>{service?.price}</p>
+                    </div>
+                  </Link>
+                </Col>
+              ))}
+            </Row>
+          </div>
+        </section>
+      })}
 
-      {/* Spa & Relax Section */}
-      <section id="spa-relax-section" className="spa-relax-section">
+
+      {/* <section id="spa-relax-section" className="spa-relax-section">
         <div className="container">
           <h2>SPA & RELAX</h2>
           <Row gutter={[16, 16]} className="services-list">
-            {spaServices.map((service, index) => (
+            {categories.map((service, index) => (
               <Col xs={24} sm={12} md={8} lg={6} key={index}>
                 <Link to={service.link}>
                   <div className="service-item">
-                    <img src={service.image} alt={service.name} className="service-image" />
-                    <h3>{service.name}</h3>
-                    <p>{service.price}</p>
+                    <img src={service?.image} alt={service?.name} className="service-image" />
+                    <h3>{service?.name}</h3>
+                    <p>{service?.price}</p>
                   </div>
                 </Link>
               </Col>
             ))}
           </Row>
         </div>
-      </section>
+      </section> */}
 
-      {/* Highlights Section */}
       <section id="highlights-section" className="highlight-section">
         <div className="container">
           <h2>Điểm nhấn nổi bật</h2>
@@ -242,7 +204,7 @@ const HomePage = () => {
             {highlights.map((highlight, index) => (
               <Col xs={24} sm={12} md={8} lg={8} key={index}>
                 <div className="highlight-item">
-                  <div className="highlight-image-wrapper"> {/* Khung cho hình ảnh */}
+                  <div className="highlight-image-wrapper">
                     <img src={highlight.image} alt={highlight.title} className="highlight-image" />
                   </div>
                   <h3>{highlight.title}</h3>
@@ -254,7 +216,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Quality & Partners Section */}
       <section id="quality-partners-section" className="quality-section">
         <div className="container">
           <h2>Chất lượng & Đối tác</h2>
@@ -267,7 +228,8 @@ const HomePage = () => {
               </div>
             ))}
           </div>
-
+          <button className="scroll-left" onClick={scrollLeft}>◀</button>
+          <button className="scroll-right" onClick={scrollRight}>▶</button>
         </div>
       </section>
     </div>
