@@ -4,70 +4,53 @@ import {
   Button,
   Calendar,
   DatePicker,
-  Input,
   message,
+  Modal,
   Select,
-  TreeSelect,
 } from "antd";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
-import moment from "moment";
-import { CarryOutOutlined } from "@ant-design/icons";
-import dayjs from "dayjs";
-const getListData = (value) => {
-  let listData = []; // Specify the type of listData
-  switch (value.date()) {
-    default:
-  }
-  return listData || [];
-};
-const getMonthData = (value) => {
-  if (value.month() === 8) {
-    return 1394;
-  }
-};
+
 const ManageSlot = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null); // Ngày đổi
+  const [isModalVisible, setIsModalVisible] = useState(false); // Trạng thái modal
   const [loading, setLoading] = useState(false);
   const [stylish, setStylish] = useState([]);
   const [store, setStore] = useState([]);
   const [stylishId, setStylishId] = useState(0);
-  // Hàm xử lý chọn ngày
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
 
   const fetchStylish = async (value) => {
-    console.log("value ", value);
     try {
       const response = await api.get(`staff/${value}`);
-      console.log(response.data);
       setStylish(response.data);
     } catch (error) {
       toast.error(error.response.data);
     }
   };
+
   const optionStylish = stylish.map((staff) => ({
     label: `${staff?.fullName}`,
     value: staff?.id,
   }));
+
   const fetchStore = async () => {
     try {
       const response = await api.get("store");
-      console.log(response.data);
       setStore(response.data);
     } catch (error) {
       toast.error(error.response.data);
     }
   };
+
   useEffect(() => {
     fetchStore();
   }, []);
+
   const optionStore = store.map((storeItem) => ({
     label: `${storeItem?.name} - ${storeItem?.address}`,
     value: storeItem?.id,
   }));
-  // Hàm đăng ký slot
+
   const handleRegisterSlot = async () => {
     if (!selectedDate) {
       toast.error("Vui lòng chọn ngày!");
@@ -77,8 +60,6 @@ const ManageSlot = () => {
     setLoading(true);
     try {
       const formattedDate = selectedDate.format("YYYY-MM-DD");
-
-      // Gửi yêu cầu POST với date dưới dạng query parameter
       const response = await api.post(`/slot/${stylishId}`, null, {
         params: { date: formattedDate },
       });
@@ -87,38 +68,19 @@ const ManageSlot = () => {
         message.success("Đăng ký slot thành công!");
       }
     } catch (error) {
-      console.error(error);
       message.error("Đăng ký slot thất bại!");
     } finally {
       setLoading(false);
     }
   };
-  const monthCellRender = (value) => {
-    const num = getMonthData(value);
-    return num ? (
-      <div className="notes-month">
-        <section>{num}</section>
-        <span>Backlog number</span>
-      </div>
-    ) : null;
+
+  const openModal = () => {
+    setIsModalVisible(true);
   };
-  const dateCellRender = (value) => {
-    const listData = getListData(value);
-    return (
-      <ul className="events">
-        {listData.map((item) => (
-          <li key={item.content}>
-            <Badge status={item.type} text={item.content} />
-          </li>
-        ))}
-      </ul>
-    );
+  const handleModalCancel = () => {
+    setIsModalVisible(false);
   };
-  const cellRender = (current, info) => {
-    if (info.type === "date") return dateCellRender(current);
-    if (info.type === "month") return monthCellRender(current);
-    return info.originNode;
-  };
+
   return (
     <div>
       <h2>Đăng ký Slot</h2>
@@ -133,10 +95,10 @@ const ManageSlot = () => {
         options={optionStylish}
       />
       <DatePicker
-        onChange={(e) => setSelectedDate(e)}
+        onChange={(date) => setSelectedDate(date)}
         value={selectedDate}
         format="YYYY-MM-DD"
-        placeholder="Chọn ngày"
+        placeholder="Chọn ngày đổi"
         style={{ marginBottom: 16 }}
       />
       <Button
@@ -147,7 +109,38 @@ const ManageSlot = () => {
       >
         Đăng ký Slot
       </Button>
-      <Calendar cellRender={cellRender} />;
+      <Button
+        type="default"
+        onClick={openModal}
+        style={{ marginLeft: 8 }}
+      >
+        Sửa đổi ngày
+      </Button>
+
+      <Modal
+        title="Sửa đổi ngày"
+        visible={isModalVisible}
+        onCancel={handleModalCancel}
+      >
+        <div>
+          <h3>Ngày cần đổi</h3>
+          <DatePicker
+            format="YYYY-MM-DD"
+            placeholder="Chọn ngày cần đổi"
+            style={{ marginBottom: 16, width: "100%" }}
+          />
+        </div>
+        <div>
+          <h3>Ngày muốn đổi</h3>
+          <DatePicker
+            format="YYYY-MM-DD"
+            placeholder="Chọn ngày muốn đổi"
+            style={{ marginBottom: 16, width: "100%" }}
+          />
+        </div>
+      </Modal>
+
+      <Calendar />
     </div>
   );
 };

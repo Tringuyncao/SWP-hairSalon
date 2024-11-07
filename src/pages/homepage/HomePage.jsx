@@ -157,13 +157,13 @@ const HomePage = () => {
       </section>
 
       {categories?.map(category => {
-        return <section key={category.id} id="services-section" className="services-section">
+        return <section key={category?.id} id="services-section" className="services-section">
           <div className="container">
             <h2>{category?.name}</h2>
             <Row gutter={[16, 16]} className="services-list">
               {services?.filter(item => item?.category?.id == category.id && item.deleted == false).map((service, index) => (
                 <Col xs={24} sm={12} md={8} lg={6} key={index}>
-                  <Link to={service.link}>
+                  <Link to={`/option/${service?.id}`}>
                     <div className="service-item">
                       <img src={service?.image} alt={service?.name} className="service-image" />
                       <h3>{service?.name}</h3>
@@ -176,27 +176,6 @@ const HomePage = () => {
           </div>
         </section>
       })}
-
-
-      {/* <section id="spa-relax-section" className="spa-relax-section">
-        <div className="container">
-          <h2>SPA & RELAX</h2>
-          <Row gutter={[16, 16]} className="services-list">
-            {categories.map((service, index) => (
-              <Col xs={24} sm={12} md={8} lg={6} key={index}>
-                <Link to={service.link}>
-                  <div className="service-item">
-                    <img src={service?.image} alt={service?.name} className="service-image" />
-                    <h3>{service?.name}</h3>
-                    <p>{service?.price}</p>
-                  </div>
-                </Link>
-              </Col>
-            ))}
-          </Row>
-        </div>
-      </section> */}
-
       <section id="highlights-section" className="highlight-section">
         <div className="container">
           <h2>Điểm nhấn nổi bật</h2>

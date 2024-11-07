@@ -76,7 +76,7 @@ export const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/homepage",
+        path: "",
         element: <HomePage />,
       },
       {
@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
         element: <Privacy />,
       },
       {
-        path: "/haircutservice",
+        path: "/option",
         element: <HaircutService />,
       },
       {
@@ -286,6 +286,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Navigate to="/homepage" />, // Thêm điều hướng về trang chủ nếu không có route phù hợp
+    element: <Navigate to="/" />, // Thêm điều hướng về trang chủ nếu không có route phù hợp
   },
 ]);

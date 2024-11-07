@@ -1,4 +1,4 @@
-import { Button, Form, Input, message, Modal, Popconfirm, Table } from "antd";
+import { Button, Form, Input, message, Modal, Popconfirm, Table, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
@@ -15,6 +15,7 @@ function ManageCategory() {
     try {
       const response = await api.get("category");
       setDatas(response.data);
+      console.log(response.data)
     } catch (error) {
       toast.error(error.response.data);
     }
@@ -32,6 +33,7 @@ function ManageCategory() {
       //   const response = await api.post("category", values);
       // }
       const response = await api.post("category", values);
+
       toast.success("Successfully saved");
       fetchData();
       form.resetFields();
@@ -69,6 +71,12 @@ function ManageCategory() {
       title: "Description",
       dataIndex: "description",
       key: "description",
+    },
+    {
+      title: "Status",
+      dataIndex: "deleted",
+      key: "deleted",
+      render: (e) => e ? <Tag color='red'>DELETED</Tag> : <Tag color='green'>RETAIN</Tag>
     },
     {
       title: "Action",
@@ -118,7 +126,7 @@ function ManageCategory() {
           }}
           onFinish={handleSubmit}
         >
-          <Form.Item name="id">
+          <Form.Item name="id" hidden>
             <Input />
           </Form.Item>
           <Form.Item

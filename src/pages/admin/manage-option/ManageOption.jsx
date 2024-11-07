@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CRUDTemplate from '../../../components/crud-template';
-import { Form, Image, Input, Upload } from 'antd';
+import { Form, Image, Input, Tag, Upload } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -65,12 +65,18 @@ function ManageOption() {
       title: "Price",  // New column for price
       dataIndex: "price",
       key: "price",
-    }
+    },
+    {
+      title: "Status",
+      dataIndex: "deleted",
+      key: "deleted",
+      render: (e) => e ? <Tag color='red'>DELETED</Tag> : <Tag color='green'>RETAIN</Tag>
+    },
   ];
 
   const formItems =
     <>
-      <Form.Item name="id">
+      <Form.Item name="id" hidden>
         <Input />
       </Form.Item>
       <Form.Item

@@ -109,9 +109,7 @@ function CRUDTemplate({ columns, formItems, path }) {
       >
         <Form
           form={form}
-          labelCol={{
-            span: 24,
-          }}
+
           onFinish={handleSubmit}
         >
           {formItems}
