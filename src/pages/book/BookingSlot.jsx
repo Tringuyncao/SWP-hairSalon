@@ -299,7 +299,7 @@ const BookingSlot = () => {
                   <label
                     key={slot.id}
                     className={`time-slot-card ${selectedSlot?.id === slot.id ? "selected" : ""
-                      } ${slot.disabled ? "disabled" : ""}`}
+                      } ${!slot.available ? "disabled" : ""}`}
                     onClick={() => handleSlotSelect(slot)}
                   >
                     {formatTime(slot.startTime)} - {formatTime(slot.endTime)}
