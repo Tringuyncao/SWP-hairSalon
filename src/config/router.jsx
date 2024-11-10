@@ -56,6 +56,7 @@ import ManageStylish from "../pages/manager/manage-stylish/ManageStylish";
 import ManageStylishAdmin from "../pages/admin/manage-stylish/ManageStylish";
 import ManageManagerAdmin from "../pages/admin/manage-manager/ManageManagerAdmin";
 import Overview from "../pages/admin/overview/Overview";
+import ManageSchedule from "../pages/manager/manage-schedule/ManageSchedule";
 
 
 export const router = createBrowserRouter([
@@ -238,6 +239,10 @@ export const router = createBrowserRouter([
       {
         path: "managestylish",
         element: <ManageStylish />,
+      },
+      {
+        path: "manageschedule",
+        element: <ManageSchedule />,
       },
     ]
   },

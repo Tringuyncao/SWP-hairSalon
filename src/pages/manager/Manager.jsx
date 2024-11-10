@@ -47,6 +47,7 @@ const Manager = () => {
     getItem("Thông tin tài khoản", "info", <UserOutlined />),
     getItem("Quản lí đặt lịch", "booking", <CalendarOutlined />),
     getItem("Quản lí Stylish", "managestylish", <TeamOutlined />),
+    getItem("Quản lí lịch làm", "manageschedule", <TeamOutlined />),
     getItem("Đăng xuất", "logout", <LogoutOutlined />, handleLogout),
   ];
 

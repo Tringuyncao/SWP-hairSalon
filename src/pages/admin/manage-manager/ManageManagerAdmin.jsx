@@ -1,25 +1,41 @@
-import React, { useState } from "react";
-import { Button, Table, Modal, Form, Input, message } from "antd";
+import React, { useState, useEffect } from "react";
+import { Button, Table, Modal, Form, Input, message, Select } from "antd";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
+
+const { Option } = Select;
 
 const ManageManagerAdmin = () => {
   const [managers, setManagers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [storeId, setStoreId] = useState("");
+  const [stores, setStores] = useState([]); // state để lưu danh sách các store
   const [form] = Form.useForm();
+
+  // Hàm lấy danh sách stores từ API
+  useEffect(() => {
+    const fetchStores = async () => {
+      try {
+        const response = await api.get("store");
+        setStores(response.data); // Giả sử response.data là mảng các store
+      } catch (error) {
+        console.error("Không thể lấy danh sách store:", error);
+      }
+    };
+
+    fetchStores();
+  }, []);
 
   // Hàm lấy danh sách managers dựa trên storeId
   const fetchManagers = async () => {
     if (!storeId) {
-      toast.error("Vui lòng nhập storeId.");
+      toast.error("Vui lòng chọn store.");
       return;
     }
 
     try {
       const response = await api.get(`manager/${storeId}`);
-      // Lọc chỉ lấy những người có role là "MANAGER"
       const managersWithRole = response.data.filter(manager => manager.role === "MANAGER");
       setManagers(managersWithRole);
     } catch (error) {
@@ -31,24 +47,23 @@ const ManageManagerAdmin = () => {
   // Hàm thêm manager mới dựa trên storeId
   const handleAddManager = async (values) => {
     if (!storeId) {
-      toast.error("Vui lòng nhập storeId.");
+      toast.error("Vui lòng chọn store.");
       return;
     }
 
     setLoading(true);
     try {
-      // Đặt mặc định role là "MANAGER" và serviceIds là mảng rỗng
       const managerData = {
         ...values,
-        role: "MANAGER", // Mặc định role là "MANAGER"
-        serviceIds: [], // Mảng rỗng cho serviceIds
+        role: "MANAGER",
+        serviceIds: [],
       };
 
       await api.post(`manager/${storeId}`, managerData);
       message.success("Đã thêm manager thành công!");
       form.resetFields();
       setIsModalOpen(false);
-      fetchManagers(); // Refresh danh sách sau khi thêm manager
+      fetchManagers();
     } catch (error) {
       message.error("Thêm manager thất bại!");
       console.error(error);
@@ -87,14 +102,20 @@ const ManageManagerAdmin = () => {
 
   return (
     <div>
-      {/* Input cho storeId */}
+      {/* Select cho storeId */}
       <div style={{ marginBottom: 16 }}>
-        <Input
-          placeholder="Nhập storeId"
+        <Select
+          placeholder="Chọn cửa hàng"
           value={storeId}
-          onChange={(e) => setStoreId(e.target.value)}
+          onChange={(value) => setStoreId(value)}
           style={{ width: 200, marginRight: 8 }}
-        />
+        >
+          {stores.map((store) => (
+            <Option key={store.id} value={store.id}>
+              {store.name}
+            </Option>
+          ))}
+        </Select>
         <Button type="primary" onClick={fetchManagers}>
           Lấy danh sách Manager
         </Button>
