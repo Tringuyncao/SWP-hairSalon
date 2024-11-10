@@ -166,15 +166,9 @@ const BookingSlot = () => {
       message.success("Lịch hẹn đã được đặt thành công!");
       navigate("/homepage");
     } catch (error) {
-      if (error.response) {
-        message.error(
-          `Lỗi từ API: ${error.response.data.message || "Vui lòng thử lại!"}`
-        );
-      } else if (error.request) {
-        message.error("Không thể kết nối đến server, vui lòng kiểm tra mạng.");
-      } else {
-        message.error("Đã xảy ra lỗi, vui lòng thử lại!");
-      }
+      message.error(
+        `${error.response.data || "Vui lòng thử lại!"}`
+      );
     }
   };
 

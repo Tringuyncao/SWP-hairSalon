@@ -73,7 +73,7 @@ function ManageService() {
   const formItems =
     <>
 
-      <Form.Item name="id">
+      <Form.Item name="id" hidden>
         <Input />
       </Form.Item>
       <Form.Item
