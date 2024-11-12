@@ -24,7 +24,8 @@ function ManageBooking() {
         accountFullName: booking.account.fullName,
         accountPhone: booking.account.phone,
         storeName: booking.store.name,
-        status: booking.status, // Store booking status
+        status: booking.status,
+        total: booking.total || 0, // Include total amount here
       }));
       setBookings(modifiedBookings);
     } catch (error) {
@@ -122,6 +123,12 @@ function ManageBooking() {
       title: "Store Name",
       dataIndex: "storeName",
       key: "storeName",
+    },
+    {
+      title: "Tổng Tiền",
+      dataIndex: "total",
+      key: "total",
+      render: (total) => (total ? `${total.toLocaleString()} VND` : "N/A"), // Format with commas and currency
     },
     {
       title: "Status",

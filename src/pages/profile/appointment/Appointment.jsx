@@ -72,16 +72,16 @@ const Appointment = () => {
       dataIndex: "orderDetails",
       key: "stylist",
       render: (orderDetails) => {
-        // Lấy danh sách stylist name, loại bỏ "Không có tên stylist"
-        const stylistNames = orderDetails
+        // Lấy tên stylist đầu tiên, nếu có
+        const firstStylistName = orderDetails
           .map((detail) =>
             detail.stylistSlots && detail.stylistSlots.length > 0
               ? detail.stylistSlots[0].account.fullName
               : null
           )
-          .filter((name) => name) // Loại bỏ null hoặc undefined
-          .join(", ");
-        return stylistNames || "Không có tên stylist";
+          .find((name) => name); // Tìm tên stylist đầu tiên không phải null hoặc undefined
+
+        return firstStylistName || "Không có tên stylist";
       },
     },
     {
@@ -103,7 +103,6 @@ const Appointment = () => {
       dataIndex: "orderDetails",
       key: "timeSlot",
       render: (orderDetails) => {
-        // Lấy danh sách thời gian, loại bỏ "Không có thời gian"
         const timeSlots = orderDetails
           .map((detail) =>
             detail.stylistSlots && detail.stylistSlots.length > 0
@@ -126,6 +125,12 @@ const Appointment = () => {
       dataIndex: ["store", "address"],
       key: "storeAddress",
       render: (text, record) => (record.store ? record.store.address : "Không có địa chỉ"),
+    },
+    {
+      title: "Tổng Tiền",
+      dataIndex: "total",
+      key: "total",
+      render: (total) => `${total.toLocaleString()} VND`,
     },
     {
       title: "Action",

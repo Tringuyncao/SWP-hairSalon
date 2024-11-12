@@ -48,6 +48,7 @@ const BookingManager = () => {
             storeName: booking.store.name,
             storeAddress: booking.store.address,
             status: booking.status,
+            total: booking.total, // Add total amount here
           };
         });
 
@@ -119,6 +120,12 @@ const BookingManager = () => {
       title: "Address",
       dataIndex: "storeAddress",
       key: "storeAddress",
+    },
+    {
+      title: "Tổng Tiền",
+      dataIndex: "total",
+      key: "total",
+      render: (total) => (total ? `${total.toLocaleString()} VND` : "N/A"), // Format with commas and currency
     },
     {
       title: "Status",
