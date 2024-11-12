@@ -80,12 +80,7 @@ const Login = () => {
               prefix={<i className="fas fa-lock" />}
             />
           </Form.Item>
-          <Form.Item>
-            <Checkbox>Nhớ tài khoản</Checkbox>
-            <Link to="/forgot-password" className="forgot-password-link">
-              Quên mật khẩu?
-            </Link>
-          </Form.Item>
+          
           <Form.Item>
             <Button type="primary" htmlType="submit" className="login-button" block>
               Đăng nhập
