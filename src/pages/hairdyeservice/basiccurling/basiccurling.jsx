@@ -7,13 +7,12 @@ const BasicCurling = () => {
   const basicCurlingOptions = [
     {
       name: "Uốn Basic",
-      price: "379.000Đ",
       image:
         "https://storage.30shine.com/web/v4/images/uon/uon-tieu-chuan/uon_basic_hair_style_1.jpg",
     },
     {
       name: "Uốn Cao Cấp",
-      price: "449.000Đ",
+
       image:
         "https://storage.30shine.com/web/v4/images/uon/uon-tieu-chuan/uon_basic_hair_style_2.jpg",
     },
@@ -22,31 +21,31 @@ const BasicCurling = () => {
   const kPermOptions = [
     {
       name: "Comma Perm",
-      price: "478.000Đ",
+
       image:
         "https://storage.30shine.com/web/v4/images/uon/uon-tieu-chuan/uon_basic_kperm_1.jpg", // Đổi thành URL trực tuyến của hình ảnh
     },
     {
       name: "Quiff Perm",
-      price: "398.000Đ",
+
       image:
         "https://storage.30shine.com/web/v4/images/uon/uon-tieu-chuan/uon_basic_kperm_2.jpg", // Đổi thành URL trực tuyến của hình ảnh
     },
     {
       name: "Fit Perm",
-      price: "418.000Đ",
+
       image:
         "https://storage.30shine.com/web/v4/images/uon/uon-tieu-chuan/uon_basic_kperm_3.jpg", // Đổi thành URL trực tuyến của hình ảnh
     },
     {
       name: "Kid Perm",
-      price: "348.000Đ",
+
       image:
         "https://storage.30shine.com/web/v4/images/uon/uon-tieu-chuan/uon_basic_kperm_4.jpg", // Đổi thành URL trực tuyến của hình ảnh
     },
     {
       name: "Roof Perm",
-      price: "478.000Đ",
+
       image:
         "https://storage.30shine.com/web/v4/images/uon/uon-tieu-chuan/uon_basic_kperm_5.jpg", // Đổi thành URL trực tuyến của hình ảnh
     },
@@ -55,13 +54,13 @@ const BasicCurling = () => {
   const trendOptions = [
     {
       name: "Con Sâu",
-      price: "599.000Đ",
+
       image:
         "https://storage.30shine.com/web/v4/images/uon/uon-tieu-chuan/uon_basic_hair_style_3.jpg", // Đổi thành URL trực tuyến của hình ảnh
     },
     {
       name: "Premlock",
-      price: "899.000Đ",
+
       image:
         "https://storage.30shine.com/web/v4/images/uon/uon-tieu-chuan/uon_basic_hair_style_4.jpg", // Đổi thành URL trực tuyến của hình ảnh
     },
