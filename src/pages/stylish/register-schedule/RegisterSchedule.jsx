@@ -5,31 +5,27 @@ import { toast } from "react-toastify";
 import moment from "moment";
 import dayjs from "dayjs";
 
-// Remove the type imports, because they're unnecessary in a JavaScript file
-// import type { BadgeProps } from 'antd';
-// import type { Dayjs, CalendarProps } from 'dayjs';
-
 const RegisterSchedule = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [availableDates, setAvailableDates] = useState([]); // Lưu trữ lịch có sẵn
+  const [availableDates, setAvailableDates] = useState([]); // Store available schedule dates
 
-  // Lấy staffId từ localStorage khi login
+  // Get staffId from localStorage when logged in
   const storedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
   const staffId = storedUserInfo ? storedUserInfo.id : null;
 
-  // Gọi API để lấy lịch làm việc khi component mount
+  // Fetch available dates when component mounts
   useEffect(() => {
     const fetchAvailableDates = async () => {
       try {
         const response = await api.get("/slot/staff", {
-          params: { month: 11, year: 2024 }
+          params: { month: 11, year: 2024 },
         });
-        // Giả sử dữ liệu nhận được có dạng { staff: ["2024-11-05", "2024-11-06", ...] }
+        // Assuming the data received is in the format { staff: ["2024-11-05", "2024-11-06", ...] }
         setAvailableDates(response.data.staff.map(date => dayjs(date, "YYYY-MM-DD")));
       } catch (error) {
-        console.error("Không thể tải lịch cắt tóc:", error);
-        toast.error("Không thể tải lịch cắt tóc.");
+        console.error("Unable to load schedule:", error);
+        toast.error("Unable to load schedule.");
       }
     };
 
@@ -42,12 +38,12 @@ const RegisterSchedule = () => {
 
   const handleRegisterSchedule = async () => {
     if (!staffId) {
-      toast.error("Không tìm thấy ID của stylist. Vui lòng đăng nhập lại.");
+      toast.error("Stylist ID not found. Please log in again.");
       return;
     }
 
     if (!selectedDate) {
-      toast.error("Vui lòng chọn ngày!");
+      toast.error("Please select a date!");
       return;
     }
 
@@ -58,24 +54,26 @@ const RegisterSchedule = () => {
         params: { date: formattedDate },
       });
       if (response.status === 200) {
-        message.success("Đăng ký lịch làm việc thành công!");
+        message.success("Successfully registered work schedule!");
+        // Update availableDates to reflect the new scheduled date
+        setAvailableDates([...availableDates, dayjs(formattedDate, "YYYY-MM-DD")]);
       }
     } catch (error) {
       console.error(error);
-      message.error("Đăng ký lịch làm việc thất bại!");
+      message.error("Failed to register work schedule!");
     } finally {
       setLoading(false);
     }
   };
 
-  // Kiểm tra xem ngày có trong danh sách ngày có sẵn không
+  // Check if the date is in the availableDates list
   const isAvailableDate = (date) => {
     return availableDates.some(availableDate => availableDate.isSame(date, "day"));
   };
 
   const getListData = (value) => {
     if (isAvailableDate(value)) {
-      return [{ type: 'success', content: 'Ngày làm việc có sẵn' }];
+      return [{ type: 'success', content: 'Available Work Day' }];
     }
     return [];
   };
@@ -85,9 +83,7 @@ const RegisterSchedule = () => {
     return (
       <ul className="events">
         {listData.map((item) => (
-
           <Badge key={item.content} status={item.type} text={item.content} />
-
         ))}
       </ul>
     );
@@ -95,13 +91,13 @@ const RegisterSchedule = () => {
 
   return (
     <div>
-      <h2>Đăng ký lịch làm việc</h2>
+      <h2>Register Work Schedule</h2>
 
       <DatePicker
         onChange={handleDateChange}
         value={selectedDate}
         format="YYYY-MM-DD"
-        placeholder="Chọn ngày"
+        placeholder="Select Date"
         disabledDate={(current) => !isAvailableDate(current) || current < moment().endOf("day")}
         style={{ marginBottom: 16 }}
       />
@@ -112,11 +108,11 @@ const RegisterSchedule = () => {
         loading={loading}
         style={{ marginLeft: 8 }}
       >
-        Đăng ký Lịch Làm Việc
+        Register Schedule
       </Button>
 
       <Alert
-        message={`Bạn đã chọn ngày: ${selectedDate ? selectedDate.format('YYYY-MM-DD') : 'Chưa chọn ngày'}`}
+        message={`You selected: ${selectedDate ? selectedDate.format('YYYY-MM-DD') : 'No date selected'}`}
         style={{ marginBottom: 16 }}
       />
 
