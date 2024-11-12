@@ -163,7 +163,7 @@ const HomePage = () => {
             <Row gutter={[16, 16]} className="services-list">
               {services?.filter(item => item?.category?.id == category.id && item.deleted == false).map((service, index) => (
                 <Col xs={24} sm={12} md={8} lg={6} key={index}>
-                  <Link to={`/option/${service?.id}`}>
+                  <Link to={`/option`}>
                     <div className="service-item">
                       <img src={service?.image} alt={service?.name} className="service-image" />
                       <h3>{service?.name}</h3>
