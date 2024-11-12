@@ -262,7 +262,7 @@ const BookingSlot = () => {
           </Button>
           {selectedStylist && (
             <div>
-              <CheckCircleOutlined /> Stylist đã chọn: {selectedStylist.name}
+              <CheckCircleOutlined /> Stylist đã chọn: {selectedStylist.fullName}
             </div>
           )}
         </div>

@@ -78,15 +78,15 @@ const History = () => {
       dataIndex: "orderDetails",
       key: "stylist",
       render: (orderDetails) => {
-        const stylistNames = orderDetails
+        const firstStylistName = orderDetails
           .map((detail) =>
             detail.stylistSlots && detail.stylistSlots.length > 0
               ? detail.stylistSlots[0].account.fullName
               : null
           )
-          .filter((name) => name) // Loại bỏ null hoặc undefined
-          .join(", ");
-        return stylistNames || "Không có tên stylist";
+          .find((name) => name); // Tìm tên stylist đầu tiên không phải null hoặc undefined
+
+        return firstStylistName || "Không có tên stylist";
       },
     },
     {
@@ -114,7 +114,7 @@ const History = () => {
               ? detail.stylistSlots[0].slot.label
               : null
           )
-          .filter((time) => time) // Loại bỏ null hoặc undefined
+          .filter((time) => time)
           .join(", ");
         return timeSlots || "Không có thời gian";
       },
@@ -123,13 +123,19 @@ const History = () => {
       title: "Tên Cửa Hàng",
       dataIndex: ["store", "name"],
       key: "storeName",
-      render: (text, record) => record.store ? record.store.name : "Không có tên cửa hàng",
+      render: (text, record) => (record.store ? record.store.name : "Không có tên cửa hàng"),
     },
     {
       title: "Địa Chỉ Cửa Hàng",
       dataIndex: ["store", "address"],
       key: "storeAddress",
-      render: (text, record) => record.store ? record.store.address : "Không có địa chỉ",
+      render: (text, record) => (record.store ? record.store.address : "Không có địa chỉ"),
+    },
+    {
+      title: "Tổng Tiền",
+      dataIndex: "total",
+      key: "total",
+      render: (total) => `${total.toLocaleString()} VND`,
     },
     {
       title: "Action",
