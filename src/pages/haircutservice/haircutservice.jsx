@@ -33,7 +33,7 @@ const HaircutService = () => {
 
   return (
     <div className="haircut-service">
-      <h2>CẮT TÓC</h2>
+      <h2>Dịch vụ</h2>
       <p>Trải nghiệm cắt tóc phong cách dành riêng cho phái mạnh, vừa tiện lợi vừa thư giãn tại đây</p>
       <div className="service-list">
         {options?.map(option => (
@@ -43,9 +43,9 @@ const HaircutService = () => {
             <p>{option?.description}</p>
             <p className="time">{option?.time}</p>
 
-            <Link to={`/option/${option?.id}`}> {/* Chuyển đến trang combo1 */}
-              <button>Tìm hiểu thêm</button>
-            </Link>
+            {/* <Link to={`/option/${option?.id}`}> 
+            </Link> */}
+            <p>{option?.price} VND</p>
           </div>
         ))}
       </div>
